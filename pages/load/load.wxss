@@ -1,0 +1,41 @@
+/* pages/load/load.wxss */
+
+
+page{
+  background-color: #090F14;
+}
+view{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+
+sup{
+  margin: 60% 0 0 20%;
+  font-family: PingFangSC-Regular, sans-serif;
+  color: white;
+  font-size: 20rpx;
+}
+
+.logo{
+  margin-top: 38%;
+  position: absolute;
+  background-color: #9D0A0F;
+  padding: 0;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  border: 10rpx solid white;
+}
+
+
+
+.img{
+  left: -8rpx;
+  position: absolute;
+  width: 138rpx;
+  height: 138rpx;
+}

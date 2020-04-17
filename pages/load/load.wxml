@@ -1,0 +1,10 @@
+<!--pages/load/load.wxml-->
+<!-- 需要使用 button 来授权登录 -->
+
+<view wx:if="{{canIUse}}">
+	<sup>旅馆</sup>
+	<button class="logo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+		<image class="img" src="https://i.loli.net/2020/04/12/sAgCStJNEyO2dun.png"></image>
+	</button>
+</view>
+<view wx:else>请升级微信版本</view>

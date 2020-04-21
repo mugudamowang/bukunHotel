@@ -1,21 +1,49 @@
 /**index.wxss**/
-.userinfo {
+/* 这个是用户信息css:  .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
-
 .userinfo-nickname {
   color: #aaa;
 }
-
 .usermotto {
   margin-top: 200px;
+} */
+
+/* 顶部菜单切换 */
+.topNavBar{
+  background-color: rgba(9, 15, 20, 0.803);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
+.topNavBar :nth-child(1),
+.topNavBar :nth-child(2){
+  padding: 0 30rpx;
+  color: red;
+}
+.swiper-section{
+  color: aliceblue;
+  background-color: #090F14;
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.dailyCard-section{
+  /* 你的全局样式 */
+}
+.userPost{
+  height: 100%;
+  display: flex;
+}
+

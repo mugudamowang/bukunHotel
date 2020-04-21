@@ -1,15 +1,29 @@
 <!--index.wxml-->
 
+<!-- topNavBar这里是顶部菜单 -->
+<view class="topNavBar">
+	<view>icon1</view>
+	<view>icon2</view>
+</view>
 
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<view class="main">
+
+
+	<!-- dailyCard -->
+	<swiper class="swiper-section" interval="{{interval}}" duration="{{duration}}">
+		<swiper-item class="dailyCard-section">
+			<scroll-view>
+				<view>这是你的wmxl代码 dailyCard section </view>
+			</scroll-view>
+		</swiper-item>
+
+
+
+		<!-- userPost -->
+		<swiper-item>
+			<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
+			这边是我的
+			</scroll-view>
+		</swiper-item>
+	</swiper>
 </view>

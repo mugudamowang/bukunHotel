@@ -18,19 +18,40 @@
 } */
 
 /* 顶部菜单切换 */
-.topNavBar{
+view{
+  padding: 0;
+  margin: 0;
+}
+
+.test {
+  border-left: 1rpx #4D4D4E dashed;
+  background-color: rgb(15, 27, 36);
+  margin: 40rpx 5rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 200rpx;
+  /* border: solid 1px red; */
+}
+
+.topNavBar {
+  position: relative;
+  z-index: 2;
   background-color: rgba(9, 15, 20, 0.803);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
+
 .topNavBar :nth-child(1),
-.topNavBar :nth-child(2){
+.topNavBar :nth-child(2) {
   padding: 0 30rpx;
   color: red;
 }
-.swiper-section{
+
+.swiper-section {
   color: aliceblue;
   background-color: #090F14;
   position: absolute;
@@ -39,11 +60,12 @@
   width: 100%;
   overflow: hidden;
 }
-.dailyCard-section{
+
+.dailyCard-section {
   /* 你的全局样式 */
 }
-.userPost{
+
+.userPost {
   height: 100%;
   display: flex;
 }
-

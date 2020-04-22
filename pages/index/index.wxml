@@ -22,7 +22,15 @@
 		<!-- userPost -->
 		<swiper-item>
 			<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
-			这边是我的
+			<text class="test">这边是我的</text>
+			<text class="test">这边是我的</text>
+			<text class="test">这边是我的</text>
+			<text class="test">这边是我的</text>
+			<text class="test">这边是我的</text>
+			<text class="test">这边是我的</text>
+			<text class="test">这边是我的</text>
+			<text class="test">这边是我的</text>
+			<text>这边是我的</text>
 			</scroll-view>
 		</swiper-item>
 	</swiper>

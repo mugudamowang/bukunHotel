@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/load/load",
     "pages/index/index",
+    "pages/load/load",
+    
     "pages/logs/logs"
   ],
   "window": {

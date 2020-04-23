@@ -1,21 +1,224 @@
+/* pages/music/music.wxss */
+page,
+view,
+text,
+swiper,
+swiper-item,
+image,
+navigator {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+page {
+  background-color: black;
+}
 /**index.wxss**/
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
-
 .userinfo-nickname {
   color: #aaa;
 }
-
 .usermotto {
   margin-top: 200px;
+}
+.top {
+  margin: 20rpx 50rpx;
+  width: auto;
+  height: 320rpx;
+}
+.top .night {
+  height: 80rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.top .night .hello {
+  color: white;
+  font-size: 50rpx;
+  float: left;
+}
+.top .night .moon {
+  float: right;
+  width: 150rpx;
+  height: 100%;
+  opacity: 0.8;
+  background: no-repeat url("https://i.loli.net/2020/04/23/l7kt9JXcDF8bzVC.png");
+  background-size: auto 100%;
+  transform-origin: center 50%;
+  animation: swing 4s linear 0s infinite alternate ;
+}
+.top .word {
+  color: gray;
+  font-size: 30rpx;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.centerlist {
+  width: auto;
+  overflow: hidden;
+}
+.centerlist .detail {
+  float: left;
+  margin-left: 50rpx;
+  margin-bottom: 50rpx;
+  box-sizing: border-box;
+}
+.centerlist .detail .mask {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 15rpx;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  box-shadow: gray 0px 0px 2px;
+}
+.centerlist .detail .mask .title {
+  color: white;
+  font-size: 30rpx;
+  line-height: 300rpx;
+  transform: scaleZ(1);
+}
+.detail:nth-child(1) .mask {
+  background-image: url("https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg");
+}
+.detail:nth-child(2) .mask {
+  background-image: url("https://i.loli.net/2020/04/22/ouqdKrLvQUcfOZh.jpg");
+}
+.detail:nth-child(3) .mask {
+  background-image: url(" https://i.loli.net/2020/04/22/hFxPTm83lLiG1ZW.jpg");
+}
+.detail:nth-child(4) .mask {
+  background-image: url("https://i.loli.net/2020/04/22/Q26NEpxfSImq3uz.png");
+}
+.detail:nth-child(5) .mask {
+  background-image: url("https://i.loli.net/2020/04/22/lgV2ZfORcHBsyXJ.jpg");
+}
+.detail:nth-child(6) .mask {
+  background-image: url("https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg");
+}
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150rpx;
+  background-color: #1d1d2b;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+}
+.bottom .play {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250rpx;
+  height: 100rpx;
+}
+.bottom .play .musicpic {
+  position: absolute;
+  top: 25rpx;
+  left: 5rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+  width: 100rpx;
+  height: 100%;
+  border-radius: 50rpx;
+  border: 1px white solid;
+  box-sizing: border-box;
+  filter: blur(0.5px);
+  /* 先添加的会覆盖掉后面的 */
+  background-image: url(" https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png"), url("https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: center center,left top ;
+  background-size: 50rpx auto,auto 100%;
+  animation: rotate 10s linear 0s infinite normal ;
+}
+.bottom .play .musicname {
+  position: absolute;
+  top: 50rpx;
+  right: 0;
+  color: white;
+  font-size: 30rpx;
+  display: block;
+}
+.bottom .play .musictime {
+  position: absolute;
+  right: 58rpx;
+  top: 90rpx;
+  color: gray;
+  font-size: 25rpx;
+}
+.bottom .handle {
+  position: absolute;
+  top: 50rpx;
+  right: 0;
+  width: 200rpx;
+  height: 70rpx;
+}
+.bottom .handle .clock {
+  width: 100rpx;
+  height: 70%;
+  display: inline-block;
+  background: no-repeat url(" https://i.loli.net/2020/04/23/v7KcBqux2pITASm.png");
+  background-size: auto 100%;
+}
+.bottom .handle .share {
+  width: 100rpx;
+  height: 60%;
+  display: inline-block;
+  background: no-repeat url("https://i.loli.net/2020/04/23/hpIKrSRHeAJBOaY.png");
+  background-size: auto 100%;
+}
+.copyright {
+  float: left;
+  width: 100%;
+  margin-top: 100rpx;
+  height: 300rpx;
+  text-align: center;
+  color: white;
+  font-size: 30rpx;
+}
+.star {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  background: url("https://i.loli.net/2020/04/23/39gGjtE8LMBXNDV.jpg") no-repeat 0 0;
+  background-size: cover;
+  animation: shine 2s linear 0s infinite alternate ;
+}
+@keyframes swing {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(8deg);
+  }
+}
+@keyframes shine {
+  from {
+    opacity: 1 ;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
 }

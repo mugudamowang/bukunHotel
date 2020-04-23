@@ -1,8 +1,8 @@
 <!--index.wxml-->
 
-
-<view class="container">
-  <view class="userinfo">
+<!-- 申请用户名信息界面 -->
+<!-- <view class="container">
+  <view class="userinfo">   
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
@@ -12,4 +12,90 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
+</view> -->
+
+
+<!--pages/music/music.wxml-->
+<!-- 头部 -->
+<view class="top">
+
+	<view class="night">
+		<text class="hello"> 晚上好</text>
+		<text class="moon"></text>
+
+	</view>
+
+	<view class="word">一定一定一定一定要好好睡觉早睡早起啊啊啊啊啊aaaaaaa啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊你好啊啊啊啊啊啊啊啊啊啊啊啊啊啊 </view>
 </view>
+<!-- 中部 -->
+<ul class="centerlist">
+
+	<li class="detail">
+		<view class="mask">
+			
+			<text class="title">轻声细雨</text>
+
+		</view>
+
+	</li>
+	<li class="detail">
+		<view class="mask">
+			
+			<p class="title">轻声细雨</p>
+
+		</view>
+
+	</li>
+	<li class="detail">
+		<view class="mask">
+			
+			<p class="title">轻声细雨</p>
+
+		</view>
+
+	</li>
+	<li class="detail">
+		<view class="mask">
+			
+			<p class="title">轻声细雨</p>
+
+		</view>
+
+	</li>
+	<li class="detail">
+		<view class="mask">
+			
+			<p class="title">轻声细雨</p>
+
+		</view>
+
+	</li>
+	<li class="detail">
+		<view class="mask">
+			
+			<p class="title">轻声细雨</p>
+
+		</view>
+
+	</li>
+</ul>
+<!-- 尾部版权信息 -->
+<view class="copyright">
+	@不困旅馆</view>
+<!-- 固定的播放信息 -->
+<view class="bottom">
+	<view class="play">
+		<text class="musicpic"></text>
+		<text class="musicname">轻风细雨
+                  </text>
+                  <text class="musictime">10:00</text>
+
+	</view>
+	<view class="handle">
+		<text class="clock"></text>
+		<text class="share"></text>
+	</view>
+
+</view>
+<view class="star"></view>
+

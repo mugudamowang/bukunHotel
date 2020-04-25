@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/load/load",
     "pages/index/index",
+    "pages/load/load",
     "pages/my/my"
   ],
   "window": {

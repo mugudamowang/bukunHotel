@@ -23,16 +23,45 @@ view{
   margin: 0;
 }
 
-.test {
-  border-left: 1rpx #4D4D4E dashed;
-  background-color: rgb(15, 27, 36);
-  margin: 40rpx 5rpx;
+.postDetail {
+  border-top: 15rpx rgba(18, 30, 40, 0.426) solid;
+  border-bottom: 15rpx rgba(18, 30, 40, 0.426) solid;
+  background-color: rgb(21, 38, 51);
+  margin: 45rpx 0rpx 45rpx 0rpx;
+  box-shadow: 0 0 0 15rpx rgba(25, 42, 53, 0.282);
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: center;  
   align-items: center;
   height: 200rpx;
+  position: relative;
   /* border: solid 1px red; */
+}
+.circle{
+  background-color:  #090F14;
+  /* border: solid 5rpx rgba(128, 128, 128, 0.481); */
+  margin-right: 5rpx;
+  border: 5rpx solid transparent;
+  border-radius: 50%;
+  height: 40rpx;
+  width: 40rpx;
+}
+.postUser{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 5rpx;
+  left: 30rpx;
+  /* border: red solid 3rpx; */
+}
+
+.hotPost{
+  border: 10rpx rgba(83, 85, 85, 0.426) solid;
+  border-radius: 10rpx;
+  background-color: white;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  color: black;
 }
 
 .topNavBar {

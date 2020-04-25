@@ -22,15 +22,22 @@
 		<!-- userPost -->
 		<swiper-item>
 			<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text>这边是我的</text>
+
+			<view class="postDetail hotPost">
+				<text>但行好事,不问前程</text>
+			</view>
+
+				<view wx:for="{{datalist}}">
+					<view class="postDetail">
+
+						<view class="postUser">
+							<view class="circle"></view>	<!-- 圆形icon -->
+							{{item.id}}				<!-- 作者id -->
+						</view>
+						{{item.post}}				<!-- 作者标题 -->
+					</view>
+				</view>
+
 			</scroll-view>
 		</swiper-item>
 	</swiper>

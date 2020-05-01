@@ -1,0 +1,61 @@
+<!--pages/postDetail/postDetail.wxml-->
+
+<!-- 未适配 -->
+<view class="postTopic">
+	<view class="avatar fixed">头像</view>
+	{{datalist[1].post}}
+</view>
+
+
+
+<view class="postMessages">
+	<view class="divLine">★</view>
+
+	<view class="messageOnBorad">
+		<view class="avatar fixed">头像</view>
+		{{datalist[1].post}}
+	</view>
+	<view class="messageOnBorad">
+		<view class="avatar fixed">头像</view>
+		{{datalist[1].post}}
+	</view>
+	<view class="messageOnBorad">
+		<view class="avatar fixed">头像</view>
+		{{datalist[1].post}}
+	</view>
+	<view class="messageOnBorad">
+		<view class="avatar fixed">头像</view>
+		{{datalist[1].post}}
+	</view>
+	<view class="messageOnBorad">
+		<view class="avatar fixed">头像</view>
+		{{datalist[1].post}}
+	</view>
+	<view class="messageOnBorad">
+		<view class="avatar fixed">头像</view>
+		{{datalist[1].post}}
+	</view><view class="messageOnBorad">
+		<view class="avatar fixed">头像</view>
+		{{datalist[1].post}}
+	</view><view class="messageOnBorad">
+		<view class="avatar fixed">头像</view>
+		{{datalist[1].post}}
+	</view>
+	<view class="divLine">☾</view>
+
+</view>
+
+
+
+<!-- 自定义组件 -->
+
+<send-message>
+	<view class="textBar">
+
+		<!-- 发送栏 -->
+		<input class="textinput" placeholder="say something!"></input>
+		<button class="sendBtn"><icon type="success" color="grey"></icon></button>
+		
+	</view>
+
+</send-message>

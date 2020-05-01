@@ -1,9 +1,11 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/load/load",
+    "pages/index/index",
+    "pages/postDetail/postDetail",
     "pages/my/my"
   ],
+  
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#090F14",

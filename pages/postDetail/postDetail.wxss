@@ -1,0 +1,120 @@
+page{
+  background-color: #090F14;
+}
+
+.postTopic{
+  position: relative;
+  z-index: 10;
+  color: white;
+  border-top: 15rpx rgba(18, 30, 40, 0.426) solid;
+  border-bottom: 15rpx rgba(18, 30, 40, 0.426) solid;
+  background-color: rgb(21, 38, 51);
+  margin: 45rpx 0rpx 45rpx 0rpx;
+  box-shadow: 0 0 0 15rpx rgba(25, 42, 53, 0.282);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;  
+  align-items: center;
+  height: 200rpx;
+}
+
+.messageOnBorad{
+  color: white;
+  border-radius: 25rpx;
+  background-color: rgb(8, 23, 34);
+  margin: 8rpx 30rpx 8rpx 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;  
+  align-items: center;
+  height: 200rpx;
+  width: 95%;
+  position: relative;
+}
+
+.fixed{
+  font-size: 34rpx;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 25rpx;
+  left: 30rpx;
+  box-shadow: 0 0 0 20rpx rgba(41, 48, 53, 0.282);
+}
+
+.avatar {
+	margin: 0;
+	padding: 0;
+	display: inline-flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	background-color: #ccc;
+	width: 64rpx;
+	height: 64rpx;
+	background-size: cover;
+	background-position: center;
+	vertical-align: middle;
+  font-size: 30rpx;
+  border-radius: 50%;
+}
+
+.divLine{
+  text-align: center;
+  color: white;
+  background: rgba(88, 88, 87, 0.412);
+  margin: 35rpx auto 35rpx auto;
+  width: 94%;
+  border-radius: 50%;
+  height: 5rpx;
+ }
+
+.postMessages{
+  border-radius: 20rpx;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+  background-color: rgba(77, 77, 77, 0.296);
+  margin-bottom: 100rpx;
+}
+
+
+
+.textBar{
+  height: 72rpx;
+  border-radius: 35rpx;
+  display: flex;
+  left: 40rpx;
+  right: 40rpx;
+  position: fixed;
+	bottom: 50rpx;
+	z-index: 1024;
+	box-shadow: 0 0 0 15rpx rgba(25, 42, 53, 0.282);
+  background-color: #FFFFFF;
+}
+.textBar .textinput{
+  overflow: initial;
+	line-height: inherit;
+	height: inherit;
+	flex: 1;
+	font-size: 30rpx;
+	margin: 0 20rpx;
+}
+
+.textBar .sendBtn{
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  margin-right: 0;
+  position: relative;
+	border: 0rpx;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+  left: 0;
+	height: 64rpx;
+	text-align: center;
+	text-decoration: none;
+  height: inherit;
+}

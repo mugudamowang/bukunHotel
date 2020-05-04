@@ -1,12 +1,10 @@
 {
+  
+  "cloud":true,
   "pages": [
 
 "pages/index/index",
     "pages/load/load",
-
-   
-
-    
     "pages/logs/logs"
   ],
   "window": {

@@ -12,6 +12,8 @@ navigator {
 }
 page {
   background-color: black;
+
+ 
 }
 /**index.wxss**/
 .userinfo {
@@ -34,24 +36,26 @@ page {
 .usermotto {
   margin-top: 200px;
 }
+
 // 头部
 .top {
   margin: 20rpx 50rpx;
-  width: auto;
+  
+ 
   height: 320rpx;
   .night {
     height: 80rpx;
-    overflow: hidden;
+display: flex;
 
-    margin-bottom: 20rpx;
+justify-content: space-between;
+    margin-bottom: 30rpx;
     .hello {
       color: white;
       font-size: 50rpx;
-      float: left;
+    
     }
     .moon {
-      float: right;
-      width: 150rpx;
+      width: 110rpx;
       height: 100%;
       opacity: 0.8;
       background: no-repeat
@@ -59,9 +63,6 @@ page {
 
       background-size: auto 100%;
       transform-origin:center 50%;
-    
-        
-      
       animation: swing 4s linear 0s infinite alternate ;
     
     }
@@ -76,14 +77,17 @@ page {
 }
 // 中部
 .centerlist {
-  width: auto;
-  overflow: hidden;
 
+  
+display: flex;
+flex-wrap: wrap;
+overflow-y: scroll;
+justify-content: space-around;
   .detail {
-    float: left;
+    // float: left;
 
-    margin-left: 50rpx;
-    margin-bottom: 50rpx;
+    // margin-left: 50rpx;
+    margin-bottom: 70rpx;
 
     box-sizing: border-box;
 
@@ -98,7 +102,6 @@ page {
       background-size: cover;
 
       text-align: center;
-      box-shadow:gray 0px 0px 10px;
      
       .title {
         color: white;
@@ -131,10 +134,19 @@ page {
 .detail:nth-child(6) .mask {
   background-image: url("https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg");
 }
-// 固定部分
-.bottom {
-  position: fixed;
+// 尾部版权
+.copyright {
 
+  width: 100%;
+  margin-top: 100rpx;
+  height: 300rpx;
+  text-align: center;
+  color: white;
+  font-size: 30rpx;
+}
+// 固定部分
+.fix {
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -144,17 +156,19 @@ page {
   border-top-right-radius: 30rpx;
   .play {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 25rpx;
+    left: 10rpx;
     width: 250rpx;
     height: 100rpx;
-
+display: flex;
+justify-content: space-between;
     .musicpic {
-      position: absolute;
-      top: 25rpx;
-      left: 5rpx;
-      margin-left: 10rpx;
-      display: inline-block;
+      // position: absolute;
+      // top: 25rpx;
+      // left: 5rpx;
+      // margin-left: 10rpx;
+      // display: inline-block;
+      
       width: 100rpx;
       height: 100%;
       border-radius: 50rpx;
@@ -186,24 +200,34 @@ page {
      
 
     }
-   
+   .musicinfo{
+     display: flex;
+flex-direction: column;
+justify-content: space-around;
     .musicname {
-      position: absolute;
-      top: 50rpx;
-      right: 0;
+      // position: absolute;
+      // top: 50rpx;
+      // right: 0;
+      // align-self: center;
+      // justify-content:center ;
       color: white;
       font-size: 30rpx;
-      display: block;
+      //display: block;
  
       
     }
     .musictime{
-      position: absolute;
-      right: 58rpx;
-      top:90rpx;
+    //  // position: absolute;
+    //   right: 58rpx;
+    //   top:90rpx;
+    // align-self:flex-end;
+    // justify-content:center ;
       color: gray;
       font-size: 25rpx;
     }
+
+   }
+    
   }
   .handle {
     position: absolute;
@@ -231,16 +255,7 @@ page {
     }
   }
 }
-// 尾部版权
-.copyright {
-  float: left;
-  width: 100%;
-  margin-top: 100rpx;
-  height: 300rpx;
-  text-align: center;
-  color: white;
-  font-size: 30rpx;
-}
+
 .star{
   position: absolute;
   left: 0;

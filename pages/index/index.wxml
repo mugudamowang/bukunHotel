@@ -24,45 +24,68 @@
 								<view class="word">一定一定一定一定要好好睡觉早睡早起啊啊啊啊啊aaaaaaa啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊你好啊啊啊啊啊啊啊啊啊啊啊啊啊啊</view>
 				</view>
 				<!-- 中部 -->
-				<ul class="centerlist">
-								<li class="detail">
-												<view class="mask">
-																<text class="title">轻声细雨</text>
-												</view>
-								</li>
-								<li class="detail">
-												<view class="mask">
-																<p class="title">轻声细雨</p>
-												</view>
-								</li>
-								<li class="detail">
-												<view class="mask">
-																<p class="title">轻声细雨</p>
-												</view>
-								</li>
-								<li class="detail">
-												<view class="mask">
-																<p class="title">轻声细雨</p>
-												</view>
-								</li>
-								<li class="detail">
-												<view class="mask">
-																<p class="title">轻声细雨</p>
-												</view>
-								</li>
-								<li class="detail">
-												<view class="mask">
-																<p class="title">轻声细雨</p>
-												</view>
-								</li>
-				</ul>
+				<view class="centerlist">
+				<view class="wrap">
+				<image class="img_bg" mode="center" src="https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg" ></image>
+				<view class="title">轻声细雨</view>
+				
+				</view>
+					<view class="wrap">
+				<image class="img_bg" mode="center" src="https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg" ></image>
+				<view class="title">轻声细雨</view>
+				
+				</view>
+					<view class="wrap">
+				<image class="img_bg" mode="center" src="https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg" ></image>
+				<view class="title">轻声细雨</view>
+				
+				</view>
+					<view class="wrap">
+				<image class="img_bg" mode="center" src="https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg" ></image>
+				<view class="title">轻声细雨</view>
+				
+				</view>
+					<view class="wrap">
+				<image class="img_bg" mode="center" src="https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg" ></image>
+				<view class="title">轻声细雨</view>
+				
+				</view>
+					<view class="wrap">
+				<image class="img_bg" mode="center" src="https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg" ></image>
+				<view class="title">轻声细雨</view>
+				
+				</view>
+				
+				
+
+
+							
+				</view>
 				<!-- 尾部版权信息 -->
 				<view class="copyright">@不困旅馆</view>
 </scroll-view>
 <!-- 固定的播放信息 -->
-<view class="fix">
+<!-- <view class="fix">
 		<view class="play">
 								<text class="musicpic"></text>
+								<view class="musicinfo">
+								<text class="musicname">轻风细雨</text>
+								<text class="musictime">10:00</text>
+								</view>
+								
+				</view>
+				<view class="handle">
+								<text class="clock"></text>
+								<text class="share"></text>
+				</view>
+</view> -->
+<view class="fix">
+		<view class="play">
+		 <view class="musicpicture">
+		 	<image class="musicbg" mode="center" src="https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg"></image>
+								<image class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix"></image>
+		 </view>
+							
 								<view class="musicinfo">
 								<text class="musicname">轻风细雨</text>
 								<text class="musictime">10:00</text>

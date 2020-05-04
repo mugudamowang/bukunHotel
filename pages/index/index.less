@@ -83,35 +83,58 @@ display: flex;
 flex-wrap: wrap;
 overflow-y: scroll;
 justify-content: space-around;
-  .detail {
-    // float: left;
+position: relative;
+.wrap{
+position: relative;
+margin-bottom: 70rpx;
+.img_bg{
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 15rpx;
+  filter: blur(2rpx);
 
-    // margin-left: 50rpx;
-    margin-bottom: 70rpx;
-
-    box-sizing: border-box;
-
-    .mask {
-      width: 300rpx;
-      height: 300rpx;
-      border-radius: 15rpx;
-      background-repeat: no-repeat;
-
-      background-position: center;
-      // background-size:100%  auto ;
-      background-size: cover;
-
-      text-align: center;
-     
-      .title {
-        color: white;
+}
+.title{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  text-align: center;
+  color: white;
         font-size: 30rpx;
-        line-height: 300rpx;
-        transform: scaleZ(1);
-        // animation: max 2s linear 0s infinite normal ;
-      }
-    }
-  }
+        font-weight: 100;
+
+}
+}
+  // .detail {
+  //   // float: left;
+
+  //   // margin-left: 50rpx;
+  //   margin-bottom: 70rpx;
+
+  //   box-sizing: border-box;
+
+  //   .mask {
+  //     width: 300rpx;
+  //     height: 300rpx;
+  //     border-radius: 15rpx;
+  //     background-repeat: no-repeat;
+
+  //     background-position: center;
+  //     // background-size:100%  auto ;
+  //     background-size: cover;
+
+  //     text-align: center;
+     
+  //     .title {
+  //       color: white;
+  //       font-size: 30rpx;
+  //       line-height: 300rpx;
+  //       transform: scaleZ(1);
+  //       // animation: max 2s linear 0s infinite normal ;
+  //     }
+  //   }
+  // }
 }
 
 // 设置背景图片
@@ -162,44 +185,65 @@ justify-content: space-around;
     height: 100rpx;
 display: flex;
 justify-content: space-between;
-    .musicpic {
-      // position: absolute;
-      // top: 25rpx;
-      // left: 5rpx;
-      // margin-left: 10rpx;
-      // display: inline-block;
-      
-      width: 100rpx;
-      height: 100%;
-      border-radius: 50rpx;
+.musicpicture{
+  position: relative;
+  .musicbg{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
       border: 1px white solid;
       box-sizing: border-box;
       filter: blur(0.5px);
+      animation: rotate 10s linear 0s infinite normal ;
+  }
+  .on{
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top:25%;
+  }
+
+}
+    // .musicpic {
+    //   // position: absolute;
+    //   // top: 25rpx;
+    //   // left: 5rpx;
+    //   // margin-left: 10rpx;
+    //   // display: inline-block;
       
-    //  正在播放
-       /* 先添加的会覆盖掉后面的 */
-       background-image: url(" https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png"),url("https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg");
-       background-repeat: no-repeat,no-repeat;
+    //   width: 100rpx;
+    //   height: 100%;
+    //   border-radius: 50rpx;
+    //   border: 1px white solid;
+    //   box-sizing: border-box;
+    //   filter: blur(0.5px);
+      
+    // //  正在播放
+    //    /* 先添加的会覆盖掉后面的 */
+    //    background-image: url(" https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png"),url("https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg");
+    //    background-repeat: no-repeat,no-repeat;
      
-       background-position:center center,left top ;
+    //    background-position:center center,left top ;
       
-       background-size: 50rpx auto,auto 100%;
-       animation: rotate 10s linear 0s infinite normal ;
-      // 
-      //  暂停
-    //  暂停的时候更换背景图片，并停止动画
-      //  /* 先添加的会覆盖掉后面的 */
-      //  background-image: url(" https://i.loli.net/2020/04/23/sk4m6UyRJTrfGVd.png"),url("https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg");
-      //  background-repeat: no-repeat,no-repeat;
+    //    background-size: 50rpx auto,auto 100%;
+    //    animation: rotate 10s linear 0s infinite normal ;
+    //   // 
+    //   //  暂停
+    // //  暂停的时候更换背景图片，并停止动画
+    //   //  /* 先添加的会覆盖掉后面的 */
+    //   //  background-image: url(" https://i.loli.net/2020/04/23/sk4m6UyRJTrfGVd.png"),url("https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg");
+    //   //  background-repeat: no-repeat,no-repeat;
      
-      //  background-position:center center,left top ;
+    //   //  background-position:center center,left top ;
       
-      //  background-size: 50rpx auto,auto 100%;
-      //  animation: rotate 10s linear 0s infinite normal ;
+    //   //  background-size: 50rpx auto,auto 100%;
+    //   //  animation: rotate 10s linear 0s infinite normal ;
 
      
 
-    }
+    // }
    .musicinfo{
      display: flex;
 flex-direction: column;

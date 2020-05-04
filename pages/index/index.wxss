@@ -65,25 +65,27 @@ page {
   flex-wrap: wrap;
   overflow-y: scroll;
   justify-content: space-around;
+  position: relative;
 }
-.centerlist .detail {
+.centerlist .wrap {
+  position: relative;
   margin-bottom: 70rpx;
-  box-sizing: border-box;
 }
-.centerlist .detail .mask {
+.centerlist .wrap .img_bg {
   width: 300rpx;
   height: 300rpx;
   border-radius: 15rpx;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  text-align: center;
+  filter: blur(2rpx);
 }
-.centerlist .detail .mask .title {
+.centerlist .wrap .title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  text-align: center;
   color: white;
   font-size: 30rpx;
-  line-height: 300rpx;
-  transform: scaleZ(1);
+  font-weight: 100;
 }
 .detail:nth-child(1) .mask {
   background-image: url("https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg");
@@ -130,19 +132,25 @@ page {
   display: flex;
   justify-content: space-between;
 }
-.fix .play .musicpic {
+.fix .play .musicpicture {
+  position: relative;
+}
+.fix .play .musicpicture .musicbg {
   width: 100rpx;
-  height: 100%;
+  height: 100rpx;
   border-radius: 50rpx;
   border: 1px white solid;
   box-sizing: border-box;
   filter: blur(0.5px);
-  /* 先添加的会覆盖掉后面的 */
-  background-image: url(" https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png"), url("https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg");
-  background-repeat: no-repeat, no-repeat;
-  background-position: center center,left top ;
-  background-size: 50rpx auto,auto 100%;
   animation: rotate 10s linear 0s infinite normal ;
+}
+.fix .play .musicpicture .on {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 25%;
 }
 .fix .play .musicinfo {
   display: flex;

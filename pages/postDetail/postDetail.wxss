@@ -19,6 +19,7 @@ page{
 }
 
 .messageOnBorad{
+  border: #ccc 1rpx solid;
   color: white;
   border-radius: 25rpx;
   background-color: rgb(8, 23, 34);
@@ -80,41 +81,10 @@ page{
   margin-bottom: 100rpx;
 }
 
-
-
-.textBar{
-  height: 72rpx;
-  border-radius: 35rpx;
+.mediaCom{
   display: flex;
-  left: 40rpx;
-  right: 40rpx;
-  position: fixed;
-	bottom: 50rpx;
-	z-index: 1024;
-	box-shadow: 0 0 0 15rpx rgba(25, 42, 53, 0.282);
-  background-color: #FFFFFF;
-}
-.textBar .textinput{
-  overflow: initial;
-	line-height: inherit;
-	height: inherit;
-	flex: 1;
-	font-size: 30rpx;
-	margin: 0 20rpx;
-}
-
-.textBar .sendBtn{
-  border-top-right-radius: inherit;
-  border-bottom-right-radius: inherit;
-  margin-right: 0;
-  position: relative;
-	border: 0rpx;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-  left: 0;
-	height: 64rpx;
-	text-align: center;
-	text-decoration: none;
-  height: inherit;
+  flex-direction: row;
+  position: absolute;
+  bottom: 10rpx;
+  right: 30rpx;
 }

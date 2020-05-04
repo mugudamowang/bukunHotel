@@ -4,6 +4,9 @@ const app = getApp()
 
 Page({
   data: {
+
+    star: 0,
+
     datalist: app.globalData.datalist,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     vertical: false,
@@ -13,7 +16,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
-    
+
   },
 
   durationChange(e) {
@@ -21,6 +24,7 @@ Page({
       duration: e.detail.value
     })
   },
+
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
@@ -73,5 +77,10 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+
+  switchNav: function (e) {
+    this.setData( { star: e.detail.current });
+  },
+
 })

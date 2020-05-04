@@ -1,16 +1,24 @@
 <!--index.wxml-->
 
 <!-- topNavBar这里是顶部菜单 -->
-<view class="topNavBar">
-	<view>icon1</view>
-	<view>icon2</view>
+<view class="topNavBar neonBox">
+	<view class="swiper-tab-list {{star==0 ? 'neonOn' : ''}}" data-star="0">☾</view>
+	<view class="swiper-tab-list {{star==1 ? 'neonOn' : ''}}" data-star="1">☆</view>
 </view>
+
+<!-- 这里是createPost按钮 -->
+<view hidden="{{!star}}" class="creatPost neonBox">
+	<icon color="white" type="cancel" size="72rpx"></icon>
+	<!-- <input wx:if={{}}/></input> -->
+</view>
+
+
 
 <view class="main">
 
 
 	<!-- dailyCard -->
-	<swiper class="swiper-section" interval="{{interval}}" duration="{{duration}}">
+	<swiper class="swiper-section" interval="{{interval}}" duration="{{duration}}" bindchange="switchNav">
 		<swiper-item class="dailyCard-section">
 			<scroll-view>
 				<view>这是你的wmxl代码 dailyCard section </view>
@@ -20,6 +28,8 @@
 
 
 		<!-- userPost -->
+
+
 		<swiper-item>
 			<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
 
@@ -28,18 +38,22 @@
 				</view>
 
 				<view wx:for="{{datalist}}">
-				<navigator url="../postDetail/postDetail">
-					<view class="postNav">
-						<view class="postUser">
-							<view class="circle"></view> <!-- 圆形icon -->
-							{{item.id}} <!-- 作者id -->
+					
+						<view class="postNav">
+							<view class="postUser">
+								<view class="circle"></view> <!-- 圆形icon -->
+								{{item.id}} <!-- 作者id -->
+							</view>
+							{{item.post}} <!-- 作者标题 -->
+							<navigator hover-class="none" url="../postDetail/postDetail">
+							<media class="mediaCom"></media>
+							</navigator>
 						</view>
-						{{item.post}} <!-- 作者标题 -->
-					</view>
-					</navigator>
+						
 				</view>
 
 			</scroll-view>
 		</swiper-item>
+
 	</swiper>
 </view>

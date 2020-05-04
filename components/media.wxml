@@ -1,0 +1,10 @@
+<!--components/media.wxml-->
+
+
+
+	
+
+
+<view wx:if="{{!like}}" class="iconfont icon_like" bindtap="likeBtn"></view>
+	<view wx:else class="iconfont icon_likefill" bindtap="likeBtn"></view>
+	<text class="iconfont icon_comments"></text>

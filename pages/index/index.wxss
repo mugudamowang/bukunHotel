@@ -18,9 +18,10 @@
 } */
 
 /* 顶部菜单切换 */
-view{
+page{
   padding: 0;
   margin: 0;
+  background-color: #090F14;
 }
 
 .postNav {
@@ -31,14 +32,22 @@ view{
   box-shadow: 0 0 0 15rpx rgba(25, 42, 53, 0.282);
   display: flex;
   flex-direction: row;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
   height: 200rpx;
   position: relative;
-  /* border: solid 1px red; */
 }
-.circle{
-  background-color:  #090F14;
+
+.postNav .mediaCom{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 10rpx;
+  right: 30rpx;
+}
+
+.postNav .circle {
+  background-color: #090F14;
   margin-right: 15rpx;
   border: 5rpx solid rgba(51, 53, 61, 0.186);
   box-shadow: 0 0 0 18rpx rgba(25, 42, 53, 0.282);
@@ -46,7 +55,8 @@ view{
   height: 40rpx;
   width: 40rpx;
 }
-.postUser{
+
+.postUser {
   font-size: 34rpx;
   display: flex;
   flex-direction: row;
@@ -55,7 +65,7 @@ view{
   left: 30rpx;
 }
 
-.hotPost{
+.hotPost {
   border: 10rpx rgba(83, 85, 85, 0.426) solid;
   border-radius: 10rpx;
   background-color: white;
@@ -64,10 +74,11 @@ view{
   color: black;
 }
 
+
 .topNavBar {
   position: relative;
   z-index: 2;
-  background-color: rgba(9, 15, 20, 0.803);
+  background-color: transparent;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -76,8 +87,36 @@ view{
 
 .topNavBar :nth-child(1),
 .topNavBar :nth-child(2) {
-  padding: 0 30rpx;
-  color: red;
+  padding: 5rpx 60rpx;
+  color: white;
+}
+
+.neonOn {
+  animation: neon 1.5s ease-in-out infinite alternate;
+  animation-delay: 90ms;
+}
+.neonBox {
+  animation: neonBox 1.5s ease-in-out infinite alternate;
+  animation-delay: 90ms;
+}
+
+@keyframes neon {
+  0% {
+    text-shadow: 2rpx 0rpx 10rpx #fff
+  }
+
+  100% {
+    text-shadow: 0 0 5rpx #fff, 0 0 8rpx #fff, 0 0 10rpx #fff, 0 0 15rpx #FF9900, 0 0 30rpx #FF9900, 0 0 38rpx #FF9900, 0 0 55rpx rgb(255, 232, 172);
+  }
+}
+@keyframes neonBox {
+  0% {
+    box-shadow: 0rpx 0rpx 10rpx #090F14
+  }
+
+  100% {
+    box-shadow: 0 0 5rpx rgba(9, 15, 20, 0.673), 0 0 8rpx rgba(9, 15, 20, 0.371), 0 0 30rpx rgba(255, 255, 255, 0.289);
+  }
 }
 
 .swiper-section {
@@ -97,4 +136,18 @@ view{
 .userPost {
   height: 100%;
   display: flex;
+}
+
+.creatPost{
+  rotate: 45deg;
+  bottom: 72rpx;
+  right: 72rpx;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(45, 65, 80);
 }

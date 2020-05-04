@@ -4,6 +4,7 @@
 <view class="postTopic">
 	<view class="avatar fixed">头像</view>
 	{{datalist[1].post}}
+	<media class="mediaCom"></media>
 </view>
 
 
@@ -48,14 +49,5 @@
 
 
 <!-- 自定义组件 -->
-
-<send-message>
-	<view class="textBar">
-
-		<!-- 发送栏 -->
-		<input class="textinput" placeholder="say something!"></input>
-		<button class="sendBtn"><icon type="success" color="grey"></icon></button>
-		
-	</view>
-
-</send-message>
+<sendMessages>
+</sendMessages>

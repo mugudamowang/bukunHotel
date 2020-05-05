@@ -4,16 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-<<<<<<< HEAD
-    // viewheight: 0,
-    // viewwidth: 0,
 
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    vertical: false,
-    duration: 500,
-=======
     //用户信息
->>>>>>> lyq
     currentTab: 0,
     motto: 'Hello World',
     userInfo: {},
@@ -42,74 +34,7 @@ Page({
     })
   },
   onLoad: function () {
-<<<<<<< HEAD
-    // wx.getSystemInfo({
-    //   success: (res) => {
-    //     console.log("fuck")
-    //     this.setData({
-    //       viewwidth: res.windowWidth,
-    //       viewheight: res.windowHeight
-    //     })
-    //     console.log(this.viewheight)
-    //     console.log("you")
-    //   },
-    // })
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-=======
     this.getList();
-
-    // if (app.globalData.userInfo) {
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo,
-    //     hasUserInfo: true
-    //   })
-    // } else if (this.data.canIUse){
-    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //   // 所以此处加入 callback 以防止这种情况
-    //   app.userInfoReadyCallback = res => {
-    //     this.setData({
-    //       userInfo: res.userInfo,
-    //       hasUserInfo: true
-    //     })
-    //   }
-    // } else {
-    //   // 在没有 open-type=getUserInfo 版本的兼容处理
-    //   wx.getUserInfo({
-    //     success: res => {
-    //       app.globalData.userInfo = res.userInfo
-    //       this.setData({
-    //         userInfo: res.userInfo,
-    //         hasUserInfo: true
-    //       })
-    //     }
-    //   })
-    // }
->>>>>>> lyq
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -118,10 +43,6 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-<<<<<<< HEAD
-  }
-})
-=======
   },
   getList() {
     let that = this;
@@ -173,4 +94,3 @@ Page({
     this.getList();
 },
 })
->>>>>>> lyq

@@ -1,9 +1,6 @@
 {
-<<<<<<< HEAD
-  "disableScroll": true
-=======
+  "disableScroll":true,
   "navigationBarTitleText": "不困旅馆",
   "enablePullDownRefresh":true,
   "backgroundTextStyle":"dark"
->>>>>>> lyq
 }

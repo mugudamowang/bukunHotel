@@ -1,16 +1,8 @@
 {
-  
-  "cloud":true,
+  "cloud": true,
   "pages": [
-
-"pages/index/index",
-    "pages/load/load",
-<<<<<<< HEAD
     "pages/index/index",
-    "pages/my/my"
-=======
-    "pages/logs/logs"
->>>>>>> lyq
+    "pages/load/load"
   ],
   "window": {
     "backgroundTextStyle": "light",

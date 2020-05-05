@@ -1,95 +1,72 @@
-<<<<<<< HEAD
 <!--index.wxml-->
 
-<!-- topNavBar这里是顶部菜单 -->
-<view class="topNavBar">
-	<view>icon1</view>
-	<view>icon2</view>
-</view>
+	<!-- topNavBar这里是顶部菜单 -->
+	<view class="topNavBar">
+		<view>icon1</view>
+		<view>icon2</view>
+	</view>
 
-<view class="main">
+	<view class="main">
+		<!-- dailyCard -->
+		<swiper class="swiper-section" interval="{{interval}}" duration="{{duration}}">
+			<swiper-item class="dailyCard-section">
+				<!-- 滚动的内容部分 -->
+				<scroll-view class="flow">
+					<!-- 头部 -->
+					<view class="top" wx:if="{{isShowArticle}}">
+						<view class="night">
+							<text class="hello">晚上好</text>
+							<text class="moon"></text>
+						</view>
+						<view class="word">一定一定一定一定要好好睡觉早睡早起啊啊啊啊啊aaaaaaa啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊你好啊啊啊啊啊啊啊啊啊啊啊啊啊啊</view>
+					</view>
+					<!-- 中部 -->
+					<view class="centerlist">
+						<view class="wrap" wx:for="{{playlist}}" wx:for-index="index" wx:for-item="item">
+							<image class="img_bg" mode="center" src="{{item.pic_url}}"></image>
+							<view class="title">{{item.name}}</view>
+						</view>
 
-
-	<!-- dailyCard -->
-	<swiper class="swiper-section" interval="{{interval}}" duration="{{duration}}">
-		<swiper-item class="dailyCard-section">
-			<scroll-view>
-				<view>这是你的wmxl代码 dailyCard section </view>
-			</scroll-view>
-		</swiper-item>
-
-
-
-		<!-- userPost -->
-		<swiper-item>
-			<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text class="test">这边是我的</text>
-			<text>这边是我的</text>
-			</scroll-view>
-		</swiper-item>
-	</swiper>
-</view>
-=======
-<!-- index.wxml -->
-<!-- 申请用户名信息界面 -->
-<!-- <view class="container">
-  <view class="userinfo">   
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view> -->
-<!-- pages/music/music.wxml -->
-<!-- 滚动的内容部分 -->
-<scroll-view class="flow">
-				<!-- 头部 -->
-				<view class="top" wx:if="{{isShowArticle}}">
-								<view class="night" >
-												<text class="hello">晚上好</text>
-												<text class="moon"></text>
-								</view>
-								<view class="word">一定一定一定一定要好好睡觉早睡早起啊啊啊啊啊aaaaaaa啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊你好啊啊啊啊啊啊啊啊啊啊啊啊啊啊</view>
+					</view>
+					<!-- 尾部版权信息 -->
+					<view class="copyright" wx:if="{{isShowArticle}}">@不困旅馆</view>
+				</scroll-view>
+				<!-- 固定的播放信息 -->
+				<view class="fix" wx:if="{{isShowArticle}}">
+					<view class="play">
+						<view class="musicpicture">
+							<image class="musicbg" mode="center" src="https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg"></image>
+							<image class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix"></image>
+						</view>
+						<view class="musicinfo">
+							<text class="musicname">轻风细雨</text>
+							<text class="musictime">10:00</text>
+						</view>
+					</view>
+					<view class="handle">
+						<text class="clock"></text>
+						<text class="share"></text>
+					</view>
 				</view>
-				<!-- 中部 -->
-				<view class="centerlist">
-								<view class="wrap" wx:for="{{playlist}}" wx:for-index="index" wx:for-item="item">
-												<image class="img_bg" mode="center" src="{{item.pic_url}}"></image>
-												<view class="title">{{item.name}}</view>
-								</view>
-								
-				</view>
-				<!-- 尾部版权信息 -->
-				<view class="copyright" wx:if="{{isShowArticle}}">@不困旅馆</view>
-</scroll-view>
-<!-- 固定的播放信息 -->
-<view class="fix" wx:if="{{isShowArticle}}">
-				<view class="play">
-								<view class="musicpicture">
-												<image class="musicbg" mode="center" src="https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg"></image>
-												<image class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix"></image>
-								</view>
-								<view class="musicinfo">
-												<text class="musicname">轻风细雨</text>
-												<text class="musictime">10:00</text>
-								</view>
-				</view>
-				<view class="handle">
-								<text class="clock"></text>
-								<text class="share"></text>
-				</view>
-</view>
-<!-- 蒙版星星 -->
-<view class="star" wx:if="{{isShowArticle}}"></view>
->>>>>>> lyq
+				<!-- 蒙版星星 -->
+				<view class="star" wx:if="{{isShowArticle}}"></view>
+			</swiper-item>
+
+
+
+			<!-- userPost -->
+			<swiper-item>
+				<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
+					<text class="test">这边是我的</text>
+					<text class="test">这边是我的</text>
+					<text class="test">这边是我的</text>
+					<text class="test">这边是我的</text>
+					<text class="test">这边是我的</text>
+					<text class="test">这边是我的</text>
+					<text class="test">这边是我的</text>
+					<text class="test">这边是我的</text>
+					<text>这边是我的</text>
+				</scroll-view>
+			</swiper-item>
+		</swiper>
+	</view>

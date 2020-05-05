@@ -6,5 +6,5 @@
 	<button class="logo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
 		<image class="img" src="https://i.loli.net/2020/04/12/sAgCStJNEyO2dun.png"></image>
 	</button>
-</view>
+</view>   
 <view wx:else>请升级微信版本</view>

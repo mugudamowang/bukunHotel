@@ -13,16 +13,49 @@
 </view>
 
 
-
 <view class="main">
-
-
 	<!-- dailyCard -->
 	<swiper class="swiper-section" interval="{{interval}}" duration="{{duration}}" bindchange="switchNav">
 		<swiper-item class="dailyCard-section">
-			<scroll-view>
-				<view>这是你的wmxl代码 dailyCard section </view>
+			<scroll-view class="flow" scroll-y="true">
+				<!-- 头部 -->
+				<view class="top" wx:if="{{isShowArticle}}">
+					<view class="night">
+						<text class="hello">晚上好</text>
+						<text class="moon"></text>
+					</view>
+					<view class="word">一定一定一定一定要好好睡觉早睡早起啊啊啊啊啊aaaaaaa啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊你好啊啊啊啊啊啊啊啊啊啊啊啊啊啊</view>
+				</view>
+				<!-- 中部 -->
+				<view class="centerlist">
+					<view class="wrap" wx:for="{{playlist}}" wx:for-index="index" wx:for-item="item">
+						<image class="img_bg" mode="center" src="{{item.pic_url}}"></image>
+						<view class="title">{{item.name}}</view>
+					</view>
+
+				</view>
+				<!-- 尾部版权信息 -->
+				<view class="copyright" wx:if="{{isShowArticle}}">@不困旅馆</view>
 			</scroll-view>
+			<!-- 固定的播放信息 -->
+			<view class="fix" wx:if="{{isShowArticle}}">
+				<view class="play">
+					<view class="musicpicture">
+						<image class="musicbg" mode="center" src="https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg"></image>
+						<image class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix"></image>
+					</view>
+					<view class="musicinfo">
+						<text class="musicname">轻风细雨</text>
+						<text class="musictime">10:00</text>
+					</view>
+				</view>
+				<view class="handle">
+					<text class="clock"></text>
+					<text class="share"></text>
+				</view>
+			</view>
+			<!-- 蒙版星星 -->
+			<view class="star" wx:if="{{isShowArticle}}"></view>
 		</swiper-item>
 
 
@@ -38,18 +71,18 @@
 				</view>
 
 				<view wx:for="{{datalist}}">
-					
-						<view class="postNav">
-							<view class="postUser">
-								<view class="circle"></view> <!-- 圆形icon -->
-								{{item.id}} <!-- 作者id -->
-							</view>
-							{{item.post}} <!-- 作者标题 -->
-							<navigator hover-class="none" url="../postDetail/postDetail">
-							<media class="mediaCom"></media>
-							</navigator>
+
+					<view class="postNav">
+						<view class="postUser">
+							<view class="circle"></view> <!-- 圆形icon -->
+							{{item.id}} <!-- 作者id -->
 						</view>
-						
+						{{item.post}} <!-- 作者标题 -->
+						<navigator hover-class="none" url="../postDetail/postDetail">
+							<media class="mediaCom"></media>
+						</navigator>
+					</view>
+
 				</view>
 
 			</scroll-view>

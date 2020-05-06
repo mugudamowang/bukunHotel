@@ -83,4 +83,21 @@ Page({
     this.setData( { star: e.detail.current });
   },
 
+  createPost: (event)=>{
+    const post = "fuck you!!!"
+    const ui = wx.getStorageSync('userInfo')
+    console.log(ui.openId)
+    if(!ui){
+      console.log("npoeoooooooo")
+    }
+    wx.cloud.callFunction({
+      name:"createPost",
+      data:{
+        post: post,
+        date: Date.now(),
+        openid: ui.openId
+      }
+    })
+  }
+
 })

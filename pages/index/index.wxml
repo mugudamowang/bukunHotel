@@ -7,7 +7,7 @@
 </view>
 
 <!-- 这里是createPost按钮 -->
-<view hidden="{{!star}}" class="creatPost neonBox">
+<view bindtap="createPost" hidden="{{!star}}" class="creatPost neonBox">
 	<icon color="white" type="cancel" size="72rpx"></icon>
 	<!-- <input wx:if={{}}/></input> -->
 </view>

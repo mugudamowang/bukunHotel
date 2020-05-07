@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-
+    tapAdd: false,
     star: 0,
 
     datalist: app.globalData.datalist,
@@ -83,21 +83,25 @@ Page({
     this.setData( { star: e.detail.current });
   },
 
-  createPost: (event)=>{
+  createPost: function(event) {
+
+    this.setData({tapAdd: !this.data.tapAdd})
+    console.log(this.data.tapAdd)
+
     const post = "fuck you!!!"
     const ui = wx.getStorageSync('userInfo')
     console.log(ui.openId)
     if(!ui){
       console.log("npoeoooooooo")
     }
-    wx.cloud.callFunction({
-      name:"createPost",
-      data:{
-        post: post,
-        date: Date.now(),
-        openid: ui.openId
-      }
-    })
+    // wx.cloud.callFunction({
+    //   name:"createPost",
+    //   data:{
+    //     post: post,
+    //     date: Date.now(),
+    //     openid: ui.openId
+    //   }
+    // })
   }
 
 })

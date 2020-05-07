@@ -1,5 +1,7 @@
 /* components/sendMessages.wxss */
 
+
+
 .textBar {
   height: 72rpx;
   border-radius: 35rpx;

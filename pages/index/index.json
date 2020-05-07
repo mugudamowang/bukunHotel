@@ -1,6 +1,7 @@
 {
   "disableScroll": true,
   "usingComponents": {
-    "media": "/components/media"
+    "media": "/components/media",
+    "sendMessages":"/components/sendMessages"
   }
 }

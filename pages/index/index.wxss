@@ -1,21 +1,3 @@
-/**index.wxss**/
-/* 这个是用户信息css:  .userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-.userinfo-nickname {
-  color: #aaa;
-}
-.usermotto {
-  margin-top: 200px;
-} */
 
 /* 顶部菜单切换 */
 page{
@@ -138,10 +120,9 @@ page{
   display: flex;
 }
 
-.creatPost{
-  rotate: 45deg;
-  bottom: 72rpx;
-  right: 72rpx;
+.createPost{
+  bottom: 128rpx;
+  right: 128rpx;
   position: absolute;
   z-index: 2;
   display: flex;
@@ -150,4 +131,35 @@ page{
   align-items: center;
   border-radius: 50%;
   background-color: rgb(45, 65, 80);
+  transition: ease-out all 0.25s;
+}
+
+.popIn :focus{
+
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 1795704 */
+  src: url('//at.alicdn.com/t/font_1795704_g9glaev04k8.eot');
+  src: url('//at.alicdn.com/t/font_1795704_g9glaev04k8.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1795704_g9glaev04k8.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1795704_g9glaev04k8.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1795704_g9glaev04k8.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1795704_g9glaev04k8.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 72rpx;
+  font-style: normal;
+  color: #ffffff;
+  
+}
+.iconfontAnimation{
+  color: red;
+  transform: translateX(75rpx) rotate(45deg);
+}
+
+.icon_add::before {
+  content: "\e739";
 }

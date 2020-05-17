@@ -71,12 +71,12 @@
 					<text>但行好事,不问前程</text>
 				</view>
 
-				<view wx:for="{{datalist}}">
+				<view wx:for="{{postlist}}">
 
 					<view class="postNav">
 						<view class="postUser">
 							<view class="circle"></view> <!-- 圆形icon -->
-							{{item.id}} <!-- 作者id -->
+							{{item.nickname}} <!-- 作者id -->
 						</view>
 						{{item.post}} <!-- 作者标题 -->
 						<navigator hover-class="none" url="../postDetail/postDetail">

@@ -28,3 +28,6 @@
 - loading要是嫌加载慢的话,开发2的时候可以在app.json里把位置往后排
 - 这样子编辑文档,主要是添加一些说明文字, 用md写
 
+		"appid": "wxcfd7ece5e153fdf8",
+wxef5815be0641ffda
+

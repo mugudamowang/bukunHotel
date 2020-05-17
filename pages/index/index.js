@@ -1,21 +1,23 @@
 //index.js
 //获取应用实例
-const app = getApp()
 
 Page({
   data: {
     tapAdd: false,
     star: 0,
 
-    datalist: app.globalData.datalist,
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+
     vertical: false,
     duration: 500,
     currentTab: 0,
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+
+    // po文信息
+    postlist: [],
+    //postlist:[{
+    // id:'',
+    // post:''
+    // }]
+
     //音乐信息
     playlist: [],
     // playlist: [{
@@ -23,7 +25,7 @@ Page({
     //   music_url: "",
     //   name: "",
     //   pic_url: ""
-    // }],
+    // }], 
     isShowArticle: false
   },
 
@@ -34,51 +36,71 @@ Page({
   },
 
   //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+
   onLoad: function () {
     this.getList();
   },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+
+
+  switchNav: function (e) {
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      star: e.detail.current
+    });
+  },
+
+  createPost: function (event) {
+    this.setData({
+      tapAdd: !this.data.tapAdd
     })
   },
 
-  switchNav: function (e) {
-    this.setData( { star: e.detail.current });
-  },
 
-  createPost: function(event) {
-
-    this.setData({tapAdd: !this.data.tapAdd})
-    console.log(this.data.tapAdd)
-
-    const post = "fuck you!!!"
-    const ui = wx.getStorageSync('userInfo')
-    console.log(ui.openId)
-    if(!ui){
-      console.log("npoeoooooooo")
-    }
-    // wx.cloud.callFunction({
-    //   name:"createPost",
-    //   data:{
-    //     post: post,
-    //     date: Date.now(),
-    //     openid: ui.openId
-    //   }
-    // })
-  },
-  
   getList() {
     let that = this;
+    //调用云函数getpList来获取po列表
     //调用云函数getmList来获取播放列表
+    wx.cloud.callFunction({
+      name:'getpList',
+      
+      success: res => {
+        
+        //如果返回的res中有result
+        if (res.result) {
+
+          let postlist = res.result.data;
+          console.log(postlist, '这是po列表');
+          console.log(postlist.nikename);
+
+          //如果result为null
+          if (postlist === undefined || postlist.length === 0) {
+            wx.showToast({
+              title: 'nothing~QAQ',
+            })
+          }
+          //如果result中有数据,则设置data
+          else {
+            that.setData({
+                postlist: res.result.data,
+                
+              }),
+              console.log(that, that.data.playlist, 'ppppp这是设置到data里的数据')
+          }
+        }
+        //如果返回的res没有result
+        else {
+          wx.showToast({
+            title: 'XAX',
+          })
+        }
+      },
+      fail: err => {
+        wx.showToast({
+          title: 'XAX~宕机',
+        })
+      }
+
+    }),
+
     wx.cloud.callFunction({
       name: 'getmList',
       //成功
@@ -96,9 +118,9 @@ Page({
           //如果result中有数据,则设置data
           else {
             that.setData({
-              isShowArticle: true,
-              playlist: res.result.data,
-            }),
+                isShowArticle: true,
+                playlist: res.result.data,
+              }),
               console.log(that, that.data.playlist, '这是设置到data里的数据', that.data.isShowArticle)
           }
         }
@@ -108,9 +130,6 @@ Page({
             title: '没有数据',
           })
         }
-
-
-
       },
       fail: err => {
         wx.showToast({
@@ -119,10 +138,10 @@ Page({
       }
     });
   },
-   /**
+  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
     this.getList();
-},
+  },
 })

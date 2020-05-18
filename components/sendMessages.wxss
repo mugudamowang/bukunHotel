@@ -40,6 +40,4 @@
   height: inherit;
 }
 
-.sendBtn::after {
-  border: transparent;
-}
+

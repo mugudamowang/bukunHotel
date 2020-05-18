@@ -85,7 +85,9 @@
 					</view>
 
 				</view>
-
+				<view class="pageBottom">
+				<view class="divLine">✄ 剪不断理还乱</view>
+				</view>
 			</scroll-view>
 		</swiper-item>
 

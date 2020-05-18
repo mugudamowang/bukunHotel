@@ -5,7 +5,7 @@
 		<!-- 发送栏 -->
 
 
-		<input class="textinput" bindinput="inputPost" placeholder="纸短情长,字数<30!"></input>
+		<input cursor-spacing="10rpx" class="textinput" bindinput="inputPost" bindfocus="changeStyle" placeholder="纸短情长,字数<30!"></input>
 		<button form-type="reset" class="sendBtn">
 			<icon type="success" color="grey"></icon>
 		</button>

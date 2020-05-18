@@ -77,6 +77,10 @@ Component({
         })
       }
 
+    },
+
+    changeStyle: function(e){
+      
     }
 
 

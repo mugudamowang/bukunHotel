@@ -79,7 +79,7 @@
 							{{item.nickname}} <!-- 作者id -->
 						</view>
 						{{item.post}} <!-- 作者标题 -->
-						<navigator hover-class="none" url="../postDetail/postDetail">
+						<navigator hover-class="none" url="../postDetail/postDetail?id={{item._id}}&&post={{item.post}}&&avatar={{item.avatarUrl}}">
 							<media class="mediaCom"></media>
 						</navigator>
 					</view>

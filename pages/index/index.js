@@ -81,7 +81,6 @@ Page({
           else {
             that.setData({
                 postlist: res.result.data,
-                
               }),
               console.log(that, that.data.playlist, 'ppppp这是设置到data里的数据')
           }

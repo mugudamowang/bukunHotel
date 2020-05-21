@@ -8,7 +8,7 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   try {
-    return await db.collection('post')
+    return await db.collection('post').orderBy('date', 'desc')
     .get({
       success:function(res){
         console.log('列表',res)

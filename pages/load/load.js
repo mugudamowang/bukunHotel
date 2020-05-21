@@ -49,6 +49,7 @@ Page({
           this.data.userInfo.openId = this.data.openId
           console.log(this.data.userInfo)
           wx.setStorageSync('userInfo', this.data.userInfo)//保存到缓存
+          
         }
       })
 

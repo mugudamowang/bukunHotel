@@ -2,9 +2,8 @@
 
 <!-- 未适配 -->
 <view class="postTopic">
-	<view class="avatar fixed">头像</view>
-	{{datalist[1].post}}
-	<media class="mediaCom"></media>
+	<view class="avatar fixed"><image class="avatar" src="{{topMessage.avatar}}"></image></view>
+	{{topMessage.post}}
 </view>
 
 

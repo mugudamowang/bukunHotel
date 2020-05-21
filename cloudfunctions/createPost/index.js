@@ -15,7 +15,8 @@ exports.main = async (event, context) => {
         post: event.post,
         date: event.date,
         openid: event.openid,
-        nickname: event.nickname
+        nickname: event.nickname,
+        avatarUrl: event.avatarUrl
       }
     })
   } catch (e) {

@@ -32,6 +32,7 @@ Component({
       const ui = wx.getStorageSync('userInfo')
 
       console.log(that.data.post)
+      console.log(ui)
 
       if (!ui) {
         console.log("reoreoreoreoreo")
@@ -50,7 +51,8 @@ Component({
               post: that.data.post,
               date: Date.now(),
               openid: ui.openId,
-              nickname: ui.nickName
+              nickname: ui.nickName,
+              avatarUrl: ui.avatarUrl
             }
           }),
 

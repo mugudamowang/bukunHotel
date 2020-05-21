@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "sendMessages": "/components/sendMessages",
-    "media":"/components/media"
+    "sendMessages": "/components/sendMessages"
   }
 }

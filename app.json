@@ -13,5 +13,12 @@
     "navigationBarTitleText": "不困旅馆",
     "navigationBarTextStyle": "white"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+
+  
+  "requiredBackgroundModes": [
+
+    "audio"
+
+  ]
 }

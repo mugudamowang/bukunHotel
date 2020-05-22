@@ -18,7 +18,7 @@
 	<!-- dailyCard -->
 	<swiper class="swiper-section" interval="{{interval}}" duration="{{duration}}" bindchange="switchNav">
 		<swiper-item class="dailyCard-section">
-			<scroll-view class="flow" scroll-y="true">
+			<scroll-view class="flow" scroll-y="true" >
 				<!-- 头部 -->
 				<view class="top" wx:if="{{isShowArticle}}">
 					<view class="night">
@@ -29,7 +29,7 @@
 				</view>
 				<!-- 中部 -->
 				<view class="centerlist">
-					<view class="wrap" wx:for="{{playlist}}" wx:for-index="index" wx:for-item="item">
+					<view class="wrap" wx:for="{{playlist}}" wx:key="_id" wx:for-item="item" bindtap='change' data-index="{{index}}">
 						<image class="img_bg" mode="center" src="{{item.pic_url}}"></image>
 						<view class="title">{{item.name}}</view>
 					</view>
@@ -42,12 +42,14 @@
 			<view class="fix" wx:if="{{isShowArticle}}">
 				<view class="play">
 					<view class="musicpicture">
-						<image class="musicbg" mode="center" src="https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg"></image>
-						<image class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix"></image>
+						<image class="musicbg {{state=='running'?'musicbgOn':' '}}" mode="center" src='{{play.coverImgUrl}}'></image>
+						<image wx:if="{{state=='paused'}}" class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix" bindtap = "play"></image>
+						<image wx:if="{{state=='running'}}"  class="stop" src=" https://i.loli.net/2020/04/23/sk4m6UyRJTrfGVd.png" mode="widthFix" bindtap = "pause"></image>
 					</view>
 					<view class="musicinfo">
-						<text class="musicname">轻风细雨</text>
-						<text class="musictime">10:00</text>
+						<text class="musicname">{{play.title}}</text>
+						<text class="musictime">
+						{{play.currentTime}}</text>
 					</view>
 				</view>
 				<view class="handle">

@@ -3,14 +3,25 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 
-// 云函数入口函数
-exports.main = async (event, context) => {
-  const wxContext = cloud.getWXContext()
+const db = cloud.database()
 
-  return {
-    event,
-    openid: wxContext.OPENID,
-    appid: wxContext.APPID,
-    unionid: wxContext.UNIONID,
+// 云函数入口函数
+
+exports.main = async (event, context) => {
+
+  try {
+    return await db.collection("comments").add({
+      data: {
+        comment: event.comment,
+        postid: event.postid,
+        date: event.date,
+        openid: event.openid,
+        nickname: event.nickname,
+        avatarUrl: event.avatarUrl
+      }
+    })
+  } catch (e) {
+    console.log("生产失败")
   }
+
 }

@@ -19,6 +19,8 @@ Page({
     //生命周期函数--监听页面加载 
     
     onLoad: function (options) {
+
+      var that = this;
       // 查看是否授权
       wx.getSetting({
         success: (res) =>{
@@ -31,11 +33,14 @@ Page({
               }
             })
           }
+          else{
+            
+          }
         }
       })
     },
 
-    bindGetUserInfo(e) {
+    bindGetUserInfo : function(e){
 
       //login云函数
       wx.cloud.callFunction({
@@ -62,7 +67,6 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**

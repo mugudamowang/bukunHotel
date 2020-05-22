@@ -2,51 +2,29 @@
 
 <!-- 未适配 -->
 <view class="postTopic">
-	<view class="avatar fixed"><image class="avatar" src="{{topMessage.avatar}}"></image></view>
-	{{topMessage.post}}
+	<view class="avatar fixed">
+		<image class="avatar" src="{{topMessage.avatar}}"></image>
+	</view>
+	<view>{{topMessage.post}}</view>
 </view>
-
-
 
 <view class="postMessages">
 	<view class="divLine">★</view>
-
-	<view class="messageOnBorad">
-		<view class="avatar fixed">头像</view>
-		{{datalist[1].post}}
+	<view wx:for="{{comlist}}">
+		<view class="messageOnBorad">
+			<view class="avatar fixed">
+				<image class="avatar" src="{{item.avatarUrl}}"></image>
+			</view>
+			{{item.comment}}
+		</view>
+		<view class="divLine"></view>
 	</view>
-	<view class="messageOnBorad">
-		<view class="avatar fixed">头像</view>
-		{{datalist[1].post}}
-	</view>
-	<view class="messageOnBorad">
-		<view class="avatar fixed">头像</view>
-		{{datalist[1].post}}
-	</view>
-	<view class="messageOnBorad">
-		<view class="avatar fixed">头像</view>
-		{{datalist[1].post}}
-	</view>
-	<view class="messageOnBorad">
-		<view class="avatar fixed">头像</view>
-		{{datalist[1].post}}
-	</view>
-	<view class="messageOnBorad">
-		<view class="avatar fixed">头像</view>
-		{{datalist[1].post}}
-	</view><view class="messageOnBorad">
-		<view class="avatar fixed">头像</view>
-		{{datalist[1].post}}
-	</view><view class="messageOnBorad">
-		<view class="avatar fixed">头像</view>
-		{{datalist[1].post}}
-	</view>
-	<view class="divLine">☾</view>
-
+		<view class="divLine">☾</view>
 </view>
+
 
 
 
 <!-- 自定义组件 -->
-<sendMessages>
+<sendMessages comType="comment" postId="{{topMessage.id}}">
 </sendMessages>

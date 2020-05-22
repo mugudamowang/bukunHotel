@@ -19,18 +19,21 @@ page{
 }
 
 .messageOnBorad{
-  border: #ccc 1rpx solid;
+  border: rgba(105, 144, 218, 0.905) 1rpx solid;
   color: white;
   border-radius: 25rpx;
-  background-color: rgb(8, 23, 34);
+  background-color: rgba(56, 113, 155, 0.666);
   margin: 8rpx 30rpx 8rpx 30rpx;
   display: flex;
   flex-direction: row;
   justify-content: center;  
   align-items: center;
-  height: 200rpx;
-  width: 95%;
+  min-height: 112rpx;
+  max-height: 300rpx;
+  min-width: 120rpx;
+  max-width: 720rpx;
   position: relative;
+  padding:  0rpx 40rpx 0rpx 120rpx;
 }
 
 .fixed{
@@ -76,9 +79,9 @@ page{
   position: relative;
   flex-direction: column;
   justify-content: center;  
-  align-items: center;
+  align-items: flex-start;
   background-color: rgba(77, 77, 77, 0.296);
-  margin-bottom: 100rpx;
+  padding:20rpx 0rpx;
 }
 
 .mediaCom{

@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    topMessage:[]
+    topMessage: [],
+    comlist: [],
   },
 
   /**
@@ -15,12 +16,32 @@ Page({
    */
   onLoad: function (options) {
 
-    
     this.setData({
-      topMessage : options
+      topMessage: options
     })
-    console.log(this.data.topMessage)
 
+
+    console.log(this.data.topMessage.id)
+    wx.cloud.callFunction({
+        name: 'getComment',
+        data:{
+          postId: this.data.topMessage.id
+        },
+
+        success: res => {
+          if (res.result) {
+            let comlist = res.result.data;
+              this.setData({
+                  comlist: res.result.data,
+                })
+            }
+        },
+        fail: err => {
+          wx.showToast({
+            title: 'XAX~宕机',
+          })
+        }
+      })
   },
 
   /**
@@ -48,7 +69,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
 
   /**

@@ -42,9 +42,9 @@
 			<view class="fix" wx:if="{{isShowArticle}}">
 				<view class="play">
 					<view class="musicpicture">
-						<image class="musicbg {{state=='running'?'musicbgOn':' '}}" mode="center" src='{{play.coverImgUrl}}'></image>
-						<image wx:if="{{state=='paused'}}" class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix" bindtap = "play"></image>
-						<image wx:if="{{state=='running'}}"  class="stop" src=" https://i.loli.net/2020/04/23/sk4m6UyRJTrfGVd.png" mode="widthFix" bindtap = "pause"></image>
+						<image class="musicbg {{is_play==true?'musicbgOn':' '}}" mode="center" src='{{play.coverImgUrl}}'></image>
+						<image wx:if="{{is_play==true}}" class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix" bindtap = "pause"></image>
+						<image wx:if="{{is_play==false}}"  class="stop" src=" https://i.loli.net/2020/04/23/sk4m6UyRJTrfGVd.png" mode="widthFix" bindtap = "play"></image>
 					</view>
 					<view class="musicinfo">
 						<text class="musicname">{{play.title}}</text>

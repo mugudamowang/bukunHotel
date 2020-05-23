@@ -82,6 +82,14 @@ App({
       }
     ],
     //----------------------------------------------
-
+    // 重构音乐播放界面
+    global_bac_audio_manager: {
+      manage: wx.getBackgroundAudioManager(),
+      currentTime:'',
+      title:'',
+      epname:'',
+      singer:'',
+      src:''
+  }
   }
 })

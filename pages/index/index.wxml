@@ -48,8 +48,9 @@
 					</view>
 					<view class="musicinfo">
 						<text class="musicname">{{play.title}}</text>
-						<text class="musictime">
-						{{play.currentTime}}</text>
+						
+						<text class="musictime" >
+						{{play.totalTime}}</text>
 					</view>
 				</view>
 				<view class="handle">

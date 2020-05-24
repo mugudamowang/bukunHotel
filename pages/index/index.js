@@ -32,7 +32,8 @@ Page({
       currentTime: '0:00',
       currentSeconds: 0,
       duration: 0,
-      totalTime: '0.00',
+      durationFormat:'0:00',
+      totalTime: '0:00',
       totalSeconds:0,
       title: '轻声细雨',
       singer: '',
@@ -170,18 +171,33 @@ if(this.data.loops==0){
     'play.title': music.name,
     'play.coverImgUrl': music.pic_url,
     'play.currentTime': '0:00',
-    'play.totalTime':'0:00'
+    'play.totalTime':'0:00',
+    'play.totalSeconds':0
 
   })
 }
-// 若不是第一次播放了，则让totalTime为其值即可
-else{
+// 若不是第一次播放了，则让totalTime初始化为其总共时长 ，让其累加
+else if(this.data.loops==1){
   this.setData({
     playIndex: index,
     'play.title': music.name,
     'play.coverImgUrl': music.pic_url,
+    
     'play.currentTime': '0:00',
-    'play.totalTime':this.data.play.totalTime
+    'play.totalTime':this.data.play.durationFormat,
+    'play.totalSeconds':this.data.play.duration
+
+  })
+}
+else {
+  this.setData({
+    playIndex: index,
+    'play.title': music.name,
+    'play.coverImgUrl': music.pic_url,
+    
+    'play.currentTime': '0:00',
+    'play.totalTime':this.data.play.totalTime,
+    'play.totalSeconds':this.data.play.totalSeconds
 
   })
 }
@@ -209,11 +225,13 @@ else{
     // 当缓冲的时间不为0且这首歌还未播放完
     if (viewing_time != 0&&currentSeconds<duration) {
       // 跳转到暂停时存储的时间
+      console.log('11111 我暂停之后又能跳转啦')
       audioCtx.seek(viewing_time)
       that.currentTimeChange()
     }
     else {
       that.currentTimeChange()
+      console.log('2222 我暂停之后又不能跳转')
     }
 
     // })
@@ -280,11 +298,17 @@ else{
 
  audioCtx.onEnded(() => {
   console.log('我已经播放完啦 我要再次播放')
+  // 放完后设置播放状态为不播放？？？？？？还是播放完后要更新一下时间
+  let loops=this.data.loops+1
  that.setData({
-  loops:1
+  loops:loops,
+  // is_play:false
   })
+  // that.updateViewTime()
+
   that.setMusic(that.data.playIndex)
   that.play()
+  
   
 //  that.change(this.data.playIndex)
   console.log('又可以重新播放啦')
@@ -300,6 +324,7 @@ else{
       if(this.data.loops==0){
         console.log('我是第一次播放哦')
         this.setData({
+          'play.durationFormat':this.formatTime(audioCtx.duration),
           'play.duration': audioCtx.duration,
           'play.currentTime': this.formatTime(audioCtx.currentTime),
           'play.currentSeconds': audioCtx.currentTime,
@@ -309,6 +334,7 @@ else{
   
   
         })
+   
       }
       // 如果已经完整播放过一遍了，总时间就要累加
       else{
@@ -316,9 +342,16 @@ else{
         let total = (this.data.play.totalSeconds + audioCtx.currentTime)
         console.log('不是第一次播放啦 已经播放了'+total)
         this.setData({
+
+          // 不太确定播放过的还要不要设置时长了？？？
+          'play.durationFormat':this.formatTime(audioCtx.duration),
+          'play.duration': audioCtx.duration,
+          'play.currentTime': this.formatTime(audioCtx.currentTime),
+          'play.currentSeconds': audioCtx.currentTime,
           'play.totalTime': this.formatTime(total),
           'play.totalSeconds':total
         })
+      
       }
      
       

@@ -150,14 +150,14 @@ Page({
     return (minute < 10 ? + minute : minute) + ':' + (second < 10 ? '0' + second : second)
   },
   // 设置播放第几首歌
-  setMusic: function (index) {
+   setMusic: function (index) {
     let music = this.data.playlist[index]
     console.log(music)
     // // 解决背景音乐的bug，兼容安卓?????，官方的bug，不能在onload或者onready上设置title
     audioCtx.title = music.name
     audioCtx.epname = music.name
     audioCtx.singer = music.name
-
+    // audioCtx.coverImgUrl=music.pic_url
     audioCtx.src=music.music_url
     // audioCtx.src = "http://183.240.120.29/amobile.music.tc.qq.com/C400001KQ3zX0N2rVR.m4a?guid=185019120&amp;vkey=D8F7BFF89ECE89AC5D8DCCF7173413FEEC9F4D3BE51BC96DED7B66B6B50B9EB0D64F58987760909B62F71503AA4C2C06D8F1B7A93BEC0D56&amp;uin=0&amp;fromtag=66"
     // audioCtx.src = "http://183.240.120.18/amobile.music.tc.qq.com/C400002I3Nwa4f9xqA.m4a?guid=4680889107&amp;vkey=977534C2CDF8CB0B6EF5698D62EA45474AE69C7B31FE80E69E06EB3DD5F349FA2905A4DD5F2FD441352D3BDCD4C76E994709613D7F605F6E&amp;uin=115&amp;fromtag=66" 贝贝
@@ -165,7 +165,33 @@ Page({
     // console.log(this.audioCtx)
 
     // 如果是第一次播放，则初始化totalTime为0:00
-    if (this.data.loops == 0) {
+    // if (this.data.loops == 0) {
+    //   this.setData({
+    //     playIndex: index,
+    //     'play.title': music.name,
+    //     'play.coverImgUrl': music.pic_url,
+    //     'play.currentTime': '0:00',
+    //     'play.totalTime': '0:00',
+    //     'play.totalSeconds': 0
+
+    //   })
+    // }
+
+    // 如果已经播放过了，则初始化时间为音乐当前的时间
+
+    if(this.data.play.currentSeconds!=0){
+      this.setData({
+        playIndex: index,
+        'play.title': music.name,
+        'play.coverImgUrl': music.pic_url,
+        'play.currentTime': this.formatTime(this.data.play.currentSeconds),
+        'play.totalTime': '0:00',
+        'play.totalSeconds': 0
+
+      })
+    }
+    // 如果从未播放过，初始化为0:00
+    else{
       this.setData({
         playIndex: index,
         'play.title': music.name,
@@ -175,59 +201,61 @@ Page({
         'play.totalSeconds': 0
 
       })
+
     }
+    // 先把下面这堆我都注释掉吧  以后再考虑累加的问题
     // 若不是第一次播放了，则让totalTime初始化为其总共时长 ，让其累加
-    else if(this.data.loops==1){
-      this.setData({
-        playIndex: index,
-        'play.title': music.name,
-        'play.coverImgUrl': music.pic_url,
+    // else if(this.data.loops==1){
+    //   this.setData({
+    //     playIndex: index,
+    //     'play.title': music.name,
+    //     'play.coverImgUrl': music.pic_url,
 
-        'play.currentTime': '0:00',
-        'play.totalTime':this.data.play.durationFormat,
-        'play.totalSeconds':this.data.play.duration
+    //     'play.currentTime': '0:00',
+    //     'play.totalTime':this.data.play.durationFormat,
+    //     'play.totalSeconds':this.data.play.duration
 
-      })
-    }
-    else {
-      this.setData({
-        playIndex: index,
-        'play.title': music.name,
-        'play.coverImgUrl': music.pic_url,
+    //   })
+    // }
+    // else {
+    //   this.setData({
+    //     playIndex: index,
+    //     'play.title': music.name,
+    //     'play.coverImgUrl': music.pic_url,
 
-        'play.currentTime': '0:00',
-        'play.totalTime':this.data.play.totalTime,
-        'play.totalSeconds':this.data.play.totalSeconds
+    //     'play.currentTime': '0:00',
+    //     'play.totalTime':this.data.play.totalTime,
+    //     'play.totalSeconds':this.data.play.totalSeconds
 
-      })
-    }
+    //   })
+    // }
 
-    if (this.data.loops > 0) {
-      if (this.data.play.totalSeconds != 0) {
-        this.setData({
-          playIndex: index,
-          'play.title': music.name,
-          'play.coverImgUrl': music.pic_url,
+    // if (this.data.loops > 0) {
+    //   if (this.data.play.totalSeconds != 0) {
+    //     this.setData({
+    //       playIndex: index,
+    //       'play.title': music.name,
+    //       'play.coverImgUrl': music.pic_url,
 
-          'play.currentTime': '0:00',
-          'play.totalTime': this.data.play.totalTime,
-          'play.totalSeconds': this.data.play.totalSeconds
+    //       'play.currentTime': '0:00',
+    //       'play.totalTime': this.data.play.totalTime,
+    //       'play.totalSeconds': this.data.play.totalSeconds
 
-        })
-      }
-      else {
-        this.setData({
-          playIndex: index,
-          'play.title': music.name,
-          'play.coverImgUrl': music.pic_url,
+    //     })
+    //   }
+    //   else {
+    //     this.setData({
+    //       playIndex: index,
+    //       'play.title': music.name,
+    //       'play.coverImgUrl': music.pic_url,
 
-          'play.currentTime': '0:00',
-          'play.totalTime': this.data.play.durationFormat,
-          'play.totalSeconds': this.data.play.duration
+    //       'play.currentTime': '0:00',
+    //       'play.totalTime': this.data.play.durationFormat,
+    //       'play.totalSeconds': this.data.play.duration
 
-        })
-      }
-    }
+    //     })
+    //   }
+    // }
 
   },
   // 用于图片点击的播放
@@ -249,42 +277,47 @@ Page({
     let currentSeconds = this.data.play.currentSeconds
     let duration = this.data.play.duration
     // 当缓冲的时间不为0且这首歌还未播放完
-
     if (viewing_time != 0 && currentSeconds < duration) {
       // 跳转到暂停时存储的时间
-      console.log('11111 我暂停之后又能回到以前啦 ')
-      audioCtx.seek(viewing_time)
+      console.log('11111 我暂停之后又能回到以前啦 viewing_time是 '+viewing_time+'currentSeconds是'+currentSeconds)
+      // audioCtx.seek(viewing_time)
+      audioCtx.seek(currentSeconds)
+
+
+      // setTimeout(() => {
+      //   audioCtx.onTimeUpdate(()=>{
+
+      //   })
+      // }, 300);
       // 注释掉试试看的，好像没什么关系
-      // wx.playBackgroundAudio()
-      // that.setData({
-      //    is_play: true,
+      // 现在打开试试看会怎么样
+//       wx.playBackgroundAudio()
+//       that.setData({
+//          is_play: true,
 
-      //  })
+//        })
+//       //   // let that=this
+//       //   //   // // 背景音乐播放完毕    // 播放结束时要做的事情是啥？？？？？？？
+//         audioCtx.onEnded(() => {
+//          console.log('我已经播放完啦 我要再次播放')
+//          // 放完后设置播放状态为不播放？？？？？？还是播放完后要更新一下时间
+//          let loops=that.data.loops+1
+//         that.setData({
+//          loops:loops,
+//          // is_play:false
+//          })
+//          // 加上这句话在模拟器才能中正常
+//          that.updateViewTime()
 
-
-
-      //   // let that=this
-      //   //   // // 背景音乐播放完毕    // 播放结束时要做的事情是啥？？？？？？？
-
-
-      //   audioCtx.onEnded(() => {
-      //    console.log('我已经播放完啦 我要再次播放')
-      //    // 放完后设置播放状态为不播放？？？？？？还是播放完后要更新一下时间
-      //    let loops=that.data.loops+1
-      //   that.setData({
-      //    loops:loops,
-      //    // is_play:false
-      //    })
-      //    // 加上这句话在模拟器才能中正常
-      //    that.updateViewTime()
-
-      //    that.setMusic(that.data.playIndex)
-      //    that.play()
+//          that.setMusic(that.data.playIndex)
+//          that.play()
 
 
-      //  //  that.change(this.data.playIndex)
-      //    console.log('又可以重新播放啦')
-      //  })
+//        //  that.change(this.data.playIndex)
+//          console.log('又可以重新播放啦')
+//        })
+// return;
+
       that.currentTimeChange()
 
     }
@@ -296,6 +329,7 @@ Page({
 
     // 正式开始播放
     wx.playBackgroundAudio()
+    // audioCtx.play()
     that.setData({
       is_play: true,
 
@@ -356,7 +390,9 @@ Page({
     //  // 当点击的是同一首并且这首正在暂停，则接着上一次的时间播放
     if (this.data.playIndex == current && this.data.is_play == false) {
       //  乱加的试试看，但这是解决暂停后无法循环播放的关键
-      this.setMusic(this.data.playIndex)
+      // 不会吧  删除了就没法接着播放？？？
+      // this.setMusic(this.data.playIndex)
+      
       this.play()
 
       console.log("又继续放这一首啦！ ")

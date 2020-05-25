@@ -188,6 +188,7 @@ navigator {
   height: 70rpx;
 }
 .fix .handle .clock {
+  position: relative;
   width: 100rpx;
   height: 70%;
   display: inline-block;
@@ -196,10 +197,21 @@ navigator {
  
   
 }
+.fix .handle .clock .clock2{
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0; 
+  
+  
+}
+
 .fix .handle .share {
+ 
   width: 100rpx;
   height: 60%;
   display: inline-block;
+
   background: no-repeat url("https://i.loli.net/2020/04/23/hpIKrSRHeAJBOaY.png");
   background-size: auto 100%;
 }

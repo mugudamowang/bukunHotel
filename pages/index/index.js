@@ -19,6 +19,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     //音乐列表
     playlist: [],
+    // 缓存数组
+    Cates:[],
 
     isShowArticle: false,
     is_play: false,
@@ -27,6 +29,8 @@ Page({
     viewing_time: 0,//曾播放的到的时长
     is_updataTime: false,//播放时间是否在变化
     loops: 0,//是否完整播放过一遍
+    is_first:true,//是否从未点击过图片
+    is_first2:true,//还未点击图片就在播放条暂停了
     // 正在播放的音乐信息,默认为第一首
     play: {
       currentTime: '0:00',
@@ -43,6 +47,7 @@ Page({
     // 闹钟信息
     is_clock:false,
     time: '12:01',
+    timer:null //定时器
   },
 
   durationChange(e) {
@@ -58,7 +63,28 @@ Page({
     })
   },
   onLoad: function () {
-    this.getList();
+    // 获取本地缓存的数据
+    const Cates=wx.setStorageSync('cates')
+    // 如果缓存没有数据，则发送请求
+    if(!Cates){
+this.getList()
+    }
+    else{
+      // 如果有旧的数据，但是过期了就重新发送请求,过期时间为5分钟
+      if(Date.now()-Cates.time>300000){
+        this.getList()
+      }
+      // 如果有旧的数据并且没有过期，则从缓存中拿数据
+      else{
+        this.data.Cates=Cates.data
+        that.setData({
+          isShowArticle: true,
+          playlist: res.result.data,
+        })
+
+      }
+    }
+    
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -113,10 +139,14 @@ Page({
           }
           //如果result中有数据,则设置data
           else {
+            // 将获取的数据存入到本地中
+            wx.setStorageSync('cates', {time:Date.now(),data:that.data.Cates})
             that.setData({
               isShowArticle: true,
               playlist: res.result.data,
             })
+            
+
 
           }
         }
@@ -140,13 +170,35 @@ Page({
   /**
   * 页面相关事件处理函数--监听用户下拉动作
   */
-  onPullDownRefresh: function () {
-    this.getList();
-  },
-  // audioCtx: null,
+//  onPullDownRefresh: function () {
+//   //   // // 在标题栏中显示加载
+//   //   // wx.showNavigationBarLoading({
+//   //   //   complete: (res) => {},
+//   //   // })
+
+//   //   // this.getList();
+//   //   // // 完成停止加载
+//   //   // wx.hideNavigationBarLoading({
+//   //   //   complete: (res) => {},
+//   //   // })
+//   //   // //  停止下拉刷新
+//   //   // wx.stopPullDownRefresh({
+//   //   //   complete: (res) => {},
+//   //   // })
+//   this.getList()
+//     wx.stopPullDownRefresh();
+//   },
+
+ 
   onReady: function () {
 
   },
+  // scroll-view上拉刷新，不能通过onpuudownpresh
+  // 不过这个页面貌似没有必要刷新
+  // topLoad:function(){
+  //   console.log('刷新啦')
+  //   this.getList()
+  // },
   //格式化时间
   formatTime: function (time) {
     var minute = Math.floor(time / 60) % 60;
@@ -260,8 +312,21 @@ Page({
 
 
   },
-  
- 
+  // 用于播放条的播放功能
+  play2:function(){
+if(this.data.is_first&&this.data.is_first2){
+  console.log('我从来没有点击过图片就播放了')
+  this.setMusic(0)
+  this.play()
+  this.setData({
+    is_first:false
+  })
+
+}
+else{
+  this.play()
+}
+  },
   // 暂停功能
   pause: function () {
     // audioCtx.pause();
@@ -275,6 +340,9 @@ Page({
   // 换歌
 
   change: function (e) {
+    this.setData({
+      is_first:false
+    })
     let current = e.currentTarget.dataset.index
 
     console.log('current是' + current, 'playIndex is' + this.data.playIndex)
@@ -368,7 +436,7 @@ Page({
         let num = duration - currentSeconds
 
         // 用于设置即将播放完之后手动循环
-        if (viewing_time != 0 && duration != 0 && currentSeconds != 0 && num < 1) {
+        if ( duration != 0 && currentSeconds != 0 && num <=1) {
           // 放完后设置播放状态为不播放？？？？？？还是播放完后要更新一下时间
           let loops = this.data.loops + 1
           that.setData({
@@ -410,22 +478,68 @@ Page({
       is_clock:true
     })
   },
+  // 定时关闭功能
   bindTimeChange: function (e) {
-
-    // let 
-    // let nowTime=now.
-
-    let setTime= e.detail.value
+// if(this.data.timer!=null){
+//   clearTimeout(this.data.timer)
+// }
+  
+    
+    let time= e.detail.value
+    console.log(e.detail)
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       time
     })
-    let timer=setTimeout(() => {
+    let arr=time.split(':')
 
-      this.pause()
-    }, 6000);
-    
-  }
+    let setHour=parseInt(arr[0])
+    let setMinute=parseInt(arr[1])
+    console.log(typeof setHour)
+    console.log(typeof setMinute)
+    console.log('设置的小时是'+setHour+'设置的分钟是'+setMinute)
+    if(this.data.is_play){
+       this.data.timer=setInterval(() => {
+        let nowTime=new Date()
+        let hour=nowTime.getHours()
+        let minute=nowTime.getMinutes()
+        let seconds=nowTime.getSeconds()
+        console.log(typeof hour)
+        console.log(typeof minute)
+     console.log('现在的小时是'+hour+'现在的分钟是'+minute)
+if(setHour==hour&&setMinute==minute){
+  this.pause()
+  console.log('我可以暂停啦')
+  clearInterval(this.data.timer)
+  return;
+}
+else{
+  console.log('我还不可以暂停  现在的分是'+minute+'现在的秒是'+seconds)
+
+}
+
+      }, 30000);
+      
+    }
+    else{
+     wx.showModal({
+       title:'提示',
+       content:'请先播放哦',
+       confirmColor:'#576B95'
+     })
+    }
+  
+  },
+  // 实现分享功能
+  onShareAppMessage:function(){
+    return{
+      title:'晚安',
+      path:'index'
+
+    }
+  },
+  // 刷新功能
+
 
 
 })

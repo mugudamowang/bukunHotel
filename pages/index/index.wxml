@@ -18,7 +18,7 @@
 	<!-- dailyCard -->
 	<swiper class="swiper-section" interval="{{interval}}" duration="{{duration}}" bindchange="switchNav">
 		<swiper-item class="dailyCard-section">
-			<scroll-view class="flow" scroll-y="true" >
+			<scroll-view class="flow" scroll-y="true" bindscrolltoupper="topLoad">
 				<!-- 头部 -->
 				<view class="top" wx:if="{{isShowArticle}}">
 					<view class="night">
@@ -44,7 +44,7 @@
 					<view class="musicpicture">
 						<image class="musicbg {{is_play==true?'musicbgOn':' '}}" mode="center" src='{{play.coverImgUrl}}'></image>
 						<image wx:if="{{is_play==true}}" class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix" bindtap = "pause"></image>
-						<image wx:if="{{is_play==false}}"  class="stop" src=" https://i.loli.net/2020/04/23/sk4m6UyRJTrfGVd.png" mode="widthFix" bindtap = "play"></image>
+						<image wx:if="{{is_play==false}}"  class="stop" src=" https://i.loli.net/2020/04/23/sk4m6UyRJTrfGVd.png" mode="widthFix" bindtap = "play2"></image>
 					</view>
 					<view class="musicinfo">
 						<text class="musicname">{{play.title}}</text>
@@ -55,10 +55,10 @@
 				</view>
 				<view class="handle">
 					
-					<picker class="clock" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+					<picker class="clock" mode="time" value="{{time}}" start="00:00" end="24:00" bindchange="bindTimeChange">
 					<view class="clock2">0</view>
   </picker>
-					<text class="share"></text>
+					<button class="share" open-type="share"></button>
 				</view>
 			</view>
 			<!-- 蒙版星星 -->

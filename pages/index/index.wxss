@@ -185,7 +185,8 @@ navigator {
   top: 50rpx;
   right: 0;
   width: 200rpx;
-  height: 70rpx;
+  height: 100rpx;
+  
 }
 .fix .handle .clock {
   position: relative;
@@ -202,6 +203,8 @@ navigator {
   opacity: 0;
   top: 0;
   left: 0; 
+  width: 100%;
+  height: 100%;
   
   
 }

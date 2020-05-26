@@ -25,7 +25,11 @@
 						<text class="hello">晚上好</text>
 						<text class="moon"></text>
 					</view>
-					<view class="word" bindtap="getWords">{{word.hitokoto}}</view>
+					<view class="word">
+					<view class="sentence">{{word.hitokoto}}</view>
+					<view class="author">---{{word.creator}}</view>
+					
+					</view>
 				</view>
 				<!-- 中部 -->
 				<view class="centerlist">

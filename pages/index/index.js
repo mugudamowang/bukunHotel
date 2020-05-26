@@ -60,7 +60,9 @@ Page({
       creator: "Eric",
 
 
-    }
+    },
+    // 缓存信息
+    Words:{}
 
   },
 
@@ -78,23 +80,34 @@ Page({
   },
   onLoad: function () {
     // 获取本地缓存的数据
-    const Cates = wx.setStorageSync('cates')
+    const Cates = wx.getStorageSync('cates')
+    const Words=wx.getStorageSync('words')
     // 如果缓存没有数据，则发送请求
-    if (!Cates) {
+    if (!Cates||!Words) {
       this.getList()
+      this.getWords()
     }
     else {
+      let time1=Date.now() - Cates.time
+      let time2=Date.now() - Words.time
       // 如果有旧的数据，但是过期了就重新发送请求,过期时间为5分钟
-      if (Date.now() - Cates.time > 300000) {
+      if (time1> 300000||time2>300000) {
         this.getList()
+        this.getWords()
       }
       // 如果有旧的数据并且没有过期，则从缓存中拿数据
       else {
         this.data.Cates = Cates.data
-        that.setData({
+        this.data.Words=Words.data
+        let playlist=this.data.Cates.map(v=>v)
+        let word=this.data.Words
+        this.setData({
           isShowArticle: true,
-          playlist: res.result.data,
+          playlist,
+          word
         })
+        console.log('我是缓存里的数据')
+        
 
       }
     }
@@ -144,7 +157,8 @@ Page({
         //如果返回的res中有result
         if (res.result) {
           let playlist = res.result.data;
-
+          // 修改缓存数组Cates为返回的数据
+          that.Cates=playlist
           //如果result为null
           if (playlist === undefined || playlist.length === 0) {
             wx.showToast({
@@ -154,10 +168,10 @@ Page({
           //如果result中有数据,则设置data
           else {
             // 将获取的数据存入到本地中
-            wx.setStorageSync('cates', { time: Date.now(), data: that.data.Cates })
+            wx.setStorageSync('cates', { time: Date.now(), data: that.Cates })
             that.setData({
               isShowArticle: true,
-              playlist: res.result.data,
+              playlist
             })
 
 
@@ -186,11 +200,16 @@ Page({
     let that=this
     
     wx.request({
-      url: 'https://v1.hitokoto.cn/', //仅为示例，并非真实的接口地址
+      url: 'https://v1.hitokoto.cn/', 
 
       success: (res) => {
         let word=res.data
         console.log(res.data)
+        that.Words=res.data
+         // 将获取的数据存入到本地中
+         wx.setStorageSync('words', { time: Date.now(), data: that.Words })
+         
+
         that.setData({
           word: {
             hitokoto:word.hitokoto,

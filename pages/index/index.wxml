@@ -25,7 +25,7 @@
 						<text class="hello">晚上好</text>
 						<text class="moon"></text>
 					</view>
-					<view class="word">一定一定一定一定要好好睡觉早睡早起啊啊啊啊啊aaaaaaa啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊你好啊啊啊啊啊啊啊啊啊啊啊啊啊啊</view>
+					<view class="word" bindtap="getWords">{{word.hitokoto}}</view>
 				</view>
 				<!-- 中部 -->
 				<view class="centerlist">

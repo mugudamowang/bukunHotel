@@ -17,6 +17,10 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+
+    // 默认为夜间模式
+    is_night:true,
+    bgColor:'#000000',
     //音乐列表
     playlist: [],
     // 缓存数组
@@ -86,6 +90,7 @@ Page({
     if (!Cates||!Words) {
       this.getList()
       this.getWords()
+      console.log('我一次都没有加载过')
     }
     else {
       let time1=Date.now() - Cates.time
@@ -94,6 +99,7 @@ Page({
       if (time1> 300000||time2>300000) {
         this.getList()
         this.getWords()
+        console.log('我的时间已经过期了')
       }
       // 如果有旧的数据并且没有过期，则从缓存中拿数据
       else {
@@ -595,7 +601,34 @@ Page({
 
     }
   },
-  // 刷新功能
+  // 切换白天模式
+  toggle:function(){
+    let is_night=this.data.is_night
+    console.log('我要切换模式啦')
+    if(is_night!=false){
+      is_night=false
+      this.setData({
+        bgColor:'#fbf7e9'
+      })
+     
+      console.log('我要变成白天模式啦')
+    }
+    else{
+      is_night=true
+
+      this.setData({
+        bgColor:'#000000'
+      })
+     
+      console.log('我要变成夜间模式啦')
+    }
+    this.setData({
+      is_night,
+
+    })
+    
+   
+  }
 
 
 

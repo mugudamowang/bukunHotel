@@ -1,6 +1,6 @@
 <!--pages/postDetail/postDetail.wxml-->
 
-<!-- 未适配 -->
+
 <view class="postTopic">
 	<view class="avatar fixed">
 		<image class="avatar" src="{{topMessage.avatar}}"></image>

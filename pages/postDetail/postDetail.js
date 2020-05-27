@@ -20,35 +20,47 @@ Page({
       topMessage: options
     })
 
+    this.getComment()
 
-    console.log(this.data.topMessage.id)
+
+  },
+
+  getComment() {
     wx.cloud.callFunction({
-        name: 'getComment',
-        data:{
-          postId: this.data.topMessage.id
-        },
+      name: 'getComment',
+      data: {
+        postId: this.data.topMessage.id
+      },
 
-        success: res => {
-          if (res.result) {
-            let comlist = res.result.data;
-              this.setData({
-                  comlist: res.result.data,
-                })
-            }
-        },
-        fail: err => {
-          wx.showToast({
-            title: 'XAX~宕机',
+      success: res => {
+        if (res.result) {
+          let comlist = res.result.data;
+          this.setData({
+            comlist: res.result.data,
           })
         }
-      })
+      },
+      fail: err => {
+        wx.showToast({
+          title: 'XAX~宕机',
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    // 页面渲染完成
+    var that = this;
+    
+    // 数据加载完成后 延迟隐藏loading
+    setTimeout(function () {
+      that.setData({
+        hidden: true
+      })
+    }, 500);
   },
 
   /**
@@ -68,14 +80,13 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getComment()
   },
 
   /**

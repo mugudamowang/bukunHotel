@@ -28,16 +28,12 @@ Component({
 
     createPost: function (e) {
 
-      console.log("here")
-      console.log(this.data.comType)
-      console.log("here")
       const that = this
       const ui = wx.getStorageSync('userInfo')
-
-      console.log(that.data.post)
-
       if (!ui) {
-        console.log("reoreoreoreoreo")
+        wx.showLoading({
+          title: '宁还未登陆',
+        })
       }
       // 测试用,添加信息到数据库
       if (that.data.post != '' && (that.data.post.length) <= 30) {
@@ -80,9 +76,16 @@ Component({
               wx.showToast({
                 title: '嘚√',
               })
+              wx.startPullDownRefresh({
+                complete: (res) => {console.log("hhhhh")},
+              })
+              wx.stopPullDownRefresh({
+                complete: (res) => {console.log("fuck")},
+              })
             },
           })
         }, 1000)
+        
       } else {
         wx.showToast({
           title: "欸,还没上传呢0<🥝<30",

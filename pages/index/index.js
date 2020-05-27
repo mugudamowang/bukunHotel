@@ -68,9 +68,6 @@ Page({
         if (res.result) {
 
           let postlist = res.result.data;
-          console.log(postlist, '这是po列表');
-          console.log(postlist.nikename);
-
           //如果result为null
           if (postlist === undefined || postlist.length === 0) {
             wx.showToast({
@@ -81,8 +78,7 @@ Page({
           else {
             that.setData({
                 postlist: res.result.data,
-              }),
-              console.log(that, that.data.playlist, 'ppppp这是设置到data里的数据')
+              })
           }
         }
         //如果返回的res没有result
@@ -107,7 +103,6 @@ Page({
         //如果返回的res中有result
         if (res.result) {
           let playlist = res.result.data;
-          console.log(playlist, '这是获取到的数据');
           //如果result为null
           if (playlist === undefined || playlist.length === 0) {
             wx.showToast({
@@ -119,8 +114,7 @@ Page({
             that.setData({
                 isShowArticle: true,
                 playlist: res.result.data,
-              }),
-              console.log(that, that.data.playlist, '这是设置到data里的数据', that.data.isShowArticle)
+              })
           }
         }
         //如果返回的res没有result

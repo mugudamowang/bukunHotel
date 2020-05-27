@@ -1,15 +1,9 @@
 <!--components/sendMessages.wxml-->
-<form bindreset="createPost">
 	<view class="textBar">
-
 		<!-- 发送栏 -->
-
-
-		<input cursor-spacing="10rpx" class="textinput" bindinput="inputPost" bindfocus="changeStyle" placeholder="纸短情长,字数<30!"></input>
-		<button form-type="reset" class="sendBtn">
+		<textarea cursor-spacing="120rpx" class="textinput" bindinput="inputPost" value="{{post}}" placeholder-class="placeholderStyle" placeholder="纸短情长"></textarea>
+		
+		<button bindtap="createPost" class="sendBtn">
 			<icon type="success" color="grey"></icon>
 		</button>
-
-
 	</view>
-</form>

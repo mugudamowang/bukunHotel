@@ -1,4 +1,7 @@
 // components/sendMessages.js
+
+var utils = require('../utils/util.js')
+
 Component({
   /**
    * 组件的属性列表
@@ -27,47 +30,53 @@ Component({
     },
 
     createPost: function (e) {
-
+      
       const that = this
       const ui = wx.getStorageSync('userInfo')
       if (!ui) {
         wx.showLoading({
           title: '宁还未登陆',
         })
+        wx.redirectTo({
+          url: '../pages/load/load.wxml',
+        })
       }
-      // 测试用,添加信息到数据库
-      if (that.data.post != '' && (that.data.post.length) <= 30) {
-        //限制po文长度为30以内,以句子分享格式
 
+      if (that.data.post != '' && (that.data.post.length) <= 100) {
+        //限制po文长度为30以内,以句子分享格式
         wx.showLoading({
           title: '不困投递中~~',
         })
-
         if (this.data.comType === "post") {
           wx.cloud.callFunction({
             name: "createPost",
             data: {
               post: that.data.post,
-              date: Date.now(),
+              date: utils.formatTime(new Date),
               openid: ui.openId,
               nickname: ui.nickName,
               avatarUrl: ui.avatarUrl
             }
           })
-        } else {
+
+        } 
+        if(this.data.comType === "comment") {
           wx.cloud.callFunction({
             name: "createComment",
             data: {
               comment: that.data.post,
               postid: this.data.postId,
-              date: Date.now(),
+              date: utils.formatTime(new Date),
               openid: ui.openid,
-              nickname: ui.nickname,
+              nickname: ui.nickName,
               avatarUrl: ui.avatarUrl
             }
           })
         }
-
+        
+        this.setData({
+          post: ''
+        })
         setTimeout(function () {
           wx.hideLoading({
 
@@ -77,15 +86,19 @@ Component({
                 title: '嘚√',
               })
               wx.startPullDownRefresh({
-                complete: (res) => {console.log("hhhhh")},
+                complete: (res) => {
+                  console.log("refreshing~")
+                },
               })
               wx.stopPullDownRefresh({
-                complete: (res) => {console.log("fuck")},
+                complete: (res) => {
+                  console.log("done~")
+                },
               })
             },
           })
         }, 1000)
-        
+
       } else {
         wx.showToast({
           title: "欸,还没上传呢0<🥝<30",

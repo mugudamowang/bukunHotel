@@ -5,7 +5,7 @@
 	<view class="avatar fixed">
 		<image class="avatar" src="{{topMessage.avatar}}"></image>
 	</view>
-	<view>{{topMessage.post}}</view>
+	<view class="post">{{topMessage.post}}</view>
 </view>
 
 <view class="postMessages">
@@ -15,11 +15,13 @@
 			<view class="avatar fixed">
 				<image class="avatar" src="{{item.avatarUrl}}"></image>
 			</view>
-			{{item.comment}}
+			<view class="time">{{item.date}}</view>
+			<text decode="true" space="true" >{{item.comment}}</text>
+			<view class="name">by—{{item.nickname}}</view>
 		</view>
 		<view class="divLine"></view>
 	</view>
-		<view class="divLine">☾</view>
+	<view class="divLine">☾</view>
 </view>
 
 

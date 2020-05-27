@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 
+
 Page({
   data: {
     tapAdd: false,
@@ -39,6 +40,7 @@ Page({
 
   onLoad: function () {
     this.getList();
+    // console.log(utils.formatTime(new Date))
   },
 
 

@@ -275,16 +275,16 @@ page {
   /* 我的模块代码 */
   
   .postNav {
-    border-top: 15rpx rgba(18, 30, 40, 0.426) solid;
-    border-bottom: 15rpx rgba(18, 30, 40, 0.426) solid;
-    background-color: rgb(21, 38, 51);
+    border-top: 15rpx rgba(21, 38, 51, 0.645) solid;
+    border-bottom: 15rpx rgba(21, 38, 51, 0.645) solid;
+    background-color: rgba(21, 38, 51, 0.775);
     margin: 45rpx 0rpx 45rpx 0rpx;
     box-shadow: 0 0 0 15rpx rgba(25, 42, 53, 0.282);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 200rpx;
+    height: 250rpx;
     position: relative;
   }
   
@@ -304,6 +304,10 @@ page {
     border-radius: 50%;
     height: 40rpx;
     width: 40rpx;
+  }
+  .postNav .post{
+    overflow: hidden;
+    padding: 100rpx 40rpx 80rpx 40rpx;
   }
   
   .postUser {
@@ -371,7 +375,7 @@ page {
   
   .swiper-section {
     color: aliceblue;
-    background-color: #090F14;
+    background-color: rgba(47, 61, 73, 0.173);
     position: absolute;
     display: block;
     height: 100%;
@@ -381,6 +385,9 @@ page {
 
   
   .userPost {
+    background-image:linear-gradient(rgba(9, 15, 20, 0.721), rgba(4, 17, 13, 0.44)),url("https://i.loli.net/2020/05/27/BvLxYfRntGzVWSj.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 100%;
     display: flex;
   }

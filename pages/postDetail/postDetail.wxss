@@ -1,8 +1,12 @@
-page{
+page {
+
   background-color: #090F14;
+  background-image: linear-gradient(rgba(9, 15, 20, 0.721), rgba(4, 17, 13, 0.44)), url("https://i.loli.net/2020/05/27/BvLxYfRntGzVWSj.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.postTopic{
+.postTopic {
   position: relative;
   z-index: 10;
   color: white;
@@ -13,12 +17,17 @@ page{
   box-shadow: 0 0 0 15rpx rgba(25, 42, 53, 0.282);
   display: flex;
   flex-direction: row;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
-  height: 200rpx;
+  min-height: 200rpx;
+  max-height: 400rpx;
+}
+.postTopic .post{
+  padding-top: 100rpx;
+  padding: 100rpx 40rpx 40rpx 40rpx;
 }
 
-.messageOnBorad{
+.messageOnBorad {
   border: rgba(105, 144, 218, 0.905) 1rpx solid;
   color: white;
   border-radius: 25rpx;
@@ -26,17 +35,18 @@ page{
   margin: 8rpx 30rpx 8rpx 30rpx;
   display: flex;
   flex-direction: row;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
   min-height: 112rpx;
-  max-height: 300rpx;
+  max-height: 500rpx;
   min-width: 120rpx;
   max-width: 720rpx;
   position: relative;
-  padding:  0rpx 40rpx 0rpx 120rpx;
+  padding: 20rpx 40rpx 20rpx 120rpx;
+  overflow: hidden;
 }
 
-.fixed{
+.fixed {
   font-size: 34rpx;
   display: flex;
   flex-direction: row;
@@ -47,23 +57,23 @@ page{
 }
 
 .avatar {
-	margin: 0;
-	padding: 0;
-	display: inline-flex;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-	background-color: #ccc;
-	width: 64rpx;
-	height: 64rpx;
-	background-size: cover;
-	background-position: center;
-	vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  width: 64rpx;
+  height: 64rpx;
+  background-size: cover;
+  background-position: center;
+  vertical-align: middle;
   font-size: 30rpx;
   border-radius: 50%;
 }
 
-.divLine{
+.divLine {
   text-align: center;
   color: white;
   background: rgba(88, 88, 87, 0.412);
@@ -71,23 +81,39 @@ page{
   width: 94%;
   border-radius: 50%;
   height: 5rpx;
- }
+}
 
-.postMessages{
+.postMessages {
   border-radius: 20rpx;
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: center;  
+  justify-content: center;
   align-items: flex-start;
   background-color: rgba(77, 77, 77, 0.296);
-  padding:20rpx 0rpx;
+  padding: 20rpx 0rpx;
 }
 
-.mediaCom{
+.mediaCom {
   display: flex;
   flex-direction: row;
   position: absolute;
   bottom: 10rpx;
   right: 30rpx;
+}
+
+.time{
+  font-size: 15rpx;
+  display: inline-flexbox;
+  position: absolute;
+  top: 5rpx;
+  right:20rpx
+}
+
+.name{
+  font-size: 15rpx;
+  display: inline-flexbox;
+  position: absolute;
+  bottom: 5rpx;
+  right:20rpx
 }

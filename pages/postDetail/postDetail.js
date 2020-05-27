@@ -54,7 +54,7 @@ Page({
   onReady: function () {
     // 页面渲染完成
     var that = this;
-    
+
     // 数据加载完成后 延迟隐藏loading
     setTimeout(function () {
       that.setData({
@@ -87,6 +87,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.getComment()
+    wx.stopPullDownRefresh()
   },
 
   /**

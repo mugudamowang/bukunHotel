@@ -64,7 +64,7 @@
 		<!-- userPost -->
 
 
-		<swiper-item>
+		<swiper-item >
 			<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
 
 				<view class="postNav hotPost">
@@ -77,8 +77,9 @@
 						<view class="postUser">
 							<view class="circle"></view> <!-- 圆形icon -->
 							{{item.nickname}} <!-- 作者id -->
+							<view style="font-size: 15rpx;color:grey;margin: 10rpx">{{item.date}}</view>
 						</view>
-						{{item.post}} <!-- 作者标题 -->
+						<view class="post">{{item.post}}</view> <!-- 作者标题 -->
 						<navigator hover-class="none" url="../postDetail/postDetail?id={{item._id}}&&post={{item.post}}&&avatar={{item.avatarUrl}}">
 							<media class="mediaCom"></media>
 						</navigator>

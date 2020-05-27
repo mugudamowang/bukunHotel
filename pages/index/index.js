@@ -35,6 +35,8 @@ Page({
     loops: 0,//是否完整播放过一遍
     is_first: true,//是否从未点击过图片
     is_first2: true,//还未点击图片就在播放条暂停了
+    musicer:null,//定时器 检测后台播放状态的按钮
+
 
     // 正在播放的音乐信息,默认为第一首
     play: {
@@ -256,6 +258,30 @@ Page({
   onReady: function () {
 
   },
+  //监听后台的暂停和播放
+  onShow:function(){
+    this.musicer=setInterval(()=>{
+      console.log('我是音乐定时器')
+      audioCtx.onPause(()=>{
+        this.setData({
+          is_play:false
+        })
+        
+        
+      });
+      audioCtx.onPlay(()=>{
+        this.setData({
+          is_play:true
+        })
+        console.log('我要通过后台播放了')
+      });
+    
+    },2000)
+   
+  },
+  onHide:function(){
+    clearInterval(this.musicer)
+  },
   // scroll-view上拉刷新，不能通过onpuudownpresh
   // 不过这个页面貌似没有必要刷新
   // topLoad:function(){
@@ -274,8 +300,8 @@ Page({
     console.log(music)
     // // 解决背景音乐的bug，兼容安卓?????，官方的bug，不能在onload或者onready上设置title
     audioCtx.title = music.name
-    audioCtx.epname = music.name
-    audioCtx.singer = music.name
+    audioCtx.epname = ' '
+    audioCtx.singer = ' '
     audioCtx.coverImgUrl = music.pic_url
     audioCtx.src = music.music_url
     // audioCtx.src = "http://183.240.120.29/amobile.music.tc.qq.com/C400001KQ3zX0N2rVR.m4a?guid=185019120&amp;vkey=D8F7BFF89ECE89AC5D8DCCF7173413FEEC9F4D3BE51BC96DED7B66B6B50B9EB0D64F58987760909B62F71503AA4C2C06D8F1B7A93BEC0D56&amp;uin=0&amp;fromtag=66"
@@ -374,6 +400,7 @@ Page({
 
 
 
+
   },
   // 用于播放条的播放功能
   play2: function () {
@@ -451,6 +478,7 @@ Page({
     let that = this
     //   // // 背景音乐播放完毕    // 播放结束时要做的事情是啥？？？？？？？
 
+// 不确定有没有用到？？？？loops有用吗
 
     audioCtx.onEnded(() => {
       console.log('我已经播放完啦 我要再次播放')
@@ -473,7 +501,7 @@ Page({
 
     // 自动更新播放进度
     audioCtx.onTimeUpdate(() => {
-
+      
 
 
 
@@ -534,6 +562,7 @@ Page({
 
 
     });
+
   },
   // 开启闹钟
   setClock: function () {

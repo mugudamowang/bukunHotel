@@ -43,13 +43,13 @@ z-index: 1;
 
 }
 .flow {
-  height: 1200rpx;
+  height: 1300rpx;
   position: relative;
 }
 .top {
   margin: 20rpx 50rpx;
-  height: 320rpx;
- 
+  height: 370rpx;
+ position: relative;
 }
 .top .night {
   height: 85rpx;
@@ -85,6 +85,27 @@ z-index: 1;
   transform-origin: center 50%;
   animation: swing2 4s linear 0s infinite alternate ;
 }
+.top  .wordspilt{
+  text-align: center;
+  
+height: 50rpx;
+width: 100%;
+color:white;
+opacity: 0.8;
+font-size: 35rpx;
+margin-bottom: 25rpx;
+}
+.top  .wordspilt2{
+  text-align: center;
+  
+height: 50rpx;
+width: 100%;
+color: black;
+opacity: 0.8;
+font-size: 35rpx;
+margin-bottom: 25rpx;
+}
+
 .top .word {
   color: gray;
   
@@ -97,14 +118,15 @@ z-index: 1;
   align-items: flex-end;
 
 }
+
 .top .word .sentence{
   font-size: 30rpx;
   width: 100%;
-  /* height: 150rpx; */
+
   margin-bottom: 20rpx;
 }
 .top .word .author{
-  /* margin-top: 20rpx; */
+
   text-align: right;
   font-size: 25rpx;
   width: 40%;
@@ -117,6 +139,26 @@ z-index: 1;
   overflow-y: scroll;
   justify-content: space-around;
   position: relative;
+}
+.centerlist .musicspilt{
+  text-align: center;
+ 
+height: 50rpx;
+width: 100%;
+color:white;
+opacity: 0.8;
+font-size: 35rpx;
+margin-bottom: 25rpx;
+}
+.centerlist .musicspilt2{
+  text-align: center;
+ 
+height: 50rpx;
+width: 100%;
+color:black;
+opacity: 0.8;
+font-size: 35rpx;
+margin-bottom: 25rpx;
 }
 .centerlist .wrap {
   position: relative;
@@ -138,24 +180,7 @@ z-index: 1;
   font-size: 30rpx;
   font-weight: 100;
 }
-.detail:nth-child(1) .mask {
-  background-image: url("https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg");
-}
-.detail:nth-child(2) .mask {
-  background-image: url("https://i.loli.net/2020/04/22/ouqdKrLvQUcfOZh.jpg");
-}
-.detail:nth-child(3) .mask {
-  background-image: url(" https://i.loli.net/2020/04/22/hFxPTm83lLiG1ZW.jpg");
-}
-.detail:nth-child(4) .mask {
-  background-image: url("https://i.loli.net/2020/04/22/Q26NEpxfSImq3uz.png");
-}
-.detail:nth-child(5) .mask {
-  background-image: url("https://i.loli.net/2020/04/22/lgV2ZfORcHBsyXJ.jpg");
-}
-.detail:nth-child(6) .mask {
-  background-image: url("https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg");
-}
+
 .copyright {
   width: 100%;
   margin-top: 100rpx;
@@ -163,6 +188,7 @@ z-index: 1;
   text-align: center;
   color: white;
   font-size: 30rpx;
+  margin-bottom: 250rpx;
 }
 .fix {
   position: fixed;
@@ -325,11 +351,13 @@ page {
 
 /* 你的模块css代码 */
 .flow{
-  height:1300rpx
+  height:1300rpx;
+  position: relative;
 }
   .top {
     margin: 20rpx 50rpx;
-    height: 320rpx;
+    height: 370rpx;
+    position: relative;
     
   }
 
@@ -337,7 +365,7 @@ page {
     height: 80rpx;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30rpx;
+    margin-bottom: 40rpx;
   }
 
   .top .night .hello {
@@ -403,7 +431,7 @@ page {
     text-align: center;
     color: white;
     font-size: 30rpx;
-    margin-bottom: 150rpx;
+    margin-bottom: 250rpx;
   }
   .copyright2{
     color: black;

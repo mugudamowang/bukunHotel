@@ -55,7 +55,11 @@ Page({
     is_clock: false,
     time: '12:01',
     timer: null, //定时器
-
+// 倒计时界面
+hideFlag: true,//true-隐藏  false-显示
+animationData: {},//动画
+countTime:'5:00',
+countSeconds:0,
     // 语句信息
     word: {
 
@@ -260,27 +264,33 @@ Page({
   },
   //监听后台的暂停和播放
   onShow:function(){
-    this.musicer=setInterval(()=>{
-      console.log('我是音乐定时器')
-      audioCtx.onPause(()=>{
-        this.setData({
-          is_play:false
-        })
+    // this.musicer=setInterval(()=>{
+    //   console.log('我是音乐定时器')
+    //   // 在安卓用onStop无效
+    //   audioCtx.onPause(()=>{
+    //     this.setData({
+    //       is_play:false
+    //     })
         
         
-      });
-      audioCtx.onPlay(()=>{
-        this.setData({
-          is_play:true
-        })
-        console.log('我要通过后台播放了')
-      });
+    //   });
+    //   audioCtx.onPlay(()=>{
+    //     this.setData({
+    //       is_play:true
+    //     })
+    //     console.log('我要通过后台播放了')
+    //   });
     
-    },2000)
+    // },2000)
    
   },
   onHide:function(){
     clearInterval(this.musicer)
+  
+  },
+  onUnLoad:function(){
+    clearInterval(this.musicer)
+  
   },
   // scroll-view上拉刷新，不能通过onpuudownpresh
   // 不过这个页面貌似没有必要刷新
@@ -569,59 +579,123 @@ Page({
     this.setData({
       is_clock: true
     })
+   
   },
   // 定时关闭功能
   bindTimeChange: function (e) {
-    // if(this.data.timer!=null){
-    //   clearTimeout(this.data.timer)
-    // }
-
-
+    let that=this
+    // 获得用户选择的时间
     let time = e.detail.value
     console.log(e.detail)
     console.log('picker发送选择改变，携带值为', e.detail.value)
+    // 如果用户确定
+    if(time){
+      wx.showToast({
+        title: '设置成功',
+      })
+
+    }
     this.setData({
       time
     })
     let arr = time.split(':')
-
+// 将用户选择的时间拆分成小时和分钟
     let setHour = parseInt(arr[0])
     let setMinute = parseInt(arr[1])
-    console.log(typeof setHour)
-    console.log(typeof setMinute)
     console.log('设置的小时是' + setHour + '设置的分钟是' + setMinute)
     if (this.data.is_play) {
       this.data.timer = setInterval(() => {
+        // 获得当前的时间，并将其拆分成小时、分钟
         let nowTime = new Date()
         let hour = nowTime.getHours()
         let minute = nowTime.getMinutes()
-        let seconds = nowTime.getSeconds()
-        console.log(typeof hour)
-        console.log(typeof minute)
+      
         console.log('现在的小时是' + hour + '现在的分钟是' + minute)
+        // 如果设置的小时和分钟与当前的小时和分钟相同，则暂停，关闭定时器
+        let countSeconds=(hour-setHour)*3600+(minute-setMinute)*60
+        let countTime=that.formatTime(countSeconds)
+        this.setData({
+          countSeconds,
+          countTime
+        })
         if (setHour == hour && setMinute == minute) {
           this.pause()
           console.log('我可以暂停啦')
           clearInterval(this.data.timer)
           return;
         }
-        else {
-          console.log('我还不可以暂停  现在的分是' + minute + '现在的秒是' + seconds)
+        
+        // else {
+        //   console.log('我还不可以暂停  现在的分是' + minute + '现在的秒是' + seconds)
 
-        }
+        // }
 
-      }, 30000);
+      }, 500);
 
     }
-    else {
-      wx.showModal({
-        title: '提示',
-        content: '请先播放哦',
-        confirmColor: '#576B95'
-      })
-    }
+    // else {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '请先播放哦',
+    //     confirmColor: '#576B95'
+    //   })
+    // }
 
   },
+  // 显示遮罩层及动画
+  showModal: function () {
+    var that = this;
+    that.setData({
+      hideFlag: false
+    })
+    // 创建动画实例
+    var animation = wx.createAnimation({
+      duration: 400,//动画的持续时间
+      timingFunction: 'linear',//动画的效果 默认值是linear->匀速，ease->动画以低速开始，然后加快，在结束前变慢
+    })
+    this.animation = animation; //将animation变量赋值给当前动画
+    var time1 = setTimeout(function () {
+      that.slideIn();//调用动画--滑入
+      clearTimeout(time1);
+      time1 = null;
+    }, 100)
+  },
+ 
+  // 隐藏遮罩层
+  hideModal: function () {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 400,//动画的持续时间 默认400ms
+      timingFunction: 'ease',//动画的效果 默认值是linear
+    })
+    this.animation = animation
+    that.slideDown();//调用动画--滑出
+    var time1 = setTimeout(function () {
+      that.setData({
+        hideFlag: true
+      })
+      clearTimeout(time1);
+      time1 = null;
+    }, 220)//先执行下滑动画，再隐藏模块
+    
+  },
+  //动画 -- 滑入
+  slideIn: function () {
+    this.animation.translateY(0).step() // 在y轴偏移，然后用step()完成一个动画
+    this.setData({
+      //动画实例的export方法导出动画数据传递给组件的animation属性
+      animationData: this.animation.export()
+    })
+  },
+  //动画 -- 滑出
+  slideDown: function () {
+    this.animation.translateY(300).step()
+    this.setData({
+      animationData: this.animation.export(),
+    })
+  },
+  
+
   // 实现分享功能
   onShareAppMessage: function () {
     return {

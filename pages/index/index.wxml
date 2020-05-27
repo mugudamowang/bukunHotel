@@ -57,6 +57,8 @@
 																								<text class="musictime">{{play.currentTime}}</text>
 																				</view>
 																</view>
+																<view class="see" bindtap = "showModal">︿
+</view>
 																<view class="handle">
 																				<picker class="clock" mode="time" value="{{time}}" start="00:00" end="24:00" bindchange="bindTimeChange">
 																								<view class="clock2">0</view>
@@ -64,6 +66,30 @@
 																				<button class="share" open-type="share"></button>
 																</view>
 												</view>
+												<!-- 倒计时界面 -->
+												<view class="modal modal-bottom-dialog" hidden="{{hideFlag}}">
+<view class='hide bottom-dialog-body bottom-positon' animation="{{animationData}}" >
+<image class="filter" mode='aspectFill' src='https://i.loli.net/2020/05/27/WhaYMPNKspi3IL1.jpg'></image>
+<view class="back" bindtap="hideModal">﹀
+</view>
+<view class='content' >
+<view class="title">
+<view class="title1">『</view>
+<view class="title2">且且听行</view>
+<view class="title3">』</view>
+
+</view>
+<view class="show">
+<text class="clock"></text>
+<text class="time">{{countSeconds}}</text>
+
+</view>
+</view>
+</view>
+
+
+
+</view>
 												<!-- 蒙版星星 -->
 												<view class="star" wx:if="{{isShowArticle}}" hidden="{{!is_night}}"></view>
 								

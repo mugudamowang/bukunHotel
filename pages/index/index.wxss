@@ -129,7 +129,7 @@ margin-bottom: 25rpx;
 
   text-align: right;
   font-size: 25rpx;
-  width: 40%;
+  width: 50%;
   height: 30rpx;
 }
 
@@ -448,7 +448,16 @@ page {
     border-top-left-radius: 30rpx;
     border-top-right-radius: 30rpx;
   }
-
+.fix .see{
+  position: absolute;
+  top:2rpx;
+  left: 360rpx;
+  height: 30rpx;
+  color: white;
+  font-size: 40rpx;
+  opacity: 0.8;
+  
+}
   .fix .play {
     position: absolute;
     top: 25rpx;
@@ -575,6 +584,127 @@ page {
     background: url("https://i.loli.net/2020/04/23/39gGjtE8LMBXNDV.jpg") no-repeat 0 0;
     background-size: cover;
     animation: shine 2s linear 0s infinite alternate;
+  }
+
+  .btn{
+    height: 100rpx;
+  
+  }
+  .modal{
+    position:fixed;
+     top:0; 
+     right:0;
+      bottom:0; 
+      left:0; 
+      z-index:1000;}
+  .bottom-dialog-body{
+    width:100%;
+     position:absolute; 
+     z-index:3000; 
+     bottom:0; 
+     left:0;
+     }
+  /*动画前初始位置*/
+  .bottom-positon{
+    -webkit-transform:translateY(100%);
+    transform:translateY(100%);}
+  
+  
+  .hide {
+    /* position: relative; */
+    overflow: hidden;
+  
+  }
+   .hide .filter {
+    width: 750rpx;
+    height: 1200rpx;
+    border-top-left-radius: 80rpx;
+    border-top-right-radius: 80rpx;
+    filter: blur(2px);
+  }
+  .hide .back{
+    color:white;
+    font-size: 50rpx;
+    position: absolute;
+    top: 5rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+  }
+   .hide .content {
+     width: 350rpx;
+     height: 500rpx;
+    
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30%;
+  
+    color: white;
+   
+   
+  }
+  .hide .content .title{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  
+  }
+  .hide .content .title .title1{
+  width: 25%;
+  height: 20%;
+  align-self:flex-start;
+  font-size: 50rpx;
+  }
+  .hide .content .title .title2{
+    width: 60%;
+    height: 80%;
+    align-self:center;
+    letter-spacing:25rpx;
+  flex-wrap: wrap;
+  font-size: 80rpx;
+  opacity: 0.8;
+  
+  /* 下面这个是最接近的 */
+  font-family: cursive;
+  
+  
+  }
+  .hide .content .title .title3{
+  width: 15%;
+  height: 35%;
+  align-self:flex-end;
+  font-size: 50rpx;
+  }
+  .hide .content .show{
+    display: flex;
+    justify-content: space-around;
+    border-radius: 20rpx;
+    border:solid  2rpx white;
+    width: 50%;
+    height: 18%;
+  
+    align-items: center;
+  
+  }
+  .hide .content .show  .clock{
+  
+    width: 30%;
+    height: 50%;
+    display: inline-block;
+    background: no-repeat url(" https://i.loli.net/2020/04/23/v7KcBqux2pITASm.png");
+    background-size: auto 100%;
+  }
+  .hide .content .show .time{
+    color: white;
+    font-size: 35rpx;
+    font-family: cursive;
+    opacity: 0.8;
+  
   }
 
   @keyframes swing {

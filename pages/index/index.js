@@ -19,8 +19,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
     // 默认为夜间模式
-    is_night:true,
-    bgColor:'#000000',
+    is_night: true,
+    bgColor: '#000000',
     //音乐列表
     playlist: [],
     // 缓存数组
@@ -35,7 +35,7 @@ Page({
     loops: 0,//是否完整播放过一遍
     is_first: true,//是否从未点击过图片
     is_first2: true,//还未点击图片就在播放条暂停了
-    musicer:null,//定时器 检测后台播放状态的按钮
+    musicer: null,//定时器 检测后台播放状态的按钮
 
 
     // 正在播放的音乐信息,默认为第一首
@@ -53,13 +53,13 @@ Page({
 
     // 闹钟信息
     is_clock: false,
-    time: '12:01',
+    time: '12:30',
     timer: null, //定时器
-// 倒计时界面
-hideFlag: true,//true-隐藏  false-显示
-animationData: {},//动画
-countTime:'5:00',
-countSeconds:0,
+    // 倒计时界面
+    hideFlag: true,//true-隐藏  false-显示
+    animationData: {},//动画
+    countTime: '5:00',
+    countSeconds: 300,
     // 语句信息
     word: {
 
@@ -72,7 +72,7 @@ countSeconds:0,
 
     },
     // 缓存信息
-    Words:{}
+    Words: {}
 
   },
 
@@ -91,18 +91,18 @@ countSeconds:0,
   onLoad: function () {
     // 获取本地缓存的数据
     const Cates = wx.getStorageSync('cates')
-    const Words=wx.getStorageSync('words')
+    const Words = wx.getStorageSync('words')
     // 如果缓存没有数据，则发送请求
-    if (!Cates||!Words) {
+    if (!Cates || !Words) {
       this.getList()
       this.getWords()
       console.log('我一次都没有加载过')
     }
     else {
-      let time1=Date.now() - Cates.time
-      let time2=Date.now() - Words.time
+      let time1 = Date.now() - Cates.time
+      let time2 = Date.now() - Words.time
       // 如果有旧的数据，但是过期了就重新发送请求,过期时间为5分钟
-      if (time1> 300000||time2>300000) {
+      if (time1 > 300000 || time2 > 300000) {
         this.getList()
         this.getWords()
         console.log('我的时间已经过期了')
@@ -110,16 +110,16 @@ countSeconds:0,
       // 如果有旧的数据并且没有过期，则从缓存中拿数据
       else {
         this.data.Cates = Cates.data
-        this.data.Words=Words.data
-        let playlist=this.data.Cates.map(v=>v)
-        let word=this.data.Words
+        this.data.Words = Words.data
+        let playlist = this.data.Cates.map(v => v)
+        let word = this.data.Words
         this.setData({
           isShowArticle: true,
           playlist,
           word
         })
         console.log('我是缓存里的数据')
-        
+
 
       }
     }
@@ -170,7 +170,7 @@ countSeconds:0,
         if (res.result) {
           let playlist = res.result.data;
           // 修改缓存数组Cates为返回的数据
-          that.Cates=playlist
+          that.Cates = playlist
           //如果result为null
           if (playlist === undefined || playlist.length === 0) {
             wx.showToast({
@@ -209,26 +209,26 @@ countSeconds:0,
   },
   // 获取一言数据
   getWords: function () {
-    let that=this
-    
+    let that = this
+
     wx.request({
-      url: 'https://v1.hitokoto.cn/', 
+      url: 'https://v1.hitokoto.cn/',
 
       success: (res) => {
-        let word=res.data
+        let word = res.data
         console.log(res.data)
-        that.Words=res.data
-         // 将获取的数据存入到本地中
-         wx.setStorageSync('words', { time: Date.now(), data: that.Words })
-         
+        that.Words = res.data
+        // 将获取的数据存入到本地中
+        wx.setStorageSync('words', { time: Date.now(), data: that.Words })
+
 
         that.setData({
           word: {
-            hitokoto:word.hitokoto,
-            type:word.type,
-            from:word.from,
-            from_who:word.from_who,
-            creator:word.creator
+            hitokoto: word.hitokoto,
+            type: word.type,
+            from: word.from,
+            from_who: word.from_who,
+            creator: word.creator
 
 
           }
@@ -263,34 +263,34 @@ countSeconds:0,
 
   },
   //监听后台的暂停和播放
-  onShow:function(){
-    // this.musicer=setInterval(()=>{
-    //   console.log('我是音乐定时器')
-    //   // 在安卓用onStop无效
-    //   audioCtx.onPause(()=>{
-    //     this.setData({
-    //       is_play:false
-    //     })
-        
-        
-    //   });
-    //   audioCtx.onPlay(()=>{
-    //     this.setData({
-    //       is_play:true
-    //     })
-    //     console.log('我要通过后台播放了')
-    //   });
-    
-    // },2000)
-   
+  onShow: function () {
+    this.musicer=setInterval(()=>{
+      console.log('我是音乐定时器')
+      // 在安卓用onStop无效
+      audioCtx.onPause(()=>{
+        this.setData({
+          is_play:false
+        })
+
+
+      });
+      audioCtx.onPlay(()=>{
+        this.setData({
+          is_play:true
+        })
+        console.log('我要通过后台播放了')
+      });
+
+    },2000)
+
   },
-  onHide:function(){
+  onHide: function () {
     clearInterval(this.musicer)
-  
+
   },
-  onUnLoad:function(){
+  onUnLoad: function () {
     clearInterval(this.musicer)
-  
+
   },
   // scroll-view上拉刷新，不能通过onpuudownpresh
   // 不过这个页面貌似没有必要刷新
@@ -488,7 +488,7 @@ countSeconds:0,
     let that = this
     //   // // 背景音乐播放完毕    // 播放结束时要做的事情是啥？？？？？？？
 
-// 不确定有没有用到？？？？loops有用吗
+    // 不确定有没有用到？？？？loops有用吗
 
     audioCtx.onEnded(() => {
       console.log('我已经播放完啦 我要再次播放')
@@ -511,7 +511,7 @@ countSeconds:0,
 
     // 自动更新播放进度
     audioCtx.onTimeUpdate(() => {
-      
+
 
 
 
@@ -574,74 +574,91 @@ countSeconds:0,
     });
 
   },
-  // 开启闹钟
-  setClock: function () {
-    this.setData({
-      is_clock: true
-    })
-   
-  },
+
   // 定时关闭功能
   bindTimeChange: function (e) {
-    let that=this
+    let that = this
+    if (that.data.timer != null) {
+      clearInterval(that.data.timer)
+    }
+
+    
     // 获得用户选择的时间
     let time = e.detail.value
     console.log(e.detail)
     console.log('picker发送选择改变，携带值为', e.detail.value)
     // 如果用户确定
-    if(time){
+
+    if (time && this.data.is_play) {
       wx.showToast({
         title: '设置成功',
       })
+      this.setData({
+        time,
+        is_clock: true
+      })
+      let arr = time.split(':')
+      // 将用户选择的时间拆分成小时和分钟
+      let setHour = parseInt(arr[0])
+      let setMinute = parseInt(arr[1])
+      console.log('设置的小时是' + setHour + '设置的分钟是' + setMinute)
+      // if (this.data.is_play) {
+      // this.data.timer = setInterval(() => {
+      // 获得当前的时间，并将其拆分成小时、分钟
+      let nowTime = new Date()
+      let hour = nowTime.getHours()
+      let minute = nowTime.getMinutes()
+      // let seconds=nowTime.getSeconds()
+      console.log('现在的小时是' + hour + '现在的分钟是' + minute)
+      // 如果设置的小时和分钟与当前的小时和分钟相同，则暂停，关闭定时器
+      let countSeconds = (setHour - hour) * 3600 + (setMinute - minute) * 60
+      let countTime = that.formatTime(countSeconds)
+
+      that.setData({
+        countSeconds,
+        countTime
+      })
+      that.Numdown()
 
     }
-    this.setData({
-      time
-    })
-    let arr = time.split(':')
-// 将用户选择的时间拆分成小时和分钟
-    let setHour = parseInt(arr[0])
-    let setMinute = parseInt(arr[1])
-    console.log('设置的小时是' + setHour + '设置的分钟是' + setMinute)
-    if (this.data.is_play) {
-      this.data.timer = setInterval(() => {
-        // 获得当前的时间，并将其拆分成小时、分钟
-        let nowTime = new Date()
-        let hour = nowTime.getHours()
-        let minute = nowTime.getMinutes()
-      
-        console.log('现在的小时是' + hour + '现在的分钟是' + minute)
-        // 如果设置的小时和分钟与当前的小时和分钟相同，则暂停，关闭定时器
-        let countSeconds=(hour-setHour)*3600+(minute-setMinute)*60
-        let countTime=that.formatTime(countSeconds)
-        this.setData({
-          countSeconds,
-          countTime
-        })
-        if (setHour == hour && setMinute == minute) {
-          this.pause()
-          console.log('我可以暂停啦')
-          clearInterval(this.data.timer)
-          return;
-        }
-        
-        // else {
-        //   console.log('我还不可以暂停  现在的分是' + minute + '现在的秒是' + seconds)
 
-        // }
+    else {
+      wx.showModal({
+        title: '提示',
+        content: '请先播放哦',
+        confirmColor: '#576B95',
+        cancelColor: '#e8e4e1'
 
-      }, 500);
-
+      })
     }
-    // else {
-    //   wx.showModal({
-    //     title: '提示',
-    //     content: '请先播放哦',
-    //     confirmColor: '#576B95'
-    //   })
-    // }
 
   },
+  // 倒计时的方法
+  Numdown: function () {
+    var that = this
+
+
+    that.data.timer = setInterval(() => {
+      let countSeconds = that.data.countSeconds
+      countSeconds--
+      that.setData({
+        countSeconds: countSeconds,
+        countTime: that.formatTime(countSeconds)
+      })
+      console.log('现在的秒是' + that.data.countSeconds)
+      if (that.data.countSeconds == 0) {
+        that.pause()
+        console.log('我可以暂停啦')
+        clearInterval(that.data.timer)
+        return;
+      }
+      else {
+        console.log('我还不可以暂停')
+
+      }
+    }, 1000)
+  },
+
   // 显示遮罩层及动画
   showModal: function () {
     var that = this;
@@ -660,7 +677,7 @@ countSeconds:0,
       time1 = null;
     }, 100)
   },
- 
+
   // 隐藏遮罩层
   hideModal: function () {
     var that = this;
@@ -677,7 +694,7 @@ countSeconds:0,
       clearTimeout(time1);
       time1 = null;
     }, 220)//先执行下滑动画，再隐藏模块
-    
+
   },
   //动画 -- 滑入
   slideIn: function () {
@@ -694,7 +711,7 @@ countSeconds:0,
       animationData: this.animation.export(),
     })
   },
-  
+
 
   // 实现分享功能
   onShareAppMessage: function () {
@@ -705,32 +722,32 @@ countSeconds:0,
     }
   },
   // 切换白天模式
-  toggle:function(){
-    let is_night=this.data.is_night
+  toggle: function () {
+    let is_night = this.data.is_night
     console.log('我要切换模式啦')
-    if(is_night!=false){
-      is_night=false
+    if (is_night != false) {
+      is_night = false
       this.setData({
-        bgColor:'#fbf7e9'
+        bgColor: '#fbf7e9'
       })
-     
+
       console.log('我要变成白天模式啦')
     }
-    else{
-      is_night=true
+    else {
+      is_night = true
 
       this.setData({
-        bgColor:'#000000'
+        bgColor: '#000000'
       })
-     
+
       console.log('我要变成夜间模式啦')
     }
     this.setData({
       is_night,
 
     })
-    
-   
+
+
   }
 
 

@@ -586,10 +586,7 @@ page {
     animation: shine 2s linear 0s infinite alternate;
   }
 
-  .btn{
-    height: 100rpx;
   
-  }
   .modal{
     position:fixed;
      top:0; 
@@ -620,7 +617,7 @@ page {
     height: 1200rpx;
     border-top-left-radius: 80rpx;
     border-top-right-radius: 80rpx;
-    filter: blur(2px);
+    filter: blur(0.2px);
   }
   .hide .back{
     color:white;

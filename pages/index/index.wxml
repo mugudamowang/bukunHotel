@@ -23,8 +23,9 @@
 																								<text class="moon" hidden='{{!is_night}}' bindtap="toggle"></text>
 																								<text class="sun" hidden='{{is_night}}' bindtap="toggle"></text>
 																				</view>
-																				<view class="wordspilt {{is_night==false?'wordspilt2':' '}}" >
-																				————  言  ————
+																				<view class="wordspilt {{is_night==false?'wordspilt2':' '}}" wx:if="{{isShowArticle}}" >
+																				———— •
+ 言 • ————
 																				</view>
 																				<view class="word">
 																				
@@ -34,7 +35,8 @@
 																</view>
 																<!-- 中部 -->
 																<view class="centerlist">
-						<view class="musicspilt {{is_night==false?'musicspilt2':' '}}">———— 躁 ————</view>														<view class="wrap" wx:for="{{playlist}}" wx:key="_id" wx:for-item="item" bindtap='change' data-index="{{index}}">
+						<view class="musicspilt {{is_night==false?'musicspilt2':' '}}" wx:if="{{isShowArticle}}">———— ♩
+ 躁 ♩ ————</view>														<view class="wrap" wx:for="{{playlist}}" wx:key="_id" wx:for-item="item" bindtap='change' data-index="{{index}}">
 																								<image class="img_bg" mode="center" src="{{item.pic_url}}"></image>
 																								<view class="title">{{item.name}}</view>
 																				</view>
@@ -69,7 +71,7 @@
 												<!-- 倒计时界面 -->
 												<view class="modal modal-bottom-dialog" hidden="{{hideFlag}}">
 <view class='hide bottom-dialog-body bottom-positon' animation="{{animationData}}" >
-<image class="filter" mode='aspectFill' src='https://i.loli.net/2020/05/27/WhaYMPNKspi3IL1.jpg'></image>
+<image class="filter" mode='aspectFill' src='{{play.coverImgUrl}}'></image>
 <view class="back" bindtap="hideModal">﹀
 </view>
 <view class='content' >
@@ -81,7 +83,7 @@
 </view>
 <view class="show">
 <text class="clock"></text>
-<text class="time">{{countSeconds}}</text>
+<text class="time">{{countTime}}</text>
 
 </view>
 </view>

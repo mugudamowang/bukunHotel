@@ -8,8 +8,8 @@
 	<view class="post">{{topMessage.post}}</view>
 </view>
 
+<view class="divLine">★</view>
 <view class="postMessages">
-	<view class="divLine">★</view>
 	<view wx:for="{{comlist}}">
 		<view class="messageOnBorad">
 			<view class="avatar fixed">
@@ -21,8 +21,8 @@
 		</view>
 		<view class="divLine"></view>
 	</view>
-	<view class="divLine">☾</view>
 </view>
+<view class="divLine">☾</view>
 
 
 

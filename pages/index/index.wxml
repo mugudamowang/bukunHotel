@@ -64,12 +64,17 @@
 		<!-- userPost -->
 
 
-		<swiper-item >
+		<swiper-item>
 			<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
-
-				<view class="postNav hotPost">
-					<text>但行好事,不问前程</text>
-				</view>
+				<navigator hover-class="none" url="../my/my">
+					<view class="postTopic">
+						<view class="fixed">
+							<image class="avatar" src="{{userinfo.avatarUrl}}"></image>
+							<view style="font-size: 15rpx;color:grey; margin: 10rpx;">我的</view>
+						</view>
+						<view class="post">但行好事,不问前程</view>
+					</view>
+				</navigator>
 
 				<view wx:for="{{postlist}}">
 
@@ -87,7 +92,7 @@
 
 				</view>
 				<view class="pageBottom">
-				<view class="divLine">✄ 剪不断理还乱</view>
+					<view class="divLine">✄ 剪不断理还乱</view>
 				</view>
 			</scroll-view>
 		</swiper-item>

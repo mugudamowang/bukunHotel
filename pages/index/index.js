@@ -19,6 +19,7 @@ Page({
     // post:''
     // }]
 
+    userinfo:[],
     //音乐信息
     playlist: [],
     // playlist: [{
@@ -40,6 +41,7 @@ Page({
 
   onLoad: function () {
     this.getList();
+    this.setUserInfor();
     // console.log(utils.formatTime(new Date))
   },
 
@@ -56,6 +58,12 @@ Page({
     })
   },
 
+  setUserInfor(){
+    const ui = wx.getStorageSync('userInfo')
+    this.setData({
+      userinfo: ui
+    })
+  },
 
   getList() {
     let that = this;

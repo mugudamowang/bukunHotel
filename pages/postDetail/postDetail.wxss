@@ -4,9 +4,12 @@ page {
   background-image: linear-gradient(rgba(9, 15, 20, 0.721), rgba(4, 17, 13, 0.44)), url("https://i.loli.net/2020/05/27/BvLxYfRntGzVWSj.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
+
 .postTopic {
+  overflow: scroll;
   position: relative;
   z-index: 10;
   color: white;
@@ -20,11 +23,10 @@ page {
   justify-content: center;
   align-items: center;
   min-height: 200rpx;
-  max-height: 400rpx;
+  max-height: 500rpx;
 }
 .postTopic .post{
-  padding-top: 100rpx;
-  padding: 100rpx 40rpx 40rpx 40rpx;
+  padding: 100rpx 40rpx 80rpx 40rpx;
 }
 
 .messageOnBorad {
@@ -38,11 +40,11 @@ page {
   justify-content: center;
   align-items: center;
   min-height: 112rpx;
-  max-height: 500rpx;
+  max-height: 800rpx;
   min-width: 120rpx;
   max-width: 720rpx;
   position: relative;
-  padding: 20rpx 40rpx 20rpx 120rpx;
+  padding: 20rpx 100rpx 20rpx 100rpx;
   overflow: hidden;
 }
 
@@ -77,7 +79,7 @@ page {
   text-align: center;
   color: white;
   background: rgba(88, 88, 87, 0.412);
-  margin: 35rpx auto 35rpx auto;
+  margin: 40rpx auto 50rpx auto;
   width: 94%;
   border-radius: 50%;
   height: 5rpx;

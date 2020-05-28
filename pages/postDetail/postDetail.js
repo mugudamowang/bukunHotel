@@ -22,16 +22,19 @@ Page({
 
     this.getComment()
 
-
   },
 
   getComment() {
+
+    wx.showLoading({
+      title: 'loading...'
+    })
+
     wx.cloud.callFunction({
       name: 'getComment',
       data: {
         postId: this.data.topMessage.id
       },
-
       success: res => {
         if (res.result) {
           let comlist = res.result.data;
@@ -46,6 +49,12 @@ Page({
         })
       }
     })
+
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 300);
+
+
   },
 
   /**
@@ -53,14 +62,7 @@ Page({
    */
   onReady: function () {
     // 页面渲染完成
-    var that = this;
-
     // 数据加载完成后 延迟隐藏loading
-    setTimeout(function () {
-      that.setData({
-        hidden: true
-      })
-    }, 500);
   },
 
   /**

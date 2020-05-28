@@ -1,7 +1,7 @@
 <!--components/sendMessages.wxml-->
 	<view class="textBar">
 		<!-- 发送栏 -->
-		<textarea cursor-spacing="120rpx" class="textinput" bindinput="inputPost" value="{{post}}" placeholder-class="placeholderStyle" placeholder="纸短情长"></textarea>
+		<textarea fixed="true" cursor-spacing="120rpx" class="textinput" bindinput="inputPost" value="{{post}}" placeholder-class="placeholderStyle" placeholder="纸短情长"></textarea>
 		
 		<button bindtap="createPost" class="sendBtn">
 			<icon type="success" color="grey"></icon>

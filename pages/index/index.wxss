@@ -1,4 +1,3 @@
-
 /* 顶部菜单切换 */
 page {
   padding: 0;
@@ -9,130 +8,130 @@ page {
 
 /* 你的模块css代码 */
 
-  .top {
-    margin: 20rpx 50rpx;
-    height: 320rpx;
-  }
+.top {
+  margin: 20rpx 50rpx;
+  height: 320rpx;
+}
 
-  .top .night {
-    height: 80rpx;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30rpx;
-  }
+.top .night {
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
 
-  .top .night .hello {
-    color: white;
-    font-size: 50rpx;
-  }
+.top .night .hello {
+  color: white;
+  font-size: 50rpx;
+}
 
-  .top .night .moon {
-    width: 110rpx;
-    height: 100%;
-    opacity: 0.8;
-    background: no-repeat url("https://i.loli.net/2020/04/23/l7kt9JXcDF8bzVC.png");
-    background-size: auto 100%;
-    transform-origin: center 50%;
-    animation: swing 4s linear 0s infinite alternate;
-  }
+.top .night .moon {
+  width: 110rpx;
+  height: 100%;
+  opacity: 0.8;
+  background: no-repeat url("https://i.loli.net/2020/04/23/l7kt9JXcDF8bzVC.png");
+  background-size: auto 100%;
+  transform-origin: center 50%;
+  animation: swing 4s linear 0s infinite alternate;
+}
 
-  .top .word {
-    color: gray;
-    font-size: 30rpx;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-  }
+.top .word {
+  color: gray;
+  font-size: 30rpx;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
 
-  .centerlist {
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: scroll;
-    justify-content: space-around;
-    position: relative;
-  }
+.centerlist {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  justify-content: space-around;
+  position: relative;
+}
 
-  .centerlist .wrap {
-    position: relative;
-    margin-bottom: 70rpx;
-  }
+.centerlist .wrap {
+  position: relative;
+  margin-bottom: 70rpx;
+}
 
-  .centerlist .wrap .img_bg {
-    width: 300rpx;
-    height: 300rpx;
-    border-radius: 15rpx;
-    filter: blur(2rpx);
-  }
+.centerlist .wrap .img_bg {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 15rpx;
+  filter: blur(2rpx);
+}
 
-  .centerlist .wrap .title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 50%;
-    text-align: center;
-    color: white;
-    font-size: 30rpx;
-    font-weight: 100;
-  }
+.centerlist .wrap .title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  text-align: center;
+  color: white;
+  font-size: 30rpx;
+  font-weight: 100;
+}
 
-  .detail:nth-child(1) .mask {
-    background-image: url("https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg");
-  }
+.detail:nth-child(1) .mask {
+  background-image: url("https://i.loli.net/2020/04/22/UyOxGElWIzQ43R9.jpg");
+}
 
-  .detail:nth-child(2) .mask {
-    background-image: url("https://i.loli.net/2020/04/22/ouqdKrLvQUcfOZh.jpg");
-  }
+.detail:nth-child(2) .mask {
+  background-image: url("https://i.loli.net/2020/04/22/ouqdKrLvQUcfOZh.jpg");
+}
 
-  .detail:nth-child(3) .mask {
-    background-image: url(" https://i.loli.net/2020/04/22/hFxPTm83lLiG1ZW.jpg");
-  }
+.detail:nth-child(3) .mask {
+  background-image: url(" https://i.loli.net/2020/04/22/hFxPTm83lLiG1ZW.jpg");
+}
 
-  .detail:nth-child(4) .mask {
-    background-image: url("https://i.loli.net/2020/04/22/Q26NEpxfSImq3uz.png");
-  }
+.detail:nth-child(4) .mask {
+  background-image: url("https://i.loli.net/2020/04/22/Q26NEpxfSImq3uz.png");
+}
 
-  .detail:nth-child(5) .mask {
-    background-image: url("https://i.loli.net/2020/04/22/lgV2ZfORcHBsyXJ.jpg");
-  }
+.detail:nth-child(5) .mask {
+  background-image: url("https://i.loli.net/2020/04/22/lgV2ZfORcHBsyXJ.jpg");
+}
 
-  .detail:nth-child(6) .mask {
-    background-image: url("https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg");
-  }
+.detail:nth-child(6) .mask {
+  background-image: url("https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg");
+}
 
-  .copyright {
-    width: 100%;
-    margin-top: 100rpx;
-    height: 300rpx;
-    text-align: center;
-    color: white;
-    font-size: 30rpx;
-  }
+.copyright {
+  width: 100%;
+  margin-top: 100rpx;
+  height: 300rpx;
+  text-align: center;
+  color: white;
+  font-size: 30rpx;
+}
 
-  .fix {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 150rpx;
-    background-color: #1d1d2b;
-    border-top-left-radius: 30rpx;
-    border-top-right-radius: 30rpx;
-  }
+.fix {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150rpx;
+  background-color: #1d1d2b;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+}
 
-  .fix .play {
-    position: absolute;
-    top: 25rpx;
-    left: 10rpx;
-    width: 250rpx;
-    height: 100rpx;
-    display: flex;
-    justify-content: space-between;
-  }
+.fix .play {
+  position: absolute;
+  top: 25rpx;
+  left: 10rpx;
+  width: 250rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+}
 
-  .fix .play .musicpicture {
-    position: relative;
-  }
+.fix .play .musicpicture {
+  position: relative;
+}
 
-.createPost{
+.createPost {
   bottom: 128rpx;
   right: 128rpx;
   position: absolute;
@@ -142,18 +141,17 @@ page {
   transition: ease-out all 0.25s;
 }
 
-.popIn :focus{
-
-}
+.popIn :focus {}
 
 @font-face {
-  font-family: 'iconfont';  /* project id 1795704 */
+  font-family: 'iconfont';
+  /* project id 1795704 */
   src: url('//at.alicdn.com/t/font_1795704_g9glaev04k8.eot');
   src: url('//at.alicdn.com/t/font_1795704_g9glaev04k8.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1795704_g9glaev04k8.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1795704_g9glaev04k8.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1795704_g9glaev04k8.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1795704_g9glaev04k8.svg#iconfont') format('svg');
+    url('//at.alicdn.com/t/font_1795704_g9glaev04k8.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1795704_g9glaev04k8.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1795704_g9glaev04k8.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1795704_g9glaev04k8.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -161,9 +159,10 @@ page {
   font-size: 96rpx;
   font-style: normal;
   color: #ffffff;
-  
+
 }
-.iconfontAnimation{
+
+.iconfontAnimation {
   color: red;
   transform: translateX(75rpx) rotate(45deg);
 }
@@ -171,239 +170,293 @@ page {
 .icon_add::before {
   content: "\e739";
 }
-  .fix .play .musicpicture .musicbg {
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 50rpx;
-    border: 1px white solid;
-    box-sizing: border-box;
-    filter: blur(0.5px);
-    animation: rotate 10s linear 0s infinite normal;
+
+.fix .play .musicpicture .musicbg {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  border: 1px white solid;
+  box-sizing: border-box;
+  filter: blur(0.5px);
+  animation: rotate 10s linear 0s infinite normal;
+}
+
+.fix .play .musicpicture .on {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 25%;
+}
+
+.fix .play .musicinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.fix .play .musicinfo .musicname {
+  color: white;
+  font-size: 30rpx;
+}
+
+.fix .play .musicinfo .musictime {
+  color: gray;
+  font-size: 25rpx;
+}
+
+.fix .handle {
+  position: absolute;
+  top: 50rpx;
+  right: 0;
+  width: 200rpx;
+  height: 70rpx;
+}
+
+.fix .handle .clock {
+  width: 100rpx;
+  height: 70%;
+  display: inline-block;
+  background: no-repeat url(" https://i.loli.net/2020/04/23/v7KcBqux2pITASm.png");
+  background-size: auto 100%;
+}
+
+.fix .handle .share {
+  width: 100rpx;
+  height: 60%;
+  display: inline-block;
+  background: no-repeat url("https://i.loli.net/2020/04/23/hpIKrSRHeAJBOaY.png");
+  background-size: auto 100%;
+}
+
+.star {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  background: url("https://i.loli.net/2020/04/23/39gGjtE8LMBXNDV.jpg") no-repeat 0 0;
+  background-size: cover;
+  animation: shine 2s linear 0s infinite alternate;
+}
+
+@keyframes swing {
+  from {
+    transform: rotateZ(0deg);
   }
 
-  .fix .play .musicpicture .on {
-    width: 50rpx;
-    height: 50rpx;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 25%;
+  to {
+    transform: rotateZ(8deg);
+  }
+}
+
+@keyframes shine {
+  from {
+    opacity: 1;
   }
 
-  .fix .play .musicinfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  to {
+    opacity: 0.3;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
   }
 
-  .fix .play .musicinfo .musicname {
-    color: white;
-    font-size: 30rpx;
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+/* 我的模块代码 */
+
+.postNav {
+  border-top: 15rpx rgba(21, 38, 51, 0.645) solid;
+  border-bottom: 15rpx rgba(21, 38, 51, 0.645) solid;
+  background-color: rgba(21, 38, 51, 0.775);
+  margin: 45rpx 0rpx 45rpx 0rpx;
+  box-shadow: 0 0 0 15rpx rgba(25, 42, 53, 0.282);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 200rpx;
+  max-height: 500rpx;
+  position: relative;
+}
+
+.postNav .mediaCom {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 10rpx;
+  right: 30rpx;
+}
+
+.postNav .circle {
+  background-color: #090F14;
+  margin-right: 15rpx;
+  border: 5rpx solid rgba(51, 53, 61, 0.186);
+  box-shadow: 0 0 0 18rpx rgba(25, 42, 53, 0.282);
+  border-radius: 50%;
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.postNav .post {
+  overflow: hidden;
+  padding: 100rpx 40rpx 80rpx 40rpx;
+}
+
+.postUser {
+  font-size: 34rpx;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 10rpx;
+  left: 30rpx;
+}
+
+.hotPost {
+  border: 10rpx rgba(83, 85, 85, 0.426) solid;
+  border-radius: 10rpx;
+  background-color: white;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  color: black;
+}
+
+
+.topNavBar {
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.topNavBar :nth-child(1),
+.topNavBar :nth-child(2) {
+  padding: 5rpx 60rpx;
+  color: white;
+}
+
+.neonOn {
+  animation: neon 1.5s ease-in-out infinite alternate;
+  animation-delay: 90ms;
+}
+
+.neonBox {
+  animation: neonBox 1.5s ease-in-out infinite alternate;
+  animation-delay: 90ms;
+}
+
+@keyframes neon {
+  0% {
+    text-shadow: 2rpx 0rpx 10rpx #fff
   }
 
-  .fix .play .musicinfo .musictime {
-    color: gray;
-    font-size: 25rpx;
+  100% {
+    text-shadow: 0 0 5rpx #fff, 0 0 8rpx #fff, 0 0 10rpx #fff, 0 0 15rpx #FF9900, 0 0 30rpx #FF9900, 0 0 38rpx #FF9900, 0 0 55rpx rgb(255, 232, 172);
+  }
+}
+
+@keyframes neonBox {
+  0% {
+    box-shadow: 0rpx 0rpx 10rpx #090F14
   }
 
-  .fix .handle {
-    position: absolute;
-    top: 50rpx;
-    right: 0;
-    width: 200rpx;
-    height: 70rpx;
+  100% {
+    box-shadow: 0 0 5rpx rgba(9, 15, 20, 0.673), 0 0 8rpx rgba(9, 15, 20, 0.371), 0 0 30rpx rgba(255, 255, 255, 0.289);
   }
+}
 
-  .fix .handle .clock {
-    width: 100rpx;
-    height: 70%;
-    display: inline-block;
-    background: no-repeat url(" https://i.loli.net/2020/04/23/v7KcBqux2pITASm.png");
-    background-size: auto 100%;
-  }
+.swiper-section {
+  color: aliceblue;
+  background-color: rgba(47, 61, 73, 0.173);
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 
-  .fix .handle .share {
-    width: 100rpx;
-    height: 60%;
-    display: inline-block;
-    background: no-repeat url("https://i.loli.net/2020/04/23/hpIKrSRHeAJBOaY.png");
-    background-size: auto 100%;
-  }
 
-  .star {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -2;
-    width: 100%;
-    height: 100%;
-    background: url("https://i.loli.net/2020/04/23/39gGjtE8LMBXNDV.jpg") no-repeat 0 0;
-    background-size: cover;
-    animation: shine 2s linear 0s infinite alternate;
-  }
+.userPost {
+  background-image: linear-gradient(rgba(9, 15, 20, 0.721), rgba(4, 17, 13, 0.44)), url("https://i.loli.net/2020/05/27/BvLxYfRntGzVWSj.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  display: flex;
+}
 
-  @keyframes swing {
-    from {
-      transform: rotateZ(0deg);
-    }
-
-    to {
-      transform: rotateZ(8deg);
-    }
-  }
-
-  @keyframes shine {
-    from {
-      opacity: 1;
-    }
-
-    to {
-      opacity: 0.3;
-    }
-  }
-
-  @keyframes rotate {
-    from {
-      transform: rotateZ(0deg);
-    }
-
-    to {
-      transform: rotateZ(360deg);
-    }
-  }
-
-  /* 我的模块代码 */
-  
-  .postNav {
-    border-top: 15rpx rgba(21, 38, 51, 0.645) solid;
-    border-bottom: 15rpx rgba(21, 38, 51, 0.645) solid;
-    background-color: rgba(21, 38, 51, 0.775);
-    margin: 45rpx 0rpx 45rpx 0rpx;
-    box-shadow: 0 0 0 15rpx rgba(25, 42, 53, 0.282);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 250rpx;
-    position: relative;
-  }
-  
-  .postNav .mediaCom{
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    bottom: 10rpx;
-    right: 30rpx;
-  }
-  
-  .postNav .circle {
-    background-color: #090F14;
-    margin-right: 15rpx;
-    border: 5rpx solid rgba(51, 53, 61, 0.186);
-    box-shadow: 0 0 0 18rpx rgba(25, 42, 53, 0.282);
-    border-radius: 50%;
-    height: 40rpx;
-    width: 40rpx;
-  }
-  .postNav .post{
-    overflow: hidden;
-    padding: 100rpx 40rpx 80rpx 40rpx;
-  }
-  
-  .postUser {
-    font-size: 34rpx;
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    top: 10rpx;
-    left: 30rpx;
-  }
-  
-  .hotPost {
-    border: 10rpx rgba(83, 85, 85, 0.426) solid;
-    border-radius: 10rpx;
-    background-color: white;
-    margin-left: 10rpx;
-    margin-right: 10rpx;
-    color: black;
-  }
-  
-  
-  .topNavBar {
-    position: relative;
-    z-index: 2;
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .topNavBar :nth-child(1),
-  .topNavBar :nth-child(2) {
-    padding: 5rpx 60rpx;
-    color: white;
-  }
-  
-  .neonOn {
-    animation: neon 1.5s ease-in-out infinite alternate;
-    animation-delay: 90ms;
-  }
-  .neonBox {
-    animation: neonBox 1.5s ease-in-out infinite alternate;
-    animation-delay: 90ms;
-  }
-  
-  @keyframes neon {
-    0% {
-      text-shadow: 2rpx 0rpx 10rpx #fff
-    }
-  
-    100% {
-      text-shadow: 0 0 5rpx #fff, 0 0 8rpx #fff, 0 0 10rpx #fff, 0 0 15rpx #FF9900, 0 0 30rpx #FF9900, 0 0 38rpx #FF9900, 0 0 55rpx rgb(255, 232, 172);
-    }
-  }
-  @keyframes neonBox {
-    0% {
-      box-shadow: 0rpx 0rpx 10rpx #090F14
-    }
-  
-    100% {
-      box-shadow: 0 0 5rpx rgba(9, 15, 20, 0.673), 0 0 8rpx rgba(9, 15, 20, 0.371), 0 0 30rpx rgba(255, 255, 255, 0.289);
-    }
-  }
-  
-  .swiper-section {
-    color: aliceblue;
-    background-color: rgba(47, 61, 73, 0.173);
-    position: absolute;
-    display: block;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  
-  .userPost {
-    background-image:linear-gradient(rgba(9, 15, 20, 0.721), rgba(4, 17, 13, 0.44)),url("https://i.loli.net/2020/05/27/BvLxYfRntGzVWSj.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    display: flex;
-  }
-
-.pageBottom{
+.pageBottom {
   height: 200rpx;
 }
-  .pageBottom .divLine{
-    font-size: small;
-    text-align: center;
-    color: white;
-    background: rgba(162, 162, 162, 0.412);
-    margin: 35rpx auto 35rpx auto;
-    width: 90%;
-    border-radius: 50%;
-    height: 5rpx;
-   }
+
+.pageBottom .divLine {
+  font-size: small;
+  text-align: center;
+  color: white;
+  background: rgba(162, 162, 162, 0.412);
+  margin: 35rpx auto 35rpx auto;
+  width: 90%;
+  border-radius: 50%;
+  height: 5rpx;
+}
 
 
+.postTopic {
+  overflow: scroll;
+  position: relative;
+  z-index: 10;
+  color: rgb(0, 0, 0);
+  border-top: 15rpx rgba(18, 30, 40, 0.426) solid;
+  border-bottom: 15rpx rgba(18, 30, 40, 0.426) solid;
+  background-color: rgb(255, 255, 255);
+  margin: 45rpx 0rpx 45rpx 0rpx;
+  box-shadow: 0 0 0 15rpx rgba(156, 157, 158, 0.282);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 200rpx;
+  max-height: 500rpx;
+}
+.postTopic .post{
+  padding: 100rpx 40rpx 80rpx 40rpx;
+}
+
+.fixed {
+  font-size: 34rpx;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  left: 30rpx;
+}
+
+.avatar {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 128rpx;
+  height: 128rpx;
+  background-size: cover;
+  background-position: center;
+  vertical-align: middle;
+  font-size: 30rpx;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10rpx rgb(0, 0, 0);
+}

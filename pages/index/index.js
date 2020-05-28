@@ -48,7 +48,7 @@ Page({
       totalSeconds: 0,
       title: '轻声细雨',
       singer: '',
-      coverImgUrl: 'cloud://bukunhotel-rxvhp.6275-bukunhotel-rxvhp-1302029966/picture/细雨落叶.jpg'
+      coverImgUrl: 'cloud://bukunhotel-rxvhp.6275-bukunhotel-rxvhp-1302029966/picture/new/aaaaa.jpg'
     },
 
     // 闹钟信息
@@ -284,10 +284,6 @@ Page({
     },2000)
 
   },
-  onHide: function () {
-    clearInterval(this.musicer)
-
-  },
   onUnLoad: function () {
     clearInterval(this.musicer)
 
@@ -312,7 +308,7 @@ Page({
     audioCtx.title = music.name
     audioCtx.epname = ' '
     audioCtx.singer = ' '
-    audioCtx.coverImgUrl = music.pic_url
+    audioCtx.coverImgUrl = music.pic_url//这里为什么会不显示呢？？？？
     audioCtx.src = music.music_url
     // audioCtx.src = "http://183.240.120.29/amobile.music.tc.qq.com/C400001KQ3zX0N2rVR.m4a?guid=185019120&amp;vkey=D8F7BFF89ECE89AC5D8DCCF7173413FEEC9F4D3BE51BC96DED7B66B6B50B9EB0D64F58987760909B62F71503AA4C2C06D8F1B7A93BEC0D56&amp;uin=0&amp;fromtag=66"
     // audioCtx.src = "http://183.240.120.18/amobile.music.tc.qq.com/C400002I3Nwa4f9xqA.m4a?guid=4680889107&amp;vkey=977534C2CDF8CB0B6EF5698D62EA45474AE69C7B31FE80E69E06EB3DD5F349FA2905A4DD5F2FD441352D3BDCD4C76E994709613D7F605F6E&amp;uin=115&amp;fromtag=66" 贝贝

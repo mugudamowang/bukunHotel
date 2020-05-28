@@ -23,7 +23,7 @@
 																								<text class="moon" hidden='{{!is_night}}' bindtap="toggle"></text>
 																								<text class="sun" hidden='{{is_night}}' bindtap="toggle"></text>
 																				</view>
-																				<view class="wordspilt {{is_night==false?'wordspilt2':' '}}" wx:if="{{isShowArticle}}" >
+																				<view class="wordspilt {{is_night==false?'wordspilt2':' '}}"  wx:if="{{isShowArticle}}">
 																				———— •
  言 • ————
 																				</view>

@@ -62,7 +62,7 @@
 																<view class="see" bindtap = "showModal">︿
 </view>
 																<view class="handle">
-																				<picker class="clock" mode="time" value="{{time}}" start="00:00" end="24:00" bindchange="bindTimeChange">
+																				<picker class="clock" mode="selector" value="{{Timeindex}}"  range="{{TimeArray}}" bindchange="bindPickerChange">
 																								<view class="clock2">0</view>
 																				</picker>
 																				<button class="share" open-type="share"></button>

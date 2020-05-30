@@ -264,8 +264,12 @@ Page({
   //         is_play:true
   //       })
        
+<<<<<<< HEAD
   //     });
    
+=======
+      });
+>>>>>>> parent of 0eaaea0... 音乐歌手加多了空格
 
   //   },2000)
 
@@ -287,8 +291,8 @@ Page({
     console.log(music)
     // // 解决背景音乐的bug，兼容安卓，官方的bug，不能在onload或者onready上设置title
     audioCtx.title = music.name
-    audioCtx.epname = '  '
-    audioCtx.singer = '  '
+    audioCtx.epname = ' '
+    audioCtx.singer = ' '
     audioCtx.coverImgUrl ='https://i.loli.net/2020/05/29/kjCgevWIV8sEMdT.jpg'
     audioCtx.src = music.music_url
     
@@ -331,8 +335,6 @@ Page({
     let currentSeconds = this.data.play.currentSeconds
     let duration = this.data.play.duration
 
-     // 如果当前时间离总时长还有一段距离 手动重新播放
-     let num = duration - currentSeconds
     // 当缓冲的时间不为0且这首歌还未播放完
     if (viewing_time != 0 && currentSeconds < duration) {
       // 跳转到暂停时存储的时间

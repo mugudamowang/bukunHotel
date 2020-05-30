@@ -1,10 +1,6 @@
 <!--components/media.wxml-->
 
-
-
-	
-
-
-<view wx:if="{{!like}}" class="iconfont icon_like" bindtap="likeBtn"></view>
-	<view wx:else class="iconfont icon_likefill" bindtap="likeBtn"></view>
-	<text class="iconfont icon_comments"></text>
+<view class="iconfont {{like? 'icon_likefill':'icon_like'}} "bindtap="likeBtn"><view style="font-size: 15rpx;color:grey; position:absolute;bottom:-15rpx">{{likeNum}}</view></view>
+<navigator class="iconfont icon_comments" url="../postDetail/postDetail?postid={{postid}}">
+<view style="font-size: 15rpx; color:grey;position:absolute;bottom:-15rpx">{{commentNum}}</view>
+</navigator>

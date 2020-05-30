@@ -141,7 +141,6 @@ page {
   transition: ease-out all 0.25s;
 }
 
-.popIn :focus {}
 
 @font-face {
   font-family: 'iconfont';
@@ -395,22 +394,6 @@ page {
   height: 100%;
   display: flex;
 }
-
-.pageBottom {
-  height: 200rpx;
-}
-
-.pageBottom .divLine {
-  font-size: small;
-  text-align: center;
-  color: white;
-  background: rgba(162, 162, 162, 0.412);
-  margin: 35rpx auto 35rpx auto;
-  width: 90%;
-  border-radius: 50%;
-  height: 5rpx;
-}
-
 
 .postTopic {
   overflow: scroll;

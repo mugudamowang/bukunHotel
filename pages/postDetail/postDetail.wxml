@@ -3,9 +3,9 @@
 
 <view class="postTopic">
 	<view class="avatar fixed">
-		<image class="avatar" src="{{topMessage.avatar}}"></image>
+		<image class="avatar" src="{{topMessage[0].avatarUrl}}"></image>
 	</view>
-	<view class="post">{{topMessage.post}}</view>
+	<view class="post">{{topMessage[0].post}}</view>
 </view>
 
 <view class="divLine">★</view>
@@ -28,5 +28,5 @@
 
 
 <!-- 自定义组件 -->
-<sendMessages comType="comment" postId="{{topMessage.id}}">
+<sendMessages comType="comment" postId="{{topMessageId}}">
 </sendMessages>

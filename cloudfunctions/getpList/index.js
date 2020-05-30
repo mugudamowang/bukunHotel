@@ -8,14 +8,25 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   try {
-    return await db.collection('post').orderBy('date', 'desc')
-    .get({
-      success:function(res){
-        console.log('列表',res)
-        return res;
-      }
-    })
-    
+    //如果是定向查询
+    if (event.postId)
+      return await db.collection('post').where({
+          _id: event.postId
+        }).orderBy('date', 'desc')
+        .get({
+          success: function (res) {
+            return res;
+          }
+        })
+    else {//如果是获取完全列表
+      return await db.collection('post').orderBy('date', 'desc').limit(20)
+        .get({
+          success: function (res) {
+            console.log('列表', res)
+            return res;
+          }
+        })
+    }
   } catch (error) {
     console.log(error)
   }

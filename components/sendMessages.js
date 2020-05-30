@@ -55,7 +55,10 @@ Component({
               date: utils.formatTime(new Date),
               openid: ui.openId,
               nickname: ui.nickName,
-              avatarUrl: ui.avatarUrl
+              avatarUrl: ui.avatarUrl,
+              like: false,
+              likeNum: 0,
+              commentNum: 0
             }
           })
 
@@ -72,6 +75,7 @@ Component({
               avatarUrl: ui.avatarUrl
             }
           })
+
         }
         
         this.setData({
@@ -107,11 +111,5 @@ Component({
       }
 
     },
-
-    changeStyle: function (e) {
-
-    }
-
-
   }
 })

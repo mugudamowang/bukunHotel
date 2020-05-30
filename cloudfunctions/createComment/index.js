@@ -10,6 +10,17 @@ const db = cloud.database()
 exports.main = async (event, context) => {
 
   try {
+
+    const _ = db.command
+    db.collection('post').doc(event.postid).update({
+      data: {
+        commentNum: _.inc(1)
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
+
     return await db.collection("comments").add({
       data: {
         comment: event.comment,
@@ -21,7 +32,7 @@ exports.main = async (event, context) => {
       }
     })
   } catch (e) {
-    console.log("生产失败")
+    console.log("生成失败")
   }
 
 }

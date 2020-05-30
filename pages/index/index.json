@@ -6,5 +6,5 @@
   
   "navigationBarTitleText": "不困旅馆",
   "enablePullDownRefresh":true,
-  "backgroundTextStyle":"dark"
+  "backgroundTextStyle":"light"
 }

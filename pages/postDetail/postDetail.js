@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    topMessageId: [],
     topMessage: [],
     comlist: [],
   },
@@ -15,9 +16,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     this.setData({
-      topMessage: options
+      topMessageId: options.postid
     })
 
     this.getComment()
@@ -31,13 +31,32 @@ Page({
     })
 
     wx.cloud.callFunction({
-      name: 'getComment',
+      name: 'getpList',
       data: {
-        postId: this.data.topMessage.id
+        postId: this.data.topMessageId
       },
       success: res => {
         if (res.result) {
-          let comlist = res.result.data;
+          console.log(res.result.data)
+          this.setData({
+            topMessage: res.result.data,
+          })
+        }
+      },
+      fail: err => {
+        wx.showToast({
+          title: 'XAX~宕机',
+        })
+      }
+    })
+
+    wx.cloud.callFunction({
+      name: 'getComment',
+      data: {
+        postId: this.data.topMessageId
+      },
+      success: res => {
+        if (res.result) {
           this.setData({
             comlist: res.result.data,
           })
@@ -52,15 +71,13 @@ Page({
 
     setTimeout(() => {
       wx.hideLoading();
-    }, 300);
-
-
+    }, 500)
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+/**
+ * 生命周期函数--监听页面初次渲染完成
+ */
+onReady: function () {
     // 页面渲染完成
     // 数据加载完成后 延迟隐藏loading
   },

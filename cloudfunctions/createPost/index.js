@@ -16,7 +16,10 @@ exports.main = async (event, context) => {
         date: event.date,
         openid: event.openid,
         nickname: event.nickname,
-        avatarUrl: event.avatarUrl
+        avatarUrl: event.avatarUrl,
+        like: false,
+        likeNum: 0,
+        commentNum: 0
       }
     })
   } catch (e) {

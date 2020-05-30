@@ -56,7 +56,8 @@ Page({
 
     // 闹钟信息
     is_clock: false,
-    time: '12:30',
+    Timeindex:0,
+    TimeArray:['01  分','05  分','10  分','15  分','20  分','25  分','30  分','40  分','45  分', '50  分','55  分','60  分','90  分','120  分' ],
     timer: null, //定时器
     // 倒计时界面
     hideFlag: true,//true-隐藏  false-显示
@@ -67,7 +68,7 @@ Page({
     // 语句信息
     word: {
 
-      hitokoto: "你好呀啊呀啊呀早睡早起身体好",
+      hitokoto: "早睡早起身体好~",
       type: "f",
       from: "网络",
       from_who: null,
@@ -220,7 +221,7 @@ Page({
 
       success: (res) => {
         let word = res.data
-        console.log(res.data)
+        // console.log(res.data)
         that.Words = res.data
         // 将获取的数据存入到本地中
         wx.setStorageSync('words', { time: Date.now(), data: that.Words })
@@ -246,41 +247,29 @@ Page({
   onReady: function () {
 
   },
-<<<<<<< HEAD
-  //监听后台的暂停和播放，修改播放状态
-  onShow: function () {
-    this.musicer=setInterval(()=>{
+  // //监听后台的暂停和播放，修改播放状态
+  // onShow: function () {
+  //   this.musicer=setInterval(()=>{
     
-=======
-  //监听后台的暂停和播放
-  onShow: function () {
-    this.musicer=setInterval(()=>{
-      console.log('我是音乐定时器')
->>>>>>> parent of 586c747... 解决倒计时的bug
-      // 在安卓用onStop无效
-      audioCtx.onPause(()=>{
-        this.setData({
-          is_play:false
-        })
+  //     // 在安卓用onStop无效
+  //     audioCtx.onPause(()=>{
+  //       this.setData({
+  //         is_play:false
+  //       })
 
 
-      });
-      audioCtx.onPlay(()=>{
-        this.setData({
-          is_play:true
-        })
-<<<<<<< HEAD
+  //     });
+  //     audioCtx.onPlay(()=>{
+  //       this.setData({
+  //         is_play:true
+  //       })
        
-      });
+  //     });
    
-=======
-        console.log('我要通过后台播放了')
-      });
->>>>>>> parent of 586c747... 解决倒计时的bug
 
-    },2000)
+  //   },2000)
 
-  },
+  // },
   onUnLoad: function () {
     clearInterval(this.musicer)
 
@@ -298,15 +287,9 @@ Page({
     console.log(music)
     // // 解决背景音乐的bug，兼容安卓，官方的bug，不能在onload或者onready上设置title
     audioCtx.title = music.name
-<<<<<<< HEAD
     audioCtx.epname = '  '
     audioCtx.singer = '  '
     audioCtx.coverImgUrl ='https://i.loli.net/2020/05/29/kjCgevWIV8sEMdT.jpg'
-=======
-    audioCtx.epname = ' '
-    audioCtx.singer = ' '
-    audioCtx.coverImgUrl = music.pic_url//这里为什么会不显示呢？？？？
->>>>>>> parent of 586c747... 解决倒计时的bug
     audioCtx.src = music.music_url
     
     // 如果已经播放过了，则初始化时间为音乐当前的时间
@@ -366,8 +349,8 @@ Page({
 
 
     // 正式开始播放
-    // wx.playBackgroundAudio()
-    audioCtx.play()
+    wx.playBackgroundAudio()
+    // audioCtx.play()
     that.setData({
       is_play: true,
 
@@ -528,7 +511,7 @@ Page({
   },
 
   // 定时关闭功能
-  bindTimeChange: function (e) {
+  bindPickerChange: function (e) {
     let that = this
     if (that.data.timer != null) {
       clearInterval(that.data.timer)
@@ -537,7 +520,6 @@ Page({
     
     // 获得用户选择的时间
     let time = e.detail.value
-<<<<<<< HEAD
     // console.log(e.detail)
     // console.log('picker发送选择改变，携带值为', e.detail.value)
     let time2=that.data.TimeArray[time]
@@ -546,54 +528,30 @@ Page({
     // console.log('切割后的时间'+time3)
     let time4=parseInt(time3.trim())
     // console.log('强制类型转换后的时间'+typeof time4)
-=======
-    console.log(e.detail)
-    console.log('picker发送选择改变，携带值为', e.detail.value)
->>>>>>> parent of 586c747... 解决倒计时的bug
     // 如果用户确定
 
     if (time && this.data.is_play) {
       wx.showToast({
-        title: '设置成功',
+        title: '计时结束将停止',
       })
       this.setData({
         time,
-        is_clock: true
+        is_clock: true,
+        
       })
-<<<<<<< HEAD
       
       
       // 用户设置的秒数
       let countSeconds = time4* 60
-=======
-      let arr = time.split(':')
-      // 将用户选择的时间拆分成小时和分钟
-      let setHour = parseInt(arr[0])
-      let setMinute = parseInt(arr[1])
-      console.log('设置的小时是' + setHour + '设置的分钟是' + setMinute)
-      // if (this.data.is_play) {
-      // this.data.timer = setInterval(() => {
-      // 获得当前的时间，并将其拆分成小时、分钟
-      let nowTime = new Date()
-      let hour = nowTime.getHours()
-      let minute = nowTime.getMinutes()
-      // let seconds=nowTime.getSeconds()
-      console.log('现在的小时是' + hour + '现在的分钟是' + minute)
-      // 如果设置的小时和分钟与当前的小时和分钟相同，则暂停，关闭定时器
-      let countSeconds = (setHour - hour) * 3600 + (setMinute - minute) * 60
->>>>>>> parent of 586c747... 解决倒计时的bug
       let countTime = that.formatTime(countSeconds)
 
       that.setData({
         countSeconds,
         countTime
       })
-<<<<<<< HEAD
       // 展示模态框
       that.showModal()
       // 倒计时
-=======
->>>>>>> parent of 586c747... 解决倒计时的bug
       that.Numdown()
 
     }

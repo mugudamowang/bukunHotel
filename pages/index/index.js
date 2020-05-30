@@ -53,7 +53,8 @@ Page({
 
     // 闹钟信息
     is_clock: false,
-    time: '12:30',
+    Timeindex:0,
+    TimeArray:['01  分','05  分','10  分','15  分','20  分','25  分','30  分','40  分','45  分', '50  分','55  分','60  分','90  分','120  分' ],
     timer: null, //定时器
     // 倒计时界面
     hideFlag: true,//true-隐藏  false-显示
@@ -168,6 +169,11 @@ Page({
       success: res => {
         //如果返回的res中有result
         if (res.result) {
+// 为了防止模拟器报错加的，但是没有什么实际意义
+          audioCtx.title = '  '
+          audioCtx.epname = '  '
+          audioCtx.singer = '  '
+
           let playlist = res.result.data;
           // 修改缓存数组Cates为返回的数据
           that.Cates = playlist
@@ -262,42 +268,14 @@ Page({
   onReady: function () {
 
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-  // //监听后台的暂停和播放，修改播放状态
-  // onShow: function () {
-  //   this.musicer=setInterval(()=>{
-    
-=======
-  //监听后台的暂停和播放
-<<<<<<< HEAD
-  // onShow: function () {
-  //   this.musicer=setInterval(()=>{
-  //     console.log('我是音乐定时器')
->>>>>>> parent of d1da0f2... my界面和删除掉一些注释
-  //     // 在安卓用onStop无效
-  //     audioCtx.onPause(()=>{
-  //       this.setData({
-  //         is_play:false
-  //       })
 
+ 
 
-  //     });
-  //     audioCtx.onPlay(()=>{
-  //       this.setData({
-  //         is_play:true
-  //       })
-=======
   //监听后台的暂停和播放，修改播放状态
   onShow: function () {
     this.musicer=setInterval(()=>{
-    
-=======
-  //监听后台的暂停和播放
-  onShow: function () {
-    this.musicer=setInterval(()=>{
       console.log('我是音乐定时器')
->>>>>>> parent of 586c747... 解决倒计时的bug
+
       // 在安卓用onStop无效
       audioCtx.onPause(()=>{
         this.setData({
@@ -310,49 +288,13 @@ Page({
         this.setData({
           is_play:true
         })
->>>>>>> parent of 8ad99c6... 倒计时bug3
-<<<<<<< HEAD
-       
-      });
-   
-=======
-<<<<<<< HEAD
-  //       console.log('我要通过后台播放了')
-  //     });
->>>>>>> parent of d1da0f2... my界面和删除掉一些注释
-
-  //   },2000)
-=======
-  onShow: function () {
-    this.musicer=setInterval(()=>{
-      console.log('我是音乐定时器')
-      // 在安卓用onStop无效
-      audioCtx.onPause(()=>{
-        this.setData({
-          is_play:false
-        })
->>>>>>> parent of 586c747... 解决倒计时的bug
-
 
       });
-      audioCtx.onPlay(()=>{
-        this.setData({
-          is_play:true
-        })
-        console.log('我要通过后台播放了')
-      });
+    },2000)},
 
-    },2000)
+  
 
-=======
-        console.log('我要通过后台播放了')
-      });
->>>>>>> parent of 586c747... 解决倒计时的bug
 
-    },2000)
-
->>>>>>> parent of 8ad99c6... 倒计时bug3
-  },
   onUnLoad: function () {
     clearInterval(this.musicer)
 
@@ -375,21 +317,10 @@ Page({
     console.log(music)
     // // 解决背景音乐的bug，兼容安卓?????，官方的bug，不能在onload或者onready上设置title
     audioCtx.title = music.name
-<<<<<<< HEAD
-    audioCtx.epname = ' '
-    audioCtx.singer = ' '
-    audioCtx.coverImgUrl = music.pic_url//这里为什么会不显示呢？？？？
-=======
-<<<<<<< HEAD
     audioCtx.epname = '  '
     audioCtx.singer = '  '
     audioCtx.coverImgUrl ='https://i.loli.net/2020/05/29/kjCgevWIV8sEMdT.jpg'
-=======
-    audioCtx.epname = ' '
-    audioCtx.singer = ' '
-    audioCtx.coverImgUrl = music.pic_url//这里为什么会不显示呢？？？？
->>>>>>> parent of 586c747... 解决倒计时的bug
->>>>>>> parent of 8ad99c6... 倒计时bug3
+
     audioCtx.src = music.music_url
     // audioCtx.src = "http://183.240.120.29/amobile.music.tc.qq.com/C400001KQ3zX0N2rVR.m4a?guid=185019120&amp;vkey=D8F7BFF89ECE89AC5D8DCCF7173413FEEC9F4D3BE51BC96DED7B66B6B50B9EB0D64F58987760909B62F71503AA4C2C06D8F1B7A93BEC0D56&amp;uin=0&amp;fromtag=66"
     // audioCtx.src = "http://183.240.120.18/amobile.music.tc.qq.com/C400002I3Nwa4f9xqA.m4a?guid=4680889107&amp;vkey=977534C2CDF8CB0B6EF5698D62EA45474AE69C7B31FE80E69E06EB3DD5F349FA2905A4DD5F2FD441352D3BDCD4C76E994709613D7F605F6E&amp;uin=115&amp;fromtag=66" 贝贝
@@ -478,8 +409,9 @@ Page({
 
 
     // 正式开始播放
-    // wx.playBackgroundAudio()
-    audioCtx.play()
+    wx.playBackgroundAudio()
+    console.log('我播放啦')
+    // audioCtx.play()
     that.setData({
       is_play: true,
 
@@ -653,7 +585,7 @@ Page({
   },
 
   // 定时关闭功能
-  bindTimeChange: function (e) {
+  bindPickerChange: function (e) {
     let that = this
     if (that.data.timer != null) {
       clearInterval(that.data.timer)
@@ -662,11 +594,10 @@ Page({
     
     // 获得用户选择的时间
     let time = e.detail.value
-<<<<<<< HEAD
+
     console.log(e.detail)
     console.log('picker发送选择改变，携带值为', e.detail.value)
-=======
-<<<<<<< HEAD
+
     // console.log(e.detail)
     // console.log('picker发送选择改变，携带值为', e.detail.value)
     let time2=that.data.TimeArray[time]
@@ -675,64 +606,51 @@ Page({
     // console.log('切割后的时间'+time3)
     let time4=parseInt(time3.trim())
     // console.log('强制类型转换后的时间'+typeof time4)
-=======
-    console.log(e.detail)
-    console.log('picker发送选择改变，携带值为', e.detail.value)
->>>>>>> parent of 586c747... 解决倒计时的bug
->>>>>>> parent of 8ad99c6... 倒计时bug3
+
     // 如果用户确定
 
     if (time && this.data.is_play) {
       wx.showToast({
-        title: '设置成功',
+        title: '计时结束将停止',
       })
       this.setData({
         time,
         is_clock: true
       })
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
+
       
       
       // 用户设置的秒数
       let countSeconds = time4* 60
-=======
->>>>>>> parent of 8ad99c6... 倒计时bug3
-      let arr = time.split(':')
-      // 将用户选择的时间拆分成小时和分钟
-      let setHour = parseInt(arr[0])
-      let setMinute = parseInt(arr[1])
-      console.log('设置的小时是' + setHour + '设置的分钟是' + setMinute)
-      // if (this.data.is_play) {
-      // this.data.timer = setInterval(() => {
-      // 获得当前的时间，并将其拆分成小时、分钟
-      let nowTime = new Date()
-      let hour = nowTime.getHours()
-      let minute = nowTime.getMinutes()
-      // let seconds=nowTime.getSeconds()
-      console.log('现在的小时是' + hour + '现在的分钟是' + minute)
-      // 如果设置的小时和分钟与当前的小时和分钟相同，则暂停，关闭定时器
-      let countSeconds = (setHour - hour) * 3600 + (setMinute - minute) * 60
-<<<<<<< HEAD
-=======
->>>>>>> parent of 586c747... 解决倒计时的bug
->>>>>>> parent of 8ad99c6... 倒计时bug3
+      // let arr = time.split(':')
+      // // 将用户选择的时间拆分成小时和分钟
+      // let setHour = parseInt(arr[0])
+      // let setMinute = parseInt(arr[1])
+      // console.log('设置的小时是' + setHour + '设置的分钟是' + setMinute)
+      // // if (this.data.is_play) {
+      // // this.data.timer = setInterval(() => {
+      // // 获得当前的时间，并将其拆分成小时、分钟
+      // let nowTime = new Date()
+      // let hour = nowTime.getHours()
+      // let minute = nowTime.getMinutes()
+      // // let seconds=nowTime.getSeconds()
+      // console.log('现在的小时是' + hour + '现在的分钟是' + minute)
+      // // 如果设置的小时和分钟与当前的小时和分钟相同，则暂停，关闭定时器
+      // let countSeconds = (setHour - hour) * 3600 + (setMinute - minute) * 60
+
       let countTime = that.formatTime(countSeconds)
 
       that.setData({
         countSeconds,
         countTime
       })
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
+
       // 展示模态框
       that.showModal()
       // 倒计时
-=======
->>>>>>> parent of 586c747... 解决倒计时的bug
->>>>>>> parent of 8ad99c6... 倒计时bug3
+
       that.Numdown()
 
     }

@@ -87,14 +87,14 @@ Page({
       duration: e.detail.value
     })
   },
-
+// -------------------------你的js----------------------------
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  
+  // 获取用户信息
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -128,7 +128,7 @@ Page({
     //   }
     // })
   },
-
+// -------------------我的js------------------------
   onLoad: function () {
     // 获取本地缓存的数据
     const Cates = wx.getStorageSync('cates')

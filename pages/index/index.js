@@ -23,11 +23,14 @@ Page({
     bgColor: '#000000',
     //音乐列表
     playlist: [],
-    // 缓存数组
+    // 音乐缓存数组
     Cates: [],
 
+    // 是否已经请求到数据
     isShowArticle: false,
+    // 播放状态
     is_play: false,
+    // 正在播放的索引，最开始为-1
     playIndex: -1,
 
     viewing_time: 0,//曾播放的到的时长
@@ -35,7 +38,7 @@ Page({
     loops: 0,//是否完整播放过一遍
     is_first: true,//是否从未点击过图片
     is_first2: true,//还未点击图片就在播放条暂停了
-    musicer: null,//定时器 检测后台播放状态的按钮
+    musicer: null,//音乐定时器 检测后台播放状态的按钮
 
 
     // 正在播放的音乐信息,默认为第一首
@@ -55,16 +58,18 @@ Page({
     is_clock: false,
     Timeindex:0,
     TimeArray:['01  分','05  分','10  分','15  分','20  分','25  分','30  分','40  分','45  分', '50  分','55  分','60  分','90  分','120  分' ],
-    timer: null, //定时器
+    timer: null, //闹钟定时器
+
     // 倒计时界面
     hideFlag: true,//true-隐藏  false-显示
     animationData: {},//动画
-    countTime: '5:00',
+    countTime: '5:00',  //倒计时的时间
     countSeconds: 300,
-    // 语句信息
+   
+    // 一言语句信息
     word: {
 
-      hitokoto: "你好呀啊呀啊呀早睡早起身体好",
+      hitokoto: "早睡早起身体好~",
       type: "f",
       from: "网络",
       from_who: null,
@@ -72,7 +77,7 @@ Page({
 
 
     },
-    // 缓存信息
+    // 一言缓存信息
     Words: {}
 
   },
@@ -89,43 +94,7 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
-    // 获取本地缓存的数据
-    const Cates = wx.getStorageSync('cates')
-    const Words = wx.getStorageSync('words')
-    // 如果缓存没有数据，则发送请求
-    if (!Cates || !Words) {
-      this.getList()
-      this.getWords()
-      console.log('我一次都没有加载过')
-    }
-    else {
-      let time1 = Date.now() - Cates.time
-      let time2 = Date.now() - Words.time
-      // 如果有旧的数据，但是过期了就重新发送请求,过期时间为5分钟
-      if (time1 > 300000 || time2 > 300000) {
-        this.getList()
-        this.getWords()
-        console.log('我的时间已经过期了')
-      }
-      // 如果有旧的数据并且没有过期，则从缓存中拿数据
-      else {
-        this.data.Cates = Cates.data
-        this.data.Words = Words.data
-        let playlist = this.data.Cates.map(v => v)
-        let word = this.data.Words
-        this.setData({
-          isShowArticle: true,
-          playlist,
-          word
-        })
-        console.log('我是缓存里的数据')
-
-
-      }
-    }
-
-  },
+  
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -160,6 +129,44 @@ Page({
     // })
   },
 
+  onLoad: function () {
+    // 获取本地缓存的数据
+    const Cates = wx.getStorageSync('cates')
+    const Words = wx.getStorageSync('words')
+    // 如果缓存没有数据，则发送请求
+    if (!Cates || !Words) {
+      this.getList()
+      this.getWords()
+      // console.log('我一次都没有加载过')
+    }
+    else {
+      let time1 = Date.now() - Cates.time
+      let time2 = Date.now() - Words.time
+      // 如果有旧的数据，但是过期了就重新发送请求,过期时间为5分钟
+      if (time1 > 300000 || time2 > 300000) {
+        this.getList()
+        this.getWords()
+        // console.log('我的时间已经过期了')
+      }
+      // 如果有旧的数据并且没有过期，则从缓存中拿数据
+      else {
+        this.data.Cates = Cates.data
+        this.data.Words = Words.data
+        let playlist = this.data.Cates.map(v => v)
+        let word = this.data.Words
+        this.setData({
+          isShowArticle: true,
+          playlist,
+          word
+        })
+        // console.log('我是缓存里的数据')
+
+
+      }
+    }
+
+  },
+// 云函数获取播放列表
   getList() {
     let that = this;
     //调用云函数getmList来获取播放列表
@@ -191,9 +198,6 @@ Page({
               isShowArticle: true,
               playlist
             })
-
-
-
           }
         }
         //如果返回的res没有result
@@ -202,9 +206,6 @@ Page({
             title: '没有数据',
           })
         }
-
-
-
       },
       fail: err => {
         wx.showToast({
@@ -236,45 +237,17 @@ Page({
             from_who: word.from_who,
             creator: word.creator
 
-
           }
         })
       }
     })
   },
-  /**
-  * 页面相关事件处理函数--监听用户下拉动作
-  */
-  //  onPullDownRefresh: function () {
-  //   //   // // 在标题栏中显示加载
-  //   //   // wx.showNavigationBarLoading({
-  //   //   //   complete: (res) => {},
-  //   //   // })
-
-  //   //   // this.getList();
-  //   //   // // 完成停止加载
-  //   //   // wx.hideNavigationBarLoading({
-  //   //   //   complete: (res) => {},
-  //   //   // })
-  //   //   // //  停止下拉刷新
-  //   //   // wx.stopPullDownRefresh({
-  //   //   //   complete: (res) => {},
-  //   //   // })
-  //   this.getList()
-  //     wx.stopPullDownRefresh();
-  //   },
 
 
-  onReady: function () {
-
-  },
-
- 
-
-  //监听后台的暂停和播放，修改播放状态
+  //监听手机后台的暂停和播放，修改播放状态
   onShow: function () {
     this.musicer=setInterval(()=>{
-      console.log('我是音乐定时器')
+      // console.log('我是音乐定时器')
 
       // 在安卓用onStop无效
       audioCtx.onPause(()=>{
@@ -291,20 +264,12 @@ Page({
 
       });
     },2000)},
-
-  
-
-
+// 在页面卸载时关闭后台音乐定时器
   onUnLoad: function () {
     clearInterval(this.musicer)
 
   },
-  // scroll-view上拉刷新，不能通过onpuudownpresh
-  // 不过这个页面貌似没有必要刷新
-  // topLoad:function(){
-  //   console.log('刷新啦')
-  //   this.getList()
-  // },
+  
   //格式化时间
   formatTime: function (time) {
     var minute = Math.floor(time / 60) % 60;
@@ -315,30 +280,13 @@ Page({
   setMusic: function (index) {
     let music = this.data.playlist[index]
     console.log(music)
-    // // 解决背景音乐的bug，兼容安卓?????，官方的bug，不能在onload或者onready上设置title
+    // // 解决背景音乐的bug，兼容安卓，官方的bug，不能在onload或者onready上设置title
     audioCtx.title = music.name
     audioCtx.epname = '  '
     audioCtx.singer = '  '
-    audioCtx.coverImgUrl ='https://i.loli.net/2020/05/29/kjCgevWIV8sEMdT.jpg'
+    audioCtx.coverImgUrl ='https://i.loli.net/2020/05/29/kjCgevWIV8sEMdT.jpg'  //统一专辑封面图片
 
-    audioCtx.src = music.music_url
-    // audioCtx.src = "http://183.240.120.29/amobile.music.tc.qq.com/C400001KQ3zX0N2rVR.m4a?guid=185019120&amp;vkey=D8F7BFF89ECE89AC5D8DCCF7173413FEEC9F4D3BE51BC96DED7B66B6B50B9EB0D64F58987760909B62F71503AA4C2C06D8F1B7A93BEC0D56&amp;uin=0&amp;fromtag=66"
-    // audioCtx.src = "http://183.240.120.18/amobile.music.tc.qq.com/C400002I3Nwa4f9xqA.m4a?guid=4680889107&amp;vkey=977534C2CDF8CB0B6EF5698D62EA45474AE69C7B31FE80E69E06EB3DD5F349FA2905A4DD5F2FD441352D3BDCD4C76E994709613D7F605F6E&amp;uin=115&amp;fromtag=66" 贝贝
-    // audioCtx.src="http://183.240.120.29/amobile.music.tc.qq.com/C400000trBUk47EpIL.m4a?guid=4680889107&amp;vkey=481BF7496B76B8B8679384F83453766C5FFF3F996503230E81FDC5BD5D2BB81B09A7DE273C401CD31A3CB9AF446919B8D25F20DF054C5AEE&amp;uin=115&amp;fromtag=66" 光
-    // console.log(this.audioCtx)
-
-    // 如果是第一次播放，则初始化totalTime为0:00
-    // if (this.data.loops == 0) {
-    //   this.setData({
-    //     playIndex: index,
-    //     'play.title': music.name,
-    //     'play.coverImgUrl': music.pic_url,
-    //     'play.currentTime': '0:00',
-    //     'play.totalTime': '0:00',
-    //     'play.totalSeconds': 0
-
-    //   })
-    // }
+    audioCtx.src = music.music_url  
 
     // 如果已经播放过了，则初始化时间为音乐当前的时间
 
@@ -374,43 +322,35 @@ Page({
   play: function () {
     let that = this
 
-    // 转化为浮点类型，因为一开始定义是string类型
+    // 获得缓冲的时间，转化为浮点类型，因为一开始定义是string类型
     let viewing_time = parseFloat(that.data.viewing_time)
-
+// 获得当前播放的秒数
     let currentSeconds = this.data.play.currentSeconds
+    // 获得当前音乐的时长
     let duration = this.data.play.duration
-    // 如果当前时间离总时长还有一段距离 手动重新播放
-    let num = duration - currentSeconds
+    
 
 
 
-    // 当缓冲的时间不为0且这首歌还未播放完
+    // 当缓冲的时间不为0且这首歌还未播放完，则跳转至之前的秒数
     if (viewing_time != 0 && currentSeconds < duration) {
       // 跳转到暂停时存储的时间
-      console.log('11111 我暂停之后又能回到以前啦 viewing_time是 ' + viewing_time + 'currentSeconds是' + currentSeconds)
+      // console.log('11111 我暂停之后又能回到以前啦 viewing_time是 ' + viewing_time + 'currentSeconds是' + currentSeconds)
       // audioCtx.seek(viewing_time)
       audioCtx.seek(currentSeconds)
-
-
-
       that.currentTimeChange()
 
     }
+    // 否则不做任何操作
     else {
-      // wx.playBackgroundAudio()
-      // that.setData({
-      //   is_play: true,
-
-      // })
+     
       that.currentTimeChange()
-      // return;
+   
 
     }
-
-
     // 正式开始播放
     wx.playBackgroundAudio()
-    console.log('我播放啦')
+    // console.log('我播放啦')
     // audioCtx.play()
     that.setData({
       is_play: true,
@@ -423,8 +363,9 @@ Page({
   },
   // 用于播放条的播放功能
   play2: function () {
+    //  从来没有点击过图片就播放了
     if (this.data.is_first && this.data.is_first2) {
-      console.log('我从来没有点击过图片就播放了')
+    // 默认设置第一首并播放
       this.setMusic(0)
       this.play()
       this.setData({
@@ -432,6 +373,7 @@ Page({
       })
 
     }
+    // 否则调用图片点击播放的方法
     else {
       this.play()
     }
@@ -447,33 +389,29 @@ Page({
     this.data.viewing_time = this.data.play.currentSeconds
   },
   // 换歌
-
   change: function (e) {
     this.setData({
       is_first: false
     })
     let current = e.currentTarget.dataset.index
 
-    console.log('current是' + current, 'playIndex is' + this.data.playIndex)
+    // console.log('current是' + current, 'playIndex is' + this.data.playIndex)
     // 当点击的是同一首并且这首正在播放，则暂停
     if (this.data.playIndex == current && this.data.is_play == true) {
       this.pause()
-      console.log("这一首暂停！ ")
+      // console.log("这一首暂停！ ")
       // 结束循环
       return;
 
     }
     //  // 当点击的是同一首并且这首正在暂停，则接着上一次的时间播放
     if (this.data.playIndex == current && this.data.is_play == false) {
-      //  乱加的试试看，但这是解决暂停后无法循环播放的关键
-      // 不会吧  删除了就没法接着播放？？？
+      
 
-      // this.setMusic(this.data.playIndex) //这是可以循环的，关键就在于这一步重新设置了src
-
-      // this.play3() 
+      // this.setMusic(this.data.playIndex) //这是可以循环的，关键就在于这一步重新设置了src，要循环则要重新设置src
       this.play()//这是可以继续播放的
 
-      console.log("又继续放这一首啦！ ")
+      // console.log("又继续放这一首啦！ ")
 
 
     }
@@ -481,8 +419,8 @@ Page({
     else {
       this.setMusic(current)
       this.play()
-      // wx.playBackgroundAudio()
-      console.log("下一首啦！")
+     
+      // console.log("下一首啦！")
     }
 
   },
@@ -490,40 +428,32 @@ Page({
   updateViewTime: function () {
     this.data.viewing_time = this.data.play.currentSeconds
   },
-  //当前音频时间发生变化时
+  //监听当前音频时间发生变化时
   currentTimeChange: function () {
-    // 可能存在的bug？？
-    // let self = this;
+    
     let that = this
-    //   // // 背景音乐播放完毕    // 播放结束时要做的事情是啥？？？？？？？
-
-    // 不确定有没有用到？？？？loops有用吗
+    
+  
 
     audioCtx.onEnded(() => {
-      console.log('我已经播放完啦 我要再次播放')
-      // 放完后设置播放状态为不播放？？？？？？还是播放完后要更新一下时间
+      // console.log('我已经播放完啦 我要再次播放')
+      // 放完后设置要更新一下缓冲时间
       let loops = this.data.loops + 1
       that.setData({
         loops: loops,
-        // is_play:false
+        
       })
       // 加上这句话在模拟器才能中正常
       that.updateViewTime()
-
+// 放完后要重新设置src才能循环播放
       that.setMusic(that.data.playIndex)
       that.play()
-
-
-      //  that.change(this.data.playIndex)
-      console.log('又可以重新播放啦')
+      // console.log('又可以重新播放啦')
     })
 
-    // 自动更新播放进度
+    // 监听自动更新播放进度
     audioCtx.onTimeUpdate(() => {
-
-
-
-
+// 不断改变播放的秒数
       this.setData({
         'play.durationFormat': this.formatTime(audioCtx.duration),
         'play.duration': audioCtx.duration,
@@ -547,11 +477,11 @@ Page({
 
       // 用于设置即将播放完之后手动循环
       if (duration != 0 && currentSeconds != 0 && num <= 1) {
-        // 放完后设置播放状态为不播放？？？？？？还是播放完后要更新一下时间
+        // 放完后设置播放要更新一下时间
         let loops = this.data.loops + 1
         that.setData({
           loops: loops,
-          // is_play:false
+         
         })
         // 加上这句话在模拟器才能中正常
         that.updateViewTime()
@@ -559,26 +489,7 @@ Page({
         that.setMusic(that.data.playIndex)
         that.play()
 
-
-        //  //  that.change(this.data.playIndex)
-        //  // 正式开始播放
-        //  wx.playBackgroundAudio()
-        //  // audioCtx.play()
-        //  that.setData({
-        //    is_play: true,
-
-        //  })
-        //  console.log('又可以重新播放啦')
-        //  that.currentTimeChange()
-        //  return;
       }
-
-
-
-
-
-
-
 
     });
 
@@ -607,8 +518,7 @@ Page({
     let time4=parseInt(time3.trim())
     // console.log('强制类型转换后的时间'+typeof time4)
 
-    // 如果用户确定
-
+    // 如果用户确定选择了时间并且播放状态已经在播放了
     if (time && this.data.is_play) {
       wx.showToast({
         title: '计时结束将停止',
@@ -618,29 +528,10 @@ Page({
         is_clock: true
       })
 
-
-      
-      
       // 用户设置的秒数
       let countSeconds = time4* 60
-      // let arr = time.split(':')
-      // // 将用户选择的时间拆分成小时和分钟
-      // let setHour = parseInt(arr[0])
-      // let setMinute = parseInt(arr[1])
-      // console.log('设置的小时是' + setHour + '设置的分钟是' + setMinute)
-      // // if (this.data.is_play) {
-      // // this.data.timer = setInterval(() => {
-      // // 获得当前的时间，并将其拆分成小时、分钟
-      // let nowTime = new Date()
-      // let hour = nowTime.getHours()
-      // let minute = nowTime.getMinutes()
-      // // let seconds=nowTime.getSeconds()
-      // console.log('现在的小时是' + hour + '现在的分钟是' + minute)
-      // // 如果设置的小时和分钟与当前的小时和分钟相同，则暂停，关闭定时器
-      // let countSeconds = (setHour - hour) * 3600 + (setMinute - minute) * 60
-
       let countTime = that.formatTime(countSeconds)
-
+// 修改倒计时的秒数
       that.setData({
         countSeconds,
         countTime
@@ -650,11 +541,10 @@ Page({
       // 展示模态框
       that.showModal()
       // 倒计时
-
       that.Numdown()
 
     }
-
+// 否则提示用户先播放
     else {
       wx.showModal({
         title: '提示',
@@ -669,8 +559,7 @@ Page({
   // 倒计时的方法
   Numdown: function () {
     var that = this
-
-
+    // 开启定时器倒计时，让秒数每隔1秒-1
     that.data.timer = setInterval(() => {
       let countSeconds = that.data.countSeconds
       countSeconds--
@@ -678,15 +567,15 @@ Page({
         countSeconds: countSeconds,
         countTime: that.formatTime(countSeconds)
       })
-      console.log('现在的秒是' + that.data.countSeconds)
+      // console.log('现在的秒是' + that.data.countSeconds)
       if (that.data.countSeconds == 0) {
         that.pause()
-        console.log('我可以暂停啦')
+        // console.log('我可以暂停啦')
         clearInterval(that.data.timer)
         return;
       }
       else {
-        console.log('我还不可以暂停')
+        // console.log('我还不可以暂停')
 
       }
     }, 1000)
@@ -754,18 +643,19 @@ Page({
 
     }
   },
-  // 切换白天模式
+  // 切换日夜间模式
   toggle: function () {
     let is_night = this.data.is_night
-    console.log('我要切换模式啦')
+  // 切换成白天模式
     if (is_night != false) {
       is_night = false
       this.setData({
         bgColor: '#fbf7e9'
       })
 
-      console.log('我要变成白天模式啦')
+      
     }
+    // 切换成夜间模式
     else {
       is_night = true
 
@@ -773,7 +663,7 @@ Page({
         bgColor: '#000000'
       })
 
-      console.log('我要变成夜间模式啦')
+    
     }
     this.setData({
       is_night,

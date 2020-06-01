@@ -803,7 +803,7 @@ page {
     color: white;
   }
   
-  /* .neonOn {
+.neonOn {
     animation: neon 1.5s ease-in-out infinite alternate;
     animation-delay: 90ms;
   }
@@ -811,7 +811,7 @@ page {
     animation: neonBox 1.5s ease-in-out infinite alternate;
     animation-delay: 90ms;
   }
-   */
+  
   @keyframes neon {
     0% {
       text-shadow: 2rpx 0rpx 10rpx #fff

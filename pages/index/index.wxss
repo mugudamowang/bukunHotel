@@ -12,6 +12,443 @@ navigator {
 }
 
 /* -------------------lyq; dailycard.css------------------------- */
+.page{
+  display: block;
+  height: 100%;
+  width: 100%;
+position: relative;
+left: 0;
+top: 0;
+z-index: 1;
+
+}
+
+/* 整体 */
+.flow{
+  height:1300rpx;
+  position: relative;
+}
+/* 头部 */
+  .top {
+    margin: 20rpx 50rpx;
+    height: 400rpx;
+    position: relative;
+    
+  }
+
+  .top .night {
+    height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40rpx;
+  }
+
+  .top .night .hello1 {
+    color: white;
+    font-size: 50rpx;
+  }
+  .top .night .hello2{
+    color: black;
+    font-size: 50rpx;
+  }
+
+  .top .night .moon {
+    width: 110rpx;
+    height: 100%;
+    opacity: 0.8;
+    background: no-repeat url("https://i.loli.net/2020/04/23/l7kt9JXcDF8bzVC.png");
+    background-size: auto 100%;
+    transform-origin: center 50%;
+    animation: swing 3s linear 0s infinite alternate;
+  }
+  .top .night  .sun{
+    width: 95rpx;
+    height: 90rpx;
+    opacity: 0.8;
+    background: no-repeat url("https://i.loli.net/2020/05/26/ePc3HfqOamjB4hW.png");
+    background-size: auto  100% ;
+    transform-origin: center 50%;
+    animation: swing2 4s linear 0s infinite alternate ;
+  }
+  .top  .wordspilt{
+    text-align: center;
+    
+  height: 50rpx;
+  width: 100%;
+  color:white;
+  opacity: 0.8;
+  font-size: 35rpx;
+  margin-bottom: 25rpx;
+  }
+  .top  .wordspilt2{
+    text-align: center;
+    
+  height: 50rpx;
+  width: 100%;
+  color: black;
+  opacity: 0.8;
+  font-size: 35rpx;
+  margin-bottom: 25rpx;
+  }
+  .top .word {
+    color: gray;
+    font-size: 30rpx;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  }
+  .top .word .sentence{
+    font-size: 30rpx;
+    width: 100%;
+  
+    margin-bottom: 20rpx;
+  }
+  .top .word .author{
+  
+    text-align: right;
+    font-size: 25rpx;
+    width: 50%;
+    height: 30rpx;
+  }
+
+/* 中部 */
+  .centerlist {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    justify-content: space-around;
+    position: relative;
+  }
+  .centerlist .musicspilt{
+    text-align: center;
+   
+  height: 50rpx;
+  width: 100%;
+  color:white;
+  opacity: 0.8;
+  font-size: 35rpx;
+  margin-bottom: 25rpx;
+  }
+  .centerlist .musicspilt2{
+    text-align: center;
+   
+  height: 50rpx;
+  width: 100%;
+  color:black;
+  opacity: 0.8;
+  font-size: 35rpx;
+  margin-bottom: 25rpx;
+  }
+  .centerlist .wrap {
+    position: relative;
+    margin-bottom: 70rpx;
+  }
+
+  .centerlist .wrap .img_bg {
+    width: 300rpx;
+    height: 300rpx;
+    border-radius: 15rpx;
+ 
+  }
+
+  .centerlist .wrap .title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    text-align: center;
+    color: white;
+    font-size: 30rpx;
+    font-weight: 100;
+  }
+  /* 版权信息 */
+  .copyright {
+    width: 100%;
+    margin-top: 100rpx;
+    height: 300rpx;
+    text-align: center;
+    color: white;
+    font-size: 30rpx;
+    margin-bottom: 250rpx;
+  }
+  .copyright2{
+    color: black;
+  }
+/* 底部固定播放条 */
+  .fix {
+    position: fixed;
+    bottom: 45rpx;
+    left: 0;
+    width: 100%;
+    height: 150rpx;
+    background-color: #1d1d2b;
+    
+    border-top-left-radius: 30rpx;
+    border-top-right-radius: 30rpx;
+  }
+.fix .see{
+  position: absolute;
+  top:2rpx;
+  left: 360rpx;
+  height: 30rpx;
+  color: white;
+  font-size: 40rpx;
+  opacity: 0.8;
+  
+}
+  .fix .play {
+    position: absolute;
+    top: 25rpx;
+    left: 10rpx;
+    width: 250rpx;
+    height: 100rpx;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .fix .play .musicpicture {
+    position: relative;
+  }
+
+  .fix .play .musicpicture .musicbg {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+    border: 1px white solid;
+    box-sizing: border-box;
+    filter: blur(0.5px);
+    
+  }
+  .fix .play .musicpicture .musicbgOn{
+    animation: rotate 10s linear 0s infinite normal ;
+  }
+  .fix .play .musicpicture .on {
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25%;
+  }
+  .fix .play .musicpicture .stop {
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25%;
+  }
+  .fix .play .musicinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .fix .play .musicinfo .musicname {
+    color: white;
+    font-size: 30rpx;
+  }
+
+  .fix .play .musicinfo .musictime {
+    color: gray;
+    font-size: 25rpx;
+  }
+
+  .fix .handle {
+    position: absolute;
+    top: 50rpx;
+    right: 0;
+    width: 200rpx;
+    height: 70rpx;
+  }
+
+  .fix .handle .clock {
+    width: 100rpx;
+    height: 70%;
+    display: inline-block;
+    background: no-repeat url(" https://i.loli.net/2020/04/23/v7KcBqux2pITASm.png");
+    background-size: auto 100%;
+  }
+  .fix .handle .clock .clock2{
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    
+    
+  }
+  .fix .handle .share {
+    width: 100rpx;
+    height: 60%;
+    display: inline-block;
+    background: no-repeat url("https://i.loli.net/2020/04/23/hpIKrSRHeAJBOaY.png");
+    background-size: auto 100%;
+  }
+/* 背景星星 */
+  .star {
+    position: absolute;
+    left: 0;
+    top: 0rpx;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    background: url("https://i.loli.net/2020/04/23/39gGjtE8LMBXNDV.jpg") no-repeat 0 0;
+    background-size: cover;
+    animation: shine 2s linear 0s infinite alternate;
+  }
+  /* 倒计时界面 */
+  .modal{
+    position:fixed;
+     top:0; 
+     right:0;
+      bottom:0; 
+      left:0; 
+      z-index:1000;}
+  .bottom-dialog-body{
+    width:100%;
+     position:absolute; 
+     z-index:3000; 
+     bottom:0; 
+     left:0;
+     }
+  /*动画前初始位置*/
+  .bottom-positon{
+    -webkit-transform:translateY(100%);
+    transform:translateY(100%);
+  }
+  .hide {
+    /* position: relative; */
+    overflow: hidden;
+  
+  }
+   .hide .filter {
+    width: 750rpx;
+    height: 1200rpx;
+    border-top-left-radius: 80rpx;
+    border-top-right-radius: 80rpx;
+    filter: blur(0.2px);
+  }
+  .hide .back{
+    color:white;
+    font-size: 50rpx;
+    position: absolute;
+    top: 5rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+  }
+   .hide .content {
+     width: 350rpx;
+     height: 500rpx;
+    
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30%;
+  
+    color: white;
+   
+   
+  }
+  .hide .content .title{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  
+  }
+  .hide .content .title .title1{
+  width: 25%;
+  height: 20%;
+  align-self:flex-start;
+  font-size: 50rpx;
+  }
+  .hide .content .title .title2{
+    width: 60%;
+    height: 80%;
+    align-self:center;
+    letter-spacing:25rpx;
+  flex-wrap: wrap;
+  font-size: 80rpx;
+  opacity: 0.8;
+  
+  /* 下面这个是最接近的 */
+  font-family: cursive;
+  
+  
+  }
+  .hide .content .title .title3{
+  width: 15%;
+  height: 35%;
+  align-self:flex-end;
+  font-size: 50rpx;
+  }
+  .hide .content .show{
+    display: flex;
+    justify-content: space-around;
+    border-radius: 20rpx;
+    border:solid  2rpx white;
+    width: 50%;
+    height: 18%;
+  
+    align-items: center;
+  
+  }
+  .hide .content .show  .clock{
+  
+    width: 30%;
+    height: 50%;
+    display: inline-block;
+    background: no-repeat url(" https://i.loli.net/2020/04/23/v7KcBqux2pITASm.png");
+    background-size: auto 100%;
+  }
+  .hide .content .show .time{
+    color: white;
+    font-size: 35rpx;
+    font-family: cursive;
+    opacity: 0.8;
+  
+  }
+  /* 动画 */
+  @keyframes swing {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(15deg);
+    }
+  }
+  @keyframes swing2 {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(15deg);
+    }
+  }
+  @keyframes shine {
+    from {
+      opacity: 1 ;
+    }
+    to {
+      opacity: 0.3;
+    }
+  }
+  @keyframes rotate {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(360deg);
+    }
+  }
 
 
 

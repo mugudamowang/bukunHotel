@@ -48,6 +48,9 @@ Component({
           title: '不困投递中~~',
         })
         if (this.data.comType === "post") {
+          const like = []
+          like.id = ui.openId
+          like.status = false
           wx.cloud.callFunction({
             name: "createPost",
             data: {
@@ -56,11 +59,12 @@ Component({
               openid: ui.openId,
               nickname: ui.nickName,
               avatarUrl: ui.avatarUrl,
-              like: false,
+              like: like,
               likeNum: 0,
               commentNum: 0
             }
           })
+          console.log(like)
 
         } 
         if(this.data.comType === "comment") {

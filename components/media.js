@@ -1,11 +1,15 @@
 // components/media.js
+
+const ui = wx.getStorageSync('userInfo')
+
+
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
     postid: String,
-    like: Boolean,
+    like: Array,
     likeNum: Number,
     commentNum: Number
   },
@@ -14,29 +18,50 @@ Component({
    * 组件的初始数据
    */
   data: {
-    count: 1,
+    localStatus: false
   },
 
   /**
    * 组件的方法列表
    */
+
+
+  lifetimes: {
+    attached: function() {
+      let i = 0
+      while (i < this.data.like.length) {
+        if (this.data.like[i].id == ui.openId) {
+          this.setData({
+            localStatus: this.data.like[i].status
+          })
+          break;
+        }
+        i++
+      }
+    },
+  },
+
   methods: {
+
     likeBtn: function (e) {
-      if(this.data.like){
+      if (this.data.localStatus) {
         this.data.likeNum--
-      }else{
+      } else {
         this.data.likeNum++
       }
       this.setData({
-        like: !(this.data.like),
+        localStatus: !(this.data.localStatus),
         likeNum: this.data.likeNum
       })
+
+
       wx.cloud.callFunction({
         name: 'setMedia',
         data: {
           postid: this.data.postid,
           likeNum: this.data.likeNum,
-          like: this.data.like
+          id: ui.openId,
+          localStatus: this.data.localStatus
         },
         fail: err => {
           console.log(err)
@@ -49,4 +74,5 @@ Component({
     }
 
   }
+
 })

@@ -1,6 +1,6 @@
 <!--components/media.wxml-->
 
-<view class="iconfont {{like? 'icon_likefill':'icon_like'}} "bindtap="likeBtn"><view style="font-size: 15rpx;color:grey; position:absolute;bottom:-15rpx">{{likeNum}}</view></view>
+<view class="iconfont {{ localStatus ? 'icon_likefill':'icon_like'}} "bindtap="likeBtn"><view style="font-size: 15rpx;color:grey; position:absolute;bottom:-15rpx">{{likeNum}}</view></view>
 <navigator class="iconfont icon_comments" url="../postDetail/postDetail?postid={{postid}}">
 <view style="font-size: 15rpx; color:grey;position:absolute;bottom:-15rpx">{{commentNum}}</view>
 </navigator>

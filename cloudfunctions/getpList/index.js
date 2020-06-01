@@ -2,8 +2,8 @@
 const cloud = require('wx-server-sdk')
 
 cloud.init()
-
 const db = cloud.database()
+const _ = db.command
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -19,7 +19,11 @@ exports.main = async (event, context) => {
           }
         })
     else {//如果是获取完全列表
-      return await db.collection('post').orderBy('date', 'desc').limit(20)
+      return await db.collection('post')
+      .orderBy('date', 'desc')
+      .where({
+        date: _.gte(event.date)
+      })
         .get({
           success: function (res) {
             console.log('列表', res)

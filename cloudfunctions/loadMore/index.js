@@ -4,12 +4,15 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 
 const db = cloud.database()
-
+const _ = db.command
 // 云函数入口函数
 exports.main = async (event, context) => {
   try {
       return await db.collection('post')
       .orderBy('date', 'desc')
+      .where({
+        date: _.lte(event.fixedDate)
+      })
       .skip(event.currentPage*10)
       .limit(10)
         .get({

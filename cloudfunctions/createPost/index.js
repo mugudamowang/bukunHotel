@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
         openid: event.openid,
         nickname: event.nickname,
         avatarUrl: event.avatarUrl,
-        like: false,
+        like: event.like,
         likeNum: 0,
         commentNum: 0
       }

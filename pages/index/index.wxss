@@ -412,7 +412,8 @@ page {
   min-height: 200rpx;
   max-height: 500rpx;
 }
-.postTopic .post{
+
+.postTopic .post {
   padding: 100rpx 40rpx 80rpx 40rpx;
 }
 
@@ -442,4 +443,9 @@ page {
   font-size: 30rpx;
   border-radius: 50%;
   box-shadow: 0 0 0 10rpx rgb(0, 0, 0);
+}
+
+.load {
+  padding: 50rpx;
+  text-align: center
 }

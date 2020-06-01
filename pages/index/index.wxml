@@ -1,69 +1,107 @@
-<!--index.wxml-->
-
+<!-- index.wxml -->
 <!-- topNavBar这里是顶部菜单 -->
 <view class="topNavBar neonBox">
 	<view class="swiper-tab-list {{star==0 ? 'neonOn' : ''}}" data-star="0">☾</view>
 	<view class="swiper-tab-list {{star==1 ? 'neonOn' : ''}}" data-star="1">☆</view>
 </view>
-
-
 <!-- 这里是createPost按钮 -->
 <view hidden="{{!star}}">
 	<text bindtap="createPost" class="iconfont icon_add {{tapAdd==true ? 'iconfontAnimation' : ''}}  createPost neonBox"></text>
 	<sendMessages comType="post" wx:if="{{tapAdd}}" class="popIn"></sendMessages>
 </view>
-
-
 <view class="main">
-	<!-- dailyCard -->
+
 	<swiper class="swiper-section" interval="{{interval}}" duration="{{duration}}" bindchange="switchNav">
+		<!-- dailyCard -->
 		<swiper-item class="dailyCard-section">
-			<scroll-view class="flow" scroll-y="true">
-				<!-- 头部 -->
-				<view class="top" wx:if="{{isShowArticle}}">
-					<view class="night">
-						<text class="hello">晚上好</text>
-						<text class="moon"></text>
+			<view class="page" style="background-color:{{bgColor}}">
+				<scroll-view class="flow" scroll-y="true">
+					<!-- 头部 -->
+					<view class="top" wx:if="{{isShowArticle}}">
+						<view class="night">
+							<text class="hello1" hidden='{{!is_night}}'>晚上好</text>
+							<text class="hello2" hidden='{{is_night}}'>早上好</text>
+							<text class="moon" hidden='{{!is_night}}' bindtap="toggle"></text>
+							<text class="sun" hidden='{{is_night}}' bindtap="toggle"></text>
+						</view>
+						<view class="wordspilt {{is_night==false?'wordspilt2':' '}}" wx:if="{{isShowArticle}}">
+							———— •
+							言 • ————
+						</view>
+						<view class="word">
+
+							<view class="sentence">{{word.hitokoto}}</view>
+							<view class="author">————{{word.creator}}</view>
+						</view>
 					</view>
-					<view class="word">一定一定一定一定要好好睡觉早睡早起啊啊啊啊啊aaaaaaa啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊你好啊啊啊啊啊啊啊啊啊啊啊啊啊啊</view>
+					<!-- 中部 -->
+					<view class="centerlist">
+						<view class="musicspilt {{is_night==false?'musicspilt2':' '}}" wx:if="{{isShowArticle}}">———— ♩
+							躁 ♩ ————</view>
+						<view class="wrap" wx:for="{{playlist}}" wx:key="_id" wx:for-item="item" bindtap='change' data-index="{{index}}">
+							<image class="img_bg" mode="center" src="{{item.pic_url}}"></image>
+							<view class="title">{{item.name}}</view>
+						</view>
+					</view>
+					<!-- 尾部版权信息 -->
+					<view class="copyright {{is_night==false ? 'copyright2' : ''}}" wx:if="{{isShowArticle}}">
+						@不困旅馆
+					</view>
+				</scroll-view>
+				<!-- 固定的播放信息 -->
+				<view class="fix" wx:if="{{isShowArticle}}">
+					<view class="play">
+						<view class="musicpicture">
+							<image class="musicbg {{is_play==true?'musicbgOn':' '}}" mode="center" src='{{play.coverImgUrl}}'></image>
+							<image wx:if="{{is_play==true}}" class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix" bindtap="pause"></image>
+							<image wx:if="{{is_play==false}}" class="stop" src=" https://i.loli.net/2020/04/23/sk4m6UyRJTrfGVd.png" mode="widthFix" bindtap="play2"></image>
+						</view>
+						<view class="musicinfo">
+							<text class="musicname">{{play.title}}</text>
+							<text class="musictime">{{play.currentTime}}</text>
+						</view>
+					</view>
+					<view class="see" bindtap="showModal">︿
+					</view>
+					<view class="handle">
+						<picker class="clock" mode="selector" value="{{Timeindex}}" range="{{TimeArray}}" bindchange="bindPickerChange">
+							<view class="clock2">0</view>
+						</picker>
+						<button class="share" open-type="share"></button>
+					</view>
 				</view>
-				<!-- 中部 -->
-				<view class="centerlist">
-					<view class="wrap" wx:for="{{playlist}}" wx:for-index="index" wx:for-item="item">
-						<image class="img_bg" mode="center" src="{{item.pic_url}}"></image>
-						<view class="title">{{item.name}}</view>
+				<!-- 倒计时界面 -->
+				<view class="modal modal-bottom-dialog" hidden="{{hideFlag}}">
+					<view class='hide bottom-dialog-body bottom-positon' animation="{{animationData}}">
+						<image class="filter" mode='aspectFill' src='{{play.coverImgUrl}}'></image>
+						<view class="back" bindtap="hideModal">﹀
+						</view>
+						<view class='content'>
+							<view class="title">
+								<view class="title1">『</view>
+								<view class="title2">且且听行</view>
+								<view class="title3">』</view>
+
+							</view>
+							<view class="show">
+								<text class="clock"></text>
+								<text class="time">{{countTime}}</text>
+
+							</view>
+						</view>
 					</view>
 
+
+
 				</view>
-				<!-- 尾部版权信息 -->
-				<view class="copyright" wx:if="{{isShowArticle}}">@不困旅馆</view>
-			</scroll-view>
-			<!-- 固定的播放信息 -->
-			<view class="fix" wx:if="{{isShowArticle}}">
-				<view class="play">
-					<view class="musicpicture">
-						<image class="musicbg" mode="center" src="https://i.loli.net/2020/04/22/D6EOYiMC58fI7za.jpg"></image>
-						<image class="on" src="https://i.loli.net/2020/04/23/nNkJtQMpGl19yVd.png" mode="widthFix"></image>
-					</view>
-					<view class="musicinfo">
-						<text class="musicname">轻风细雨</text>
-						<text class="musictime">10:00</text>
-					</view>
-				</view>
-				<view class="handle">
-					<text class="clock"></text>
-					<text class="share"></text>
-				</view>
+				<!-- 蒙版星星 -->
+				<view class="star" wx:if="{{isShowArticle}}" hidden="{{!is_night}}"></view>
+
 			</view>
-			<!-- 蒙版星星 -->
-			<view class="star" wx:if="{{isShowArticle}}"></view>
+
 		</swiper-item>
 
-
-
 		<!-- userPost -->
-
-
 		<swiper-item>
 			<scroll-view class="userPost" scroll-y="true" ower-threshold="10" bindscrolltolower="scrolltolower">
 				<navigator hover-class="none" url="../my/my">

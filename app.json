@@ -5,8 +5,7 @@
     "pages/load/load",
     "pages/postDetail/postDetail",
     "pages/my/my"
-  ],                    
-  
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "backgroundColor": "#090F14",
@@ -14,5 +13,8 @@
     "navigationBarTitleText": "不困旅馆",
     "navigationBarTextStyle": "white"
   },
-  "sitemapLocation": "sitemap.json"
-}                                                                                        
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": [
+    "audio"
+  ]
+}

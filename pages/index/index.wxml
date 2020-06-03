@@ -6,7 +6,8 @@
 </view>
 <!-- 这里是createPost按钮 -->
 <view hidden="{{!star}}">
-	<text bindtap="createPost" class="iconfont icon_add {{tapAdd==true ? 'iconfontAnimation' : ''}}  createPost neonBox"></text>
+	<text bindtap="onPullDownRefresh" hidden="{{tapAdd}}" style="right: 50rpx;" class="iconfont .icon_refresh createPost"></text>
+	<text bindtap="createPost" class="iconfont icon_add {{tapAdd==true ? 'iconfontAnimation' : ''}}  createPost"></text>
 	<sendMessages comType="post" wx:if="{{tapAdd}}" class="popIn"></sendMessages>
 </view>
 <view class="main">

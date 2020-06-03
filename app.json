@@ -1,10 +1,10 @@
 {
   "cloud": true,
   "pages": [
-    "pages/index/index",
+    "pages/my/my",
     "pages/load/load",
-    "pages/postDetail/postDetail",
-    "pages/my/my"
+    "pages/index/index",
+    "pages/postDetail/postDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

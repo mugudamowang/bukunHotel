@@ -9,25 +9,27 @@ navigator {
   margin: 0;
   box-sizing: border-box;
 }
-.myWrap{
 
-}
+.myWrap {}
+
 /* 头部 */
-.myWrap .top{
-width: 100%;
-height: 500rpx;
-position: relative;
+.myWrap .top {
+  width: 100%;
+  height: 500rpx;
+  position: relative;
 
 }
-.myWrap .top .bg{
-width: 100%;
-height: 100%;
+
+.myWrap .top .bg {
+  width: 100%;
+  height: 100%;
 }
-.myWrap .top .main{
-position: absolute;
-width: 85%;
-height: 50%;
-left: 50%;
+
+.myWrap .top .main {
+  position: absolute;
+  width: 85%;
+  height: 50%;
+  left: 50%;
   transform: translateX(-50%);
   top: 30%;
   display: flex;
@@ -37,54 +39,57 @@ left: 50%;
   font-size: 30rpx;
   font-weight: 100;
 }
-.myWrap .top .main .info{
-display: flex;
-width: 20%;
-height: 80%;
-flex-direction: column;
-justify-content: space-between;
+
+.myWrap .top .main .info {
+  display: flex;
+  width: 20%;
+  height: 80%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.myWrap .top .main .info .infopic{
-width: 100%;
-height: 125rpx;
-border-radius: 50%;
+
+.myWrap .top .main .info .infopic {
+  width: 100%;
+  height: 125rpx;
+  border-radius: 50%;
 
 }
-.myWrap .top .main .info .infoname{
+
+.myWrap .top .main .infoname {
   text-align: center;
-  width:100% ;
+  width: 100%;
   height: 25%;
 
 }
-.myWrap .top .main .hello{
+
+.myWrap .top .main .hello {
+  width: 100%;
+  height: 55%;
   display: flex;
   padding-left: 30rpx;
-  box-sizing: border-box;
-background-color:rgba(255, 255, 255, 0.6);
-width: 180rpx;
-height: 180rpx;
-flex-wrap: wrap;
-  font-size: 60rpx;
+  border-radius: 5rpx;
+  flex-wrap: wrap;
+  font-size: 50rpx;
   justify-content: center;
   align-items: center;
-  letter-spacing:5rpx;
   
- 
 }
-/* 中部 */
-.myWrap .center{
- 
-background-color:#1e485e;
-padding-top: 70rpx;
-color: white;
-border-top: solid 8rpx #465760;
-text-align: center;
-}
-.myWrap .center .introduce{
- 
-  font-size: 40rpx;
-  margin-left: 20rpx;
 
+/* 中部 */
+.myWrap .center {
+
+  background-color: #1e485e;
+  padding-top: 70rpx;
+  color: white;
+  border-top: solid 8rpx #465760;
+  text-align: center;
+}
+
+.myWrap .center .introduce {
+  letter-spacing: 25rpx;
+  font-size: 30rpx;
+  margin-left: 20rpx;
 }
 
 /* 你的css代码 */
@@ -93,6 +98,7 @@ text-align: center;
   display: flex;
 
 }
+
 .postNav {
   border-top: 15rpx rgba(18, 30, 40, 0.426) solid;
   border-bottom: 15rpx rgba(18, 30, 40, 0.426) solid;
@@ -108,13 +114,13 @@ text-align: center;
   height: 200rpx;
   position: relative;
 
- 
+
 
 
 }
 
 
-.postNav .mediaCom{
+.postNav .mediaCom {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -140,6 +146,7 @@ text-align: center;
   top: 10rpx;
   left: 30rpx;
 }
+
 .hotPost {
   border: 10rpx rgba(83, 85, 85, 0.426) solid;
   border-radius: 10rpx;
@@ -151,7 +158,7 @@ text-align: center;
 
 
 /* 弹出管理三点*/
-.more{
+.more {
   position: absolute;
   top: 10rpx;
   right: 30rpx;
@@ -164,7 +171,7 @@ text-align: center;
 }
 
 /* 返回顶部 */
-.up{
+.up {
   position: fixed;
   bottom: 70rpx;
   right: 5rpx;
@@ -173,58 +180,80 @@ text-align: center;
   background: no-repeat url("https://i.loli.net/2020/05/30/4mHIxAXyzd5gDRK.png");
   background-size: auto 100%;
 }
+
 /* 弹出管理模态框 */
-.modal{
-  position:fixed;
-   top:0; 
-   right:0;
-    bottom:0; 
-    left:0; 
-    z-index:1000;}
-    .modal-cancel{
-      position:absolute;
-       z-index:2000; 
-       top:0; 
-       right:0; 
-       bottom: 0; 
-       left:0;
-        background:rgba(0,0,0,0.3);}
-.bottom-dialog-body{
-  width:100%;
-   position:absolute; 
-   z-index:3000; 
-   bottom:0; 
-   left:0;
-   /* background-color: #dfdede; */
-   }
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.modal-cancel {
+  position: absolute;
+  z-index: 2000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.bottom-dialog-body {
+  width: 100%;
+  position: absolute;
+  z-index: 3000;
+  bottom: 0;
+  left: 0;
+  /* background-color: #dfdede; */
+}
+
 /*动画前初始位置*/
-.bottom-positon{
-  -webkit-transform:translateY(100%);
-  transform:translateY(100%);
-text-align: center;
+.bottom-positon {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  text-align: center;
 }
 
 
 /* 底部弹出框 */
 
-.Mselect{
- 
+.Mselect {
+
   /* margin-bottom: 20rpx; */
 }
-.Mselect view{
+
+.Mselect view {
   padding: 26rpx 0;
   background: #fff;
   font-size: 35rpx;
 }
-.Mselect .delete{
+
+.Mselect .delete {
   border-top-left-radius: 30rpx;
   border-top-right-radius: 30rpx;
   color: red;
   border-bottom: solid 2rpx rgb(217, 213, 213);
 }
-.Mselect .cancel{
+
+.Mselect .cancel {
   color: black;
 }
 
 
+.neonBox {
+  animation: neonBox 1.5s ease-in-out infinite alternate;
+  animation-delay: 90ms;
+}
 
+@keyframes neonBox {
+  0% {
+    box-shadow: 0rpx 0rpx 10rpx #090F14
+  }
+
+  100% {
+    box-shadow: 0 0 5rpx rgba(9, 15, 20, 0.673), 0 0 8rpx rgba(9, 15, 20, 0.371), 0 0 30rpx rgba(255, 255, 255, 0.289);
+  }
+}

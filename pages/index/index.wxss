@@ -25,7 +25,7 @@ z-index: 1;
 
 /* 整体 */
 .flow{
-  height:1300rpx;
+  height:1200rpx;
   position: relative;
 }
 /* 头部 */
@@ -166,8 +166,8 @@ z-index: 1;
   /* 版权信息 */
   .copyright {
     width: 100%;
-    margin-top: 100rpx;
-    height: 300rpx;
+    margin-top: 50rpx;
+    height: 100rpx;
     text-align: center;
     color: white;
     font-size: 30rpx;

@@ -7,36 +7,9 @@ Page({
   data: {
 
     userinfo: ui,
-
-    datalist: [{
-        id: "0233",
-        post: "谁给你写诗?"
-      },
-      {
-        id: "0404",
-        post: "海星如何睡觉?"
-      },
-      {
-        id: "0618",
-        post: "hhh"
-      },
-      {
-        id: "1010",
-        post: "covid19给爷爬"
-      },
-      {
-        id: "8856",
-        post: "高三加油"
-      },
-      {
-        id: "1010",
-        post: "covid19给爷爬"
-      },
-      {
-        id: "8856",
-        post: "高三加油"
-      }
-    ],
+    mylist: [],
+    hidden: true,
+    postId: '',
 
     // 弹出管理
     hideFlag: true, //true-隐藏  false-显示
@@ -46,19 +19,83 @@ Page({
   },
 
   onLoad: function () {
-    
     this.setData({
-      userinfo: ui
+      userinfo: ui,
+      postId: ''
+    })
+    this.getMypost()
+    console.log(this.data.mylist)
+  },
+
+  getMypost(){
+
+    wx.cloud.callFunction({
+      name: 'getMypost',
+      data: {
+        openId: ui.openId
+      },
+
+      success : res => {
+
+        if(res.result){
+          this.setData({
+            mylist: res.result.data
+          })
+        }else{
+          this.setData({
+            hidden: false
+          })
+        }
+      },
+
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: 'XAX加载失败',
+        })
+      }
     })
   },
 
   // 删除的逻辑写在这里
   messageDelete: function () {
+    wx.cloud.callFunction({
+      name: 'getMypost',
+      data: {
+        delete: true,
+        postId: this.data.postId,
+        openId: ui.openId
+      },
 
+      success : res => {
+        if(res.result){
+          this.setData({
+            mylist: res.result.data
+          })
+          wx.showToast({
+            icon: "none",
+            title: '删除成功',
+          })
+        }else{
+          wx.showToast({
+            icon: 'none',
+            title: 'XAX不存在该博文',
+          })
+        }
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: 'XAX加载失败',
+        })
+      }
+    })
 
     // 删除后隐藏模态框
-    // this.hideModal()
+    this.hideModal()
   },
+
+
 
   // 取消删除
   messageCancel: function () {
@@ -87,10 +124,11 @@ Page({
 
 
   // 显示遮罩层及动画
-  showModal: function () {
+  showModal: function (e) {
     var that = this;
     that.setData({
-      hideFlag: false
+      hideFlag: false,
+      postId: e.currentTarget.id
     })
     // 创建动画实例
     var animation = wx.createAnimation({

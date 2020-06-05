@@ -63,7 +63,6 @@ Component({
               commentNum: 0
             }
           })
-          console.log(like)
 
         } 
         if(this.data.comType === "comment") {

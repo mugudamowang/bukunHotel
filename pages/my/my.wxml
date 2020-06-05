@@ -7,15 +7,15 @@
 		<!-- 背景图片 -->
 		<image class="bg" mode="aspectFill" src='{{tempFilePaths}}' bindtap="changeImage"></image>
 		<view class="main">
-			
+
 			<view class="info">
 				<!-- 头像 -->
 				<image class="infopic" src="{{userinfo.avatarUrl}}" mode="aspectFill"></image>
-				
+
 			</view>
 			<view style="display: flex ;position:absolute;  flex-direction: column;bottom: -50rpx">
-			<view class="infoname neonBox">{{userinfo.nickName}}</view>
-			<view class="hello neonBox">你好旅人</view>
+				<view class="infoname neonBox">{{userinfo.nickName}}</view>
+				<view class="hello neonBox">你好旅人</view>
 			</view>
 
 		</view>
@@ -29,25 +29,19 @@
 		</view>
 
 		<!-- 文章部分 -->
-		<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
-			<view class="postNav hotPost">
-				<text>不负光阴</text>
-			</view>
-			<view wx:for="{{datalist}}">
+		<scroll-view class="userPost" white-space="nowrap" scroll-y="true">
+			<view wx:for="{{mylist}}">
 				<view class="postNav">
 					<view class="postUser">
-						<view class="circle"></view>
-						<!-- 圆形icon -->
-						{{item.id}}
-						<!-- 作者id -->
+						<view style="font-size: 15rpx;color:grey;margin: 10rpx">on</view> <!-- 圆形icon -->
+						{{item.date}} <!-- 作者id -->
 					</view>
-					<!-- 弹出管理 -->
-					<view class="more" bindtap='showModal'></view>
-					{{item.post}}
-					<!-- 作者标题 -->
-					<navigator hover-class="none" url="../postDetail/postDetail">
-						<media class="mediaCom"></media>
-					</navigator>
+					<view id="{{item._id}}" class="more" bindtap='showModal'>
+					</view>
+
+
+					<view class="post">{{item.post}}</view> <!-- 作者标题 -->
+					<media id="media" postid="{{item._id}}" commentNum="{{item.commentNum}}" like="{{item.like}}" likeNum="{{item.likeNum}}" class="mediaCom"></media>
 				</view>
 			</view>
 		</scroll-view>
@@ -69,7 +63,6 @@
 				</view>
 			</view>
 		</view>
-
 
 	</view>
 

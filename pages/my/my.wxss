@@ -15,9 +15,8 @@ navigator {
 /* 头部 */
 .myWrap .top {
   width: 100%;
-  height: 500rpx;
+  height: 400rpx;
   position: relative;
-
 }
 
 .myWrap .top .bg {
@@ -78,7 +77,6 @@ navigator {
 
 /* 中部 */
 .myWrap .center {
-
   background-color: #1e485e;
   padding-top: 70rpx;
   color: white;
@@ -94,9 +92,9 @@ navigator {
 
 /* 你的css代码 */
 .userPost {
-  height: 100%;
+  height: 100vh;
   display: flex;
-
+  
 }
 
 .postNav {
@@ -113,9 +111,6 @@ navigator {
   align-items: center;
   height: 200rpx;
   position: relative;
-
-
-
 
 }
 
@@ -146,16 +141,6 @@ navigator {
   top: 10rpx;
   left: 30rpx;
 }
-
-.hotPost {
-  border: 10rpx rgba(83, 85, 85, 0.426) solid;
-  border-radius: 10rpx;
-  background-color: white;
-  margin-left: 10rpx;
-  margin-right: 10rpx;
-  color: black;
-}
-
 
 /* 弹出管理三点*/
 .more {

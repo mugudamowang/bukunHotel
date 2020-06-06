@@ -9,8 +9,11 @@
 </view>
 
 <view class="divLine">★</view>
+<view class="load" hidden="{{load}}">🛵。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">loading</text></view>
 <view class="postMessages">
-	<view wx:for="{{comlist}}">
+
+	<view wx:for="{{comlist}}" wx:key="_id">
+
 		<view class="messageOnBorad">
 			<view class="avatar fixed">
 				<image class="avatar" src="{{item.avatarUrl}}"></image>
@@ -20,9 +23,12 @@
 			<view class="name">by—{{item.nickname}}</view>
 		</view>
 		<view class="divLine"></view>
+
 	</view>
+
 </view>
-<view class="divLine">☾</view>
+<view class="load" hidden="{{!load}}">🚗。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">no more</text></view>
+
 
 
 

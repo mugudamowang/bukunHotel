@@ -9,6 +9,15 @@ exports.main = async (event, context) => {
   try {
     //如果是定向查询
     if (event.delete) {
+      db.collection('post')
+        .where({
+          _id: event.postId
+        })
+        .remove({
+          success: function (res) {
+            return res;
+          }
+        });
       db.collection('comments')
         .where({
           postid: event.postId
@@ -17,14 +26,8 @@ exports.main = async (event, context) => {
           success: function (res) {
             return res;
           }
-        })
-      db.collection('post')
-        .doc(event.postId)
-        .remove({
-          success: function (res) {
-            return res;
-          }
-        })
+        });
+
     }
     return await db.collection('post').where({
         openid: event.openId

@@ -91,16 +91,8 @@ Component({
               wx.showToast({
                 title: '嘚√',
               })
-              wx.startPullDownRefresh({
-                complete: (res) => {
-                  console.log("refreshing~")
-                },
-              })
-              wx.stopPullDownRefresh({
-                complete: (res) => {
-                  console.log("done~")
-                },
-              })
+              wx.startPullDownRefresh()
+              wx.stopPullDownRefresh()
             },
           })
         }, 1000)

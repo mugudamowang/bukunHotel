@@ -8,42 +8,49 @@ Page({
 
     userinfo: ui,
     mylist: [],
-    hidden: true,
+    load: false,
     postId: '',
 
     // 弹出管理
     hideFlag: true, //true-隐藏  false-显示
     animationData: {}, //动画
     //  背景图片路径
-    tempFilePaths: 'https://i.loli.net/2020/05/29/YWfHehqSRx64iwZ.jpg'
+    tempFilePaths: '',
+  
   },
 
   onLoad: function () {
+    const bgImage = wx.getStorageSync('bgImage')
+    if (bgImage == '') {
+      this.data.tempFilePaths = 'https://i.loli.net/2020/05/29/YWfHehqSRx64iwZ.jpg'
+    } else {
+      this.data.tempFilePaths = bgImage
+    }
+    
+
     this.setData({
       userinfo: ui,
-      postId: ''
+      postId: '',
+      tempFilePaths: this.data.tempFilePaths
     })
     this.getMypost()
-    console.log(this.data.mylist)
   },
 
-  getMypost(){
+  getMypost() {
 
     wx.cloud.callFunction({
       name: 'getMypost',
       data: {
+        delete: false,
         openId: ui.openId
       },
 
-      success : res => {
+      success: res => {
 
-        if(res.result){
+        if (res.result) {
           this.setData({
-            mylist: res.result.data
-          })
-        }else{
-          this.setData({
-            hidden: false
+            mylist: res.result.data,
+            load: true
           })
         }
       },
@@ -67,20 +74,29 @@ Page({
         openId: ui.openId
       },
 
-      success : res => {
-        if(res.result){
+      success: res => {
+        wx.showLoading({
+          title: '正在丢向垃圾桶~',
+        })
+        if (res.result.data.length != this.data.mylist.length) {
           this.setData({
             mylist: res.result.data
           })
-          wx.showToast({
-            icon: "none",
-            title: '删除成功',
-          })
-        }else{
-          wx.showToast({
-            icon: 'none',
-            title: 'XAX不存在该博文',
-          })
+          setTimeout(function () {
+            wx.hideLoading()
+            wx.showToast({
+              title: '删除成功',
+            })
+          }, 500)
+
+        } else {
+          setTimeout(function () {
+            wx.hideLoading()
+            wx.showToast({
+              icon: 'none',
+              title: '🦆，删有点挤,再试试蛤',
+            })
+          }, 1000)
         }
       },
       fail: err => {
@@ -89,6 +105,7 @@ Page({
           title: 'XAX加载失败',
         })
       }
+
     })
 
     // 删除后隐藏模态框
@@ -115,8 +132,9 @@ Page({
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
         const tempFilePaths = res.tempFilePaths
+        wx.setStorageSync('bgImage', tempFilePaths)
         that.setData({
-          tempFilePaths
+          tempFilePaths: tempFilePaths
         })
       }
     })
@@ -130,6 +148,7 @@ Page({
       hideFlag: false,
       postId: e.currentTarget.id
     })
+
     // 创建动画实例
     var animation = wx.createAnimation({
       duration: 400, //动画的持续时间

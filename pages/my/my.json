@@ -1,5 +1,7 @@
 {
+  "disableScroll":true,
   "usingComponents": {
     "media": "/components/media"
-  }
+  },
+  "backgroundColor": "#1e485e"
 }

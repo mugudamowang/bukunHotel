@@ -27,18 +27,20 @@ Component({
 
 
   lifetimes: {
-    attached: function() {
-      let i = 0
-      while (i < this.data.like.length) {
-        if (this.data.like[i].id == ui.openId) {
-          this.setData({
-            localStatus: this.data.like[i].status
-          })
-          break;
+      ready(){
+        let i = 0
+        while (i < this.data.like.length) { //遍历like列表查找用户id
+          if (this.data.like[i].id == ui.openId) {
+            this.setData({
+              localStatus: this.data.like[i].status,
+              likeNum:  this.data.likeNum
+            })
+            break;
+          }
+          i++
         }
-        i++
-      }
     },
+   
   },
 
   methods: {

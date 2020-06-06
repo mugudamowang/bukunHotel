@@ -7,6 +7,10 @@ page {
   background-attachment: fixed;
 }
 
+.load {
+  padding: 50rpx;
+  text-align: center
+}
 
 .postTopic {
   overflow: scroll;

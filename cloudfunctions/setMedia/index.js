@@ -13,7 +13,6 @@ exports.main = async (event, context) => {
       }).update({
         // data 传入需要局部更新的数据
         data: {
-          likeNum: event.likeNum,
           like: _.pop(event.id)
         },
       })
@@ -23,11 +22,11 @@ exports.main = async (event, context) => {
       }).update({
         // data 传入需要局部更新的数据
         data: {
-          likeNum: event.likeNum,
           like: _.push({
             'id': event.id,
             'status': event.localStatus
           })
+          
         },
       })
 

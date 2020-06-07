@@ -61,7 +61,6 @@ Component({
         name: 'setMedia',
         data: {
           postid: this.data.postid,
-          likeNum: this.data.likeNum,
           id: ui.openId,
           localStatus: this.data.localStatus
         },

@@ -45,7 +45,7 @@
 					</view>
 
 					<view class="post">{{item.post}}</view> <!-- 作者标题 -->
-					<media id="media" postid="{{item._id}}" commentNum="{{item.commentNum}}" like="{{item.like}}" likeNum="{{item.likeNum}}" class="mediaCom"></media>
+					<media id="media" postid="{{item._id}}" commentNum="{{item.commentNum}}" like="{{item.like}}" likeNum="{{item.like.length}}" class="mediaCom"></media>
 				</view>
 			</view>
 		</scroll-view>

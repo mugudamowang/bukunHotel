@@ -9,7 +9,6 @@ view{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   height: 100%;
 }
 
@@ -30,8 +29,6 @@ sup{
   border-radius: 50%;
   border: 10rpx solid white;
 }
-
-
 
 .img{
   left: -8rpx;

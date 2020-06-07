@@ -126,12 +126,12 @@
 							<view style="font-size: 15rpx;color:grey;margin: 10rpx">{{item.date}}</view>
 						</view>
 						<view class="post">{{item.post}}</view> <!-- 作者标题 -->
-						<media id="media" postid="{{item._id}}" commentNum="{{item.commentNum}}" like="{{item.like}}" likeNum="{{item.likeNum}}" class="mediaCom"></media>
+						<media id="media" postid="{{item._id}}" commentNum="{{item.commentNum}}" like="{{item.like}}" likeNum="{{item.like.length}}" class="mediaCom"></media>
 					</view>
 				</view>
 
 				<view class="load" hidden="{{loadAll}}">🛵。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">loading</text></view>
-				<view class="load" hidden="{{!loadAll}}">🚗。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">no more</text></view>
+				<view style="margin-top: 150rpx;" class="load" hidden="{{!loadAll}}">🚗。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">no more</text></view>
 			</scroll-view>
 		</swiper-item>
 

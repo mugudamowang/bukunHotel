@@ -76,7 +76,7 @@ Page({
 
       success: res => {
         wx.showLoading({
-          title: '正在丢向垃圾桶~',
+          title: '正在揉成团~',
         })
         if (res.result.data.length != this.data.mylist.length) {
           this.setData({
@@ -94,9 +94,9 @@ Page({
             wx.hideLoading()
             wx.showToast({
               icon: 'none',
-              title: '🦆，删有点挤,再试试蛤',
+              title: '🦆，删除队伍有点挤,再试试蛤',
             })
-          }, 1000)
+          }, 1500)
         }
       },
       fail: err => {

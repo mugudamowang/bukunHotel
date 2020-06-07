@@ -18,7 +18,6 @@ exports.main = async (event, context) => {
         nickname: event.nickname,
         avatarUrl: event.avatarUrl,
         like: event.like,
-        likeNum: 0,
         commentNum: 0
       }
     })
@@ -27,15 +26,3 @@ exports.main = async (event, context) => {
   }
 
 }
-
-
-// exports.main = async (event, context) => {
-//   const wxContext = cloud.getWXContext()
-
-//   return {
-//     event,
-//     openid: wxContext.OPENID,
-//     appid: wxContext.APPID,
-//     unionid: wxContext.UNIONID,
-//   }
-// }

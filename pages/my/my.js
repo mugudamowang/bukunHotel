@@ -16,6 +16,9 @@ Page({
     animationData: {}, //动画
     //  背景图片路径
     tempFilePaths: '',
+
+    // 滚动条滚动的位置
+    topNum:0
   
   },
 
@@ -53,9 +56,11 @@ Page({
             load: true
           })
         }
+     
       },
 
       fail: err => {
+       
         wx.showToast({
           icon: 'none',
           title: 'XAX加载失败',
@@ -118,9 +123,30 @@ Page({
   messageCancel: function () {
     this.hideModal()
   },
+  
   // 返回顶部的逻辑写在这
   goTop: function () {
-
+  
+this.setData({
+  topNum:this.data.topNum=0
+})
+  },
+  // 用户反馈调用云函数
+  handleContact:function(){
+    const that = this
+    //调用云函数getmList来获取播放列表
+    wx.cloud.callFunction({
+      name: 'getFeedback',
+      //成功
+      success: res => {
+        // console.log('我有回复啦')
+      },
+      fail: err => {
+        wx.showToast({
+          title: '有点拥挤，晚点再试试吧~',
+        })
+      }
+    });
   },
   // 点击背景图选择图片
   changeImage: function () {

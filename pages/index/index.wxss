@@ -746,3 +746,17 @@ page {
   padding: 50rpx;
   text-align: center
 }
+/* 返回顶部 */
+.up {
+  position: fixed;
+  /* bottom: 10rpx;
+  right: 0rpx; */
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 70rpx;
+  width: 50rpx;
+  height: 50rpx;
+  z-index: 5000;
+  background: no-repeat url("https://i.loli.net/2020/05/30/4mHIxAXyzd5gDRK.png");
+  background-size: auto 100%;
+}

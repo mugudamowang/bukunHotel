@@ -95,7 +95,11 @@ Page({
 
     },
     // 一言缓存信息
-    Words: {}
+    Words: {},
+
+
+    // 滚动条位置
+    topNum:0
 
   },
 
@@ -676,7 +680,13 @@ Page({
       }
     }, 1000)
   },
-
+// 返回顶部的逻辑写在这
+goTop: function () {
+  
+  this.setData({
+    topNum:this.data.topNum=0
+  })
+    },
   // 显示遮罩层及动画
   showModal: function () {
     var that = this;

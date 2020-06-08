@@ -4,7 +4,7 @@
     "sendMessages":"/components/sendMessages"
   },
   
-  "navigationBarTitleText": "不困旅馆",
+  "navigationBarTitleText": "不眠旅馆",
   "disableScroll": true,
   "enablePullDownRefresh":true,
   "backgroundTextStyle":"light",

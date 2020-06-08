@@ -65,7 +65,7 @@ Component({
       if (that.data.errCode == 0) {
         if (ui && that.data.post != '' && (that.data.post.length) <= 100) {
           wx.showLoading({
-            title: '不困投递中~~',
+            title: '不眠投递中~~',
           })
           if (this.data.comType === "post") {
             //初始化数据

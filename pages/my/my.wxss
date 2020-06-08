@@ -93,9 +93,10 @@ page{
 
 /* 你的css代码 */
 .userPost {
-  height: 750rpx;
+  height: 600rpx;
   display: flex;
   white-space: nowrap;
+  margin-bottom: 100rpx;
 }
 
 .postNav {
@@ -160,7 +161,7 @@ page{
 .up {
   position: fixed;
   bottom: 70rpx;
-  right: 5rpx;
+  right: 0rpx;
   width: 50rpx;
   height: 50rpx;
   background: no-repeat url("https://i.loli.net/2020/05/30/4mHIxAXyzd5gDRK.png");

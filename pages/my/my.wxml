@@ -6,6 +6,7 @@
 	<view class="top">
 		<!-- 背景图片 -->
 		<view bindtap="changeImage" style="right: 25rpx;top: 35rpx; font-size: 15rpx;color:white;padding: 20rpx; display: flex ;position:absolute; flex-direction: column;" class="neonBox">更换背景</view>
+		<button open-type="contact" bindcontact="handleContact" plain="true"style="right: 20rpx;bottom: 15rpx; font-size: 15rpx;padding: 30rpx;margin:0; display: flex ;position:absolute; color:white;flex-direction: column; border: none; border-color: transparent;z-index:2" >意见反馈</button>
 		<image class="bg" mode="aspectFill" src='{{tempFilePaths}}' ></image>
 
 		<view class="main">
@@ -27,13 +28,14 @@
 
 	<!-- 中部 -->
 	<view class="center">
+
 		<view style="font-size: 20rpx;color:grey;margin: 15rpx">》你的博文total:{{mylist.length}}《</view>
 		<view class="introduce">
 			———— •🎰• ————
 		</view>
 
 		<!-- 文章部分 -->
-		<scroll-view class="userPost" scroll-y="true">
+		<scroll-view class="userPost" scroll-y="true" scroll-top="{{topNum}} " >
 			<view class="load" hidden="{{load}}">🛵。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">loading</text></view>
 			<view wx:for="{{mylist}}" wx:key="_id">
 				<view id="{{item._id}}" class="postNav">
@@ -51,7 +53,7 @@
 		</scroll-view>
 
 		<!-- 返回顶部的图标 -->
-		<view class='up' bindtap='goTop'></view>
+		<view class='up' bindtap='goTop' ></view>
 
 		<!-- 弹出管理界面 -->
 		<view class="modal modal-bottom-dialog" hidden="{{hideFlag}}">

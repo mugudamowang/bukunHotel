@@ -46,7 +46,7 @@
 					</view>
 					<!-- 尾部版权信息 -->
 					<view class="copyright {{is_night==false ? 'copyright2' : ''}}" wx:if="{{isShowArticle}}">
-						@不困旅馆
+						@不眠旅馆
 					</view>
 				</scroll-view>
 				<!-- 固定的播放信息 -->
@@ -104,7 +104,7 @@
 
 		<!-- userPost -->
 		<swiper-item>
-			<scroll-view class="userPost" scroll-y="true" ower-threshold="10" bindscrolltolower="scrolltolower">
+			<scroll-view class="userPost" scroll-y="true" scroll-top="{{topNum}}" ower-threshold="10" bindscrolltolower="scrolltolower">
 				<navigator hover-class="none" url="../my/my">
 					<view class="postTopic">
 						<view class="fixed">
@@ -133,6 +133,8 @@
 				<view class="load" hidden="{{loadAll}}">🛵。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">loading</text></view>
 				<view style="margin-top: 150rpx;" class="load" hidden="{{!loadAll}}">🚗。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">no more</text></view>
 			</scroll-view>
+				<!-- 返回顶部的图标 -->
+		<view class='up' bindtap='goTop' ></view>
 		</swiper-item>
 
 	</swiper>

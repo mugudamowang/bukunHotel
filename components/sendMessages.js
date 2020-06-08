@@ -37,12 +37,11 @@ Component({
         wx.showLoading({
           title: '宁还未登陆',
         })
-        wx.redirectTo({
-          url: '../pages/load/load.wxml',
+        wx.switchTab({
+          url: '../pages/load',
         })
       }
-
-      if (that.data.post != '' && (that.data.post.length) <= 100) {
+      if (ui && that.data.post != '' && (that.data.post.length) <= 100) {
         //限制po文长度为100以内,以句子分享格式
         wx.showLoading({
           title: '不困投递中~~',

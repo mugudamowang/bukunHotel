@@ -28,5 +28,6 @@
 
 
 <!-- 自定义组件 -->
+
 <sendMessages comType="comment" postId="{{topMessageId}}">
 </sendMessages>

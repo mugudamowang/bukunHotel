@@ -116,9 +116,17 @@ Page({
   onPullDownRefresh: function () {
     const x = this.data.postlist.length - 1
     this.data.lastDate = this.data.postlist[x].date
+    wx.showLoading({
+      title: '🚗。。。刷新中',
+    })
     this.getPlist()
     wx.stopPullDownRefresh()
+    setTimeout(function(){
+      wx.hideLoading()
+    },1000)
+    
   },
+
 
   //页面切换
   switchNav: function (e) {

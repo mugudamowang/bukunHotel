@@ -105,8 +105,15 @@ onReady: function () {
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    wx.showLoading({
+      title: '。。。注水中',
+    })
     this.getComment()
+    setTimeout(function(){
+      wx.hideLoading()
+    },1000)
     wx.stopPullDownRefresh()
+    
   },
 
   /**

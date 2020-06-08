@@ -63,6 +63,7 @@ Component({
           id: ui.openId,
           localStatus: this.data.localStatus
         },
+
         fail: err => {
           console.log(err)
           wx.showToast({

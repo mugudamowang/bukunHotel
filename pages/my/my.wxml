@@ -1,132 +1,76 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
-Page({
-  data: {
-    datalist:[
-      {
-        id : "0233",
-        post : "谁给你写诗?"
-      },
-      {
-        id : "0404",
-        post : "海星如何睡觉?"
-      },
-      {
-        id : "0618",
-        post : "hhh"
-      },
-      {
-        id : "1010",
-        post : "covid19给爷爬"
-      },
-      {
-        id : "8856",
-        post : "高三加油"
-      },
-      {
-        id : "1010",
-        post : "covid19给爷爬"
-      },
-      {
-        id : "8856",
-        post : "高三加油"
-      }
-    ],
-    
-    // 弹出管理
-    hideFlag: true,//true-隐藏  false-显示
-    animationData: {},//动画
-  //  背景图片路径
-  tempFilePaths:'https://i.loli.net/2020/05/29/YWfHehqSRx64iwZ.jpg'
-  },
-
-  // 删除的逻辑写在这里
-  messageDelete:function(){
+<!--pages/my/my.wxml-->
+<view class="myWrap">
 
 
-// 删除后隐藏模态框
-// this.hideModal()
-  },
+	<!-- 头部 -->
+	<view class="top">
+		<!-- 背景图片 -->
+		<image class="bg" mode="aspectFill" src='{{tempFilePaths}}' bindtap="changeImage"></image>
+		<view class="main">
+			
+			<view class="info">
+				<!-- 头像 -->
+				<image class="infopic" src="{{userinfo.avatarUrl}}" mode="aspectFill"></image>
+				
+			</view>
+			<view style="display: flex ;position:absolute;  flex-direction: column;bottom: -50rpx">
+			<view class="infoname neonBox">{{userinfo.nickName}}</view>
+			<view class="hello neonBox">你好旅人</view>
+			</view>
 
-  // 取消删除
-  messageCancel:function(){
-this.hideModal()
-  },
-  // 返回顶部的逻辑写在这
-goTop:function(){
-
-},
-// 点击背景图选择图片
-changeImage:function(){
-  let that=this
-  wx.chooseImage({
-    count: 1,
-    sizeType: ['original', 'compressed'],
-    sourceType: ['album', 'camera'],
-    success (res) {
-      // tempFilePath可以作为img标签的src属性显示图片
-      const tempFilePaths = res.tempFilePaths
-      that.setData({
-        tempFilePaths
-      })
-    }
-  })
-},
+		</view>
+	</view>
 
 
- // 显示遮罩层及动画
- showModal: function () {
-  var that = this;
-  that.setData({
-    hideFlag: false
-  })
-  // 创建动画实例
-  var animation = wx.createAnimation({
-    duration: 400,//动画的持续时间
-    timingFunction: 'linear',//动画的效果 默认值是linear->匀速，ease->动画以低速开始，然后加快，在结束前变慢
-  })
-  this.animation = animation; //将animation变量赋值给当前动画
-  var time1 = setTimeout(function () {
-    that.slideIn();//调用动画--滑入
-    clearTimeout(time1);
-    time1 = null;
-  }, 100)
-},
+	<!-- 中部 -->
+	<view class="center">
+		<view class="introduce">
+			———— •🎰• ————
+		</view>
 
-// 隐藏遮罩层
-hideModal: function () {
-  var that = this;
-  var animation = wx.createAnimation({
-    duration: 400,//动画的持续时间 默认400ms
-    timingFunction: 'ease',//动画的效果 默认值是linear
-  })
-  this.animation = animation
-  that.slideDown();//调用动画--滑出
-  var time1 = setTimeout(function () {
-    that.setData({
-      hideFlag: true
-    })
-    clearTimeout(time1);
-    time1 = null;
-  }, 220)//先执行下滑动画，再隐藏模块
+		<!-- 文章部分 -->
+		<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
+			<view class="postNav hotPost">
+				<text>不负光阴</text>
+			</view>
+			<view wx:for="{{datalist}}">
+				<view class="postNav">
+					<view class="postUser">
+						<view class="circle"></view>
+						<!-- 圆形icon -->
+						{{item.id}}
+						<!-- 作者id -->
+					</view>
+					<!-- 弹出管理 -->
+					<view class="more" bindtap='showModal'></view>
+					{{item.post}}
+					<!-- 作者标题 -->
+					<navigator hover-class="none" url="../postDetail/postDetail">
+						<media class="mediaCom"></media>
+					</navigator>
+				</view>
+			</view>
+		</scroll-view>
 
-},
-//动画 -- 滑入
-slideIn: function () {
-  this.animation.translateY(0).step() // 在y轴偏移，然后用step()完成一个动画
-  this.setData({
-    //动画实例的export方法导出动画数据传递给组件的animation属性
-    animationData: this.animation.export()
-  })
-},
-//动画 -- 滑出
-slideDown: function () {
-  this.animation.translateY(300).step()
-  this.setData({
-    animationData: this.animation.export(),
-  })
-},
- 
-})
+		<!-- 返回顶部的图标 -->
+		<view class='up' bindtap='goTop'></view>
+
+		<!-- 弹出管理界面 -->
+		<view class="modal modal-bottom-dialog" hidden="{{hideFlag}}">
+			<view class="modal-cancel" bindtap="hideModal"></view>
+			<view class='hide bottom-dialog-body bottom-positon' animation="{{animationData}}">
+				<view class='Mselect'>
+					<view class='delete' bindtap='messageDelete'>
+						删除
+					</view>
+					<view class='cancel' bindtap='messageCancel'>
+						取消
+					</view>
+				</view>
+			</view>
+		</view>
+
+
+	</view>
+
+</view>

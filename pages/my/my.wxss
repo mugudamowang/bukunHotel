@@ -9,15 +9,15 @@ navigator {
   margin: 0;
   box-sizing: border-box;
 }
-
-.myWrap {}
+page{
+  background-color: #090F14;
+}
 
 /* 头部 */
 .myWrap .top {
   width: 100%;
-  height: 500rpx;
+  height: 400rpx;
   position: relative;
-
 }
 
 .myWrap .top .bg {
@@ -78,8 +78,7 @@ navigator {
 
 /* 中部 */
 .myWrap .center {
-
-  background-color: #1e485e;
+  background-color: #090F14;
   padding-top: 70rpx;
   color: white;
   border-top: solid 8rpx #465760;
@@ -94,9 +93,9 @@ navigator {
 
 /* 你的css代码 */
 .userPost {
-  height: 100%;
+  height: 750rpx;
   display: flex;
-
+  white-space: nowrap;
 }
 
 .postNav {
@@ -113,9 +112,6 @@ navigator {
   align-items: center;
   height: 200rpx;
   position: relative;
-
-
-
 
 }
 
@@ -146,16 +142,6 @@ navigator {
   top: 10rpx;
   left: 30rpx;
 }
-
-.hotPost {
-  border: 10rpx rgba(83, 85, 85, 0.426) solid;
-  border-radius: 10rpx;
-  background-color: white;
-  margin-left: 10rpx;
-  margin-right: 10rpx;
-  color: black;
-}
-
 
 /* 弹出管理三点*/
 .more {
@@ -256,4 +242,9 @@ navigator {
   100% {
     box-shadow: 0 0 5rpx rgba(9, 15, 20, 0.673), 0 0 8rpx rgba(9, 15, 20, 0.371), 0 0 30rpx rgba(255, 255, 255, 0.289);
   }
+}
+
+.load {
+  padding: 50rpx;
+  text-align: center
 }

@@ -5,17 +5,20 @@
 	<!-- 头部 -->
 	<view class="top">
 		<!-- 背景图片 -->
-		<image class="bg" mode="aspectFill" src='{{tempFilePaths}}' bindtap="changeImage"></image>
+		<view bindtap="changeImage" style="right: 25rpx;top: 35rpx; font-size: 15rpx;color:white;padding: 20rpx; display: flex ;position:absolute; flex-direction: column;" class="neonBox">更换背景</view>
+		<image class="bg" mode="aspectFill" src='{{tempFilePaths}}' ></image>
+
 		<view class="main">
-			
+
 			<view class="info">
 				<!-- 头像 -->
 				<image class="infopic" src="{{userinfo.avatarUrl}}" mode="aspectFill"></image>
 				
+
 			</view>
 			<view style="display: flex ;position:absolute;  flex-direction: column;bottom: -50rpx">
-			<view class="infoname neonBox">{{userinfo.nickName}}</view>
-			<view class="hello neonBox">你好旅人</view>
+				<view class="infoname neonBox">{{userinfo.nickName}}</view>
+				<view class="hello neonBox">你好旅人</view>
 			</view>
 
 		</view>
@@ -24,30 +27,25 @@
 
 	<!-- 中部 -->
 	<view class="center">
+		<view style="font-size: 20rpx;color:grey;margin: 15rpx">》你的博文total:{{mylist.length}}《</view>
 		<view class="introduce">
 			———— •🎰• ————
 		</view>
 
 		<!-- 文章部分 -->
-		<scroll-view class="userPost" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
-			<view class="postNav hotPost">
-				<text>不负光阴</text>
-			</view>
-			<view wx:for="{{datalist}}">
-				<view class="postNav">
+		<scroll-view class="userPost" scroll-y="true">
+			<view class="load" hidden="{{load}}">🛵。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">loading</text></view>
+			<view wx:for="{{mylist}}" wx:key="_id">
+				<view id="{{item._id}}" class="postNav">
 					<view class="postUser">
-						<view class="circle"></view>
-						<!-- 圆形icon -->
-						{{item.id}}
-						<!-- 作者id -->
+						<view style="font-size: 15rpx;color:grey;margin: 10rpx">on</view>
+						{{item.date}} <!-- 作者id -->
 					</view>
-					<!-- 弹出管理 -->
-					<view class="more" bindtap='showModal'></view>
-					{{item.post}}
-					<!-- 作者标题 -->
-					<navigator hover-class="none" url="../postDetail/postDetail">
-						<media class="mediaCom"></media>
-					</navigator>
+					<view id="{{item._id}}" class="more" bindtap='showModal'>
+					</view>
+
+					<view class="post">{{item.post}}</view> <!-- 作者标题 -->
+					<media id="media" postid="{{item._id}}" commentNum="{{item.commentNum}}" like="{{item.like}}" likeNum="{{item.like.length}}" class="mediaCom"></media>
 				</view>
 			</view>
 		</scroll-view>
@@ -69,7 +67,6 @@
 				</view>
 			</view>
 		</view>
-
 
 	</view>
 

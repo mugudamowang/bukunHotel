@@ -20,8 +20,8 @@
 					<!-- 头部 -->
 					<view class="top" wx:if="{{isShowArticle}}">
 						<view class="night">
-							<text class="hello1" hidden='{{!is_night}}'>晚上好</text>
-							<text class="hello2" hidden='{{is_night}}'>早上好</text>
+							<text class="hello1" hidden='{{!is_night}}'>你好，不眠旅人</text>
+							<text class="hello2" hidden='{{is_night}}'>笑一笑:-)</text>
 							<text class="moon" hidden='{{!is_night}}' bindtap="toggle"></text>
 							<text class="sun" hidden='{{is_night}}' bindtap="toggle"></text>
 						</view>
@@ -109,13 +109,16 @@
 					<view class="postTopic">
 						<view class="fixed">
 							<image class="avatar" src="{{userinfo.avatarUrl}}"></image>
-							<view style="font-size: 15rpx;color:grey; margin: 10rpx;">我的</view>
+							<view style="font-size: 15rpx;color:grey; padding: 10rpx;">我的</view>
 						</view>
-						<view class="post">但行好事,不问前程</view>
+						<view style="font-size: 30rpx;color:grey; margin-left: 150rpx; " class="post">
+							{{word.hitokoto}}
+							<view style="position:absolute;font-size: 20rpx;color:grey; right: 10rpx;bottom: 0">————{{word.creator}}</view>
+						</view>
 					</view>
 				</navigator>
 
-				<view wx:for="{{postlist}}">
+				<view wx:for="{{postlist}}" wx:key="_id">
 					<view class="postNav">
 						<view class="postUser">
 							<view class="circle"></view> <!-- 圆形icon -->
@@ -123,11 +126,12 @@
 							<view style="font-size: 15rpx;color:grey;margin: 10rpx">{{item.date}}</view>
 						</view>
 						<view class="post">{{item.post}}</view> <!-- 作者标题 -->
-						<media id="media" postid="{{item._id}}" commentNum="{{item.commentNum}}" like="{{item.like}}" likeNum="{{item.likeNum}}" class="mediaCom"></media>
+						<media id="media" postid="{{item._id}}" commentNum="{{item.commentNum}}" like="{{item.like}}" likeNum="{{item.like.length}}" class="mediaCom"></media>
 					</view>
 				</view>
+
 				<view class="load" hidden="{{loadAll}}">🛵。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">loading</text></view>
-				<view class="load" hidden="{{!loadAll}}">🚗。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">no more</text></view>
+				<view style="margin-top: 150rpx;" class="load" hidden="{{!loadAll}}">🚗。。。<text style="font-size: 15rpx;color:grey; margin: 10rpx;">no more</text></view>
 			</scroll-view>
 		</swiper-item>
 

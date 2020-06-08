@@ -214,27 +214,6 @@ Page({
 
   },
 
-  //首页加载函数
-  // console.log(ui.openId)
-  // if (!ui) {
-  //   console.log("npoeoooooooo")
-  // }
-  // wx.cloud.callFunction({
-  //   name:"createPost",
-  //   data:{
-  //     post: post,
-  //     date: Date.now(),
-  //     openid: ui.openId
-  //   }
-  // })
-  // },
-
-
-
-
-
-
-
 
   // -------------------我的js------------------------
 

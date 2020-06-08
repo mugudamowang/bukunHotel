@@ -10,12 +10,19 @@ Page({
     topMessageId: [],
     topMessage: [],
     comlist: [],
+    load: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.postid==""){
+      wx.showToast({
+        icon: 'none',
+        title: 'XAX不存在该博文',
+      })
+    }
     this.setData({
       topMessageId: options.postid
     })
@@ -26,10 +33,6 @@ Page({
 
   getComment() {
 
-    wx.showLoading({
-      title: 'loading...'
-    })
-
     wx.cloud.callFunction({
       name: 'getpList',
       data: {
@@ -37,7 +40,6 @@ Page({
       },
       success: res => {
         if (res.result) {
-          console.log(res.result.data)
           this.setData({
             topMessage: res.result.data,
           })
@@ -59,6 +61,7 @@ Page({
         if (res.result) {
           this.setData({
             comlist: res.result.data,
+            load: true,
           })
         }
       },
@@ -68,10 +71,6 @@ Page({
         })
       }
     })
-
-    setTimeout(() => {
-      wx.hideLoading();
-    }, 500)
   },
 
 /**

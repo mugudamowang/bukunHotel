@@ -24,13 +24,8 @@ navigator {
 }
 
 /* 整体 */
-<<<<<<< HEAD
 .flow{
   height:1200rpx;
-=======
-.flow {
-  height: 1300rpx;
->>>>>>> 19c103ae559b43b9ba5d8f8cf84461b3a2801bf1
   position: relative;
 }
 
@@ -195,7 +190,6 @@ navigator {
   color: black;
 }
 
-<<<<<<< HEAD
   .centerlist .wrap .title {
     position: absolute;
     left: 50%;
@@ -219,8 +213,6 @@ navigator {
   .copyright2{
     color: black;
   }
-=======
->>>>>>> 19c103ae559b43b9ba5d8f8cf84461b3a2801bf1
 /* 底部固定播放条 */
 .fix {
   position: fixed;

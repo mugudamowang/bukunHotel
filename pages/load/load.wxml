@@ -1,10 +1,16 @@
 <!--pages/load/load.wxml-->
 <!-- 需要使用 button 来授权登录 -->
+<swiper indicator-dots="true" indicator-active-color="grey" indicator-color="white" style="height: calc(100vh - 56px);">
+	<swiper-item wx:for="{{classlist}}" wx:for-index="index" wx:for-item="item" wx:key="index" key="{{ index }}" class='{{item}}'>
+		<view wx:if="{{canIUse}}">
+			<sup>旅馆</sup>
+			<button class="logo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+				<image class="img" src="https://i.loli.net/2020/04/12/sAgCStJNEyO2dun.png"></image>
+			</button>
+			<text style="font-size:20rpx;color:white;position:absolute;bottom:150rpx">↑点击我开启↑</text>
+		</view>
+		<view wx:else>请升级微信版本</view>
+	</swiper-item>
 
-<view wx:if="{{canIUse}}">
-	<sup>旅馆</sup>
-	<button class="logo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
-		<image class="img" src="https://i.loli.net/2020/04/12/sAgCStJNEyO2dun.png"></image>
-	</button>
-</view>   
-<view wx:else>请升级微信版本</view>
+
+</swiper>

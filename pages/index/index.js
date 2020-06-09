@@ -112,11 +112,10 @@ Page({
   //事件处理函数
 
   onLoad: function () {
+    this.setUserInfor();
     this.getLocalData(); //加载music首页数据
     this.scrolltolower(); //第一次加载先载入10条po文数据
-    this.setUserInfor(); //设置用户信息
   },
-
   onPullDownRefresh: function () {
     const x = this.data.postlist.length - 1
     this.data.lastDate = this.data.postlist[x].date
@@ -128,7 +127,7 @@ Page({
     setTimeout(function(){
       wx.hideLoading()
     },1000)
-    
+
   },
 
 

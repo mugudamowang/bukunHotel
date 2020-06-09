@@ -1,12 +1,10 @@
 //index.js
 //获取应用实例
 const app = getApp()
-const ui = wx.getStorageSync('userInfo')
-
 Page({
   data: {
 
-    userinfo: ui,
+    userinfo: '',
     mylist: [],
     load: false,
     postId: '',
@@ -24,18 +22,18 @@ Page({
 
   onLoad: function () {
     const bgImage = wx.getStorageSync('bgImage')
+    const ui = wx.getStorageSync('userInfo')
+    this.setData({
+      userinfo: ui,
+      postId: '',
+      tempFilePaths: this.data.tempFilePaths
+    })
     if (bgImage == '') {
       this.data.tempFilePaths = 'https://i.loli.net/2020/05/29/YWfHehqSRx64iwZ.jpg'
     } else {
       this.data.tempFilePaths = bgImage
     }
     
-
-    this.setData({
-      userinfo: ui,
-      postId: '',
-      tempFilePaths: this.data.tempFilePaths
-    })
     this.getMypost()
   },
 

@@ -1,25 +1,43 @@
 /* pages/load/load.wxss */
 
 
-page{
+page {
   background-color: #090F14;
 }
-view{
+
+view {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
+swiper-item{
+  background-position: center;
+  background-size: 600rpx;
+  background-repeat: no-repeat;
+}
 
-sup{
+.guide1 {
+  
+  background-image: url('https://i.loli.net/2020/06/09/bSF3pkKAfjhQ6cv.png');
+}
+.guide2 {
+  background-image: url('https://i.loli.net/2020/06/09/9KrCARZf1BoQelJ.png');
+}
+.guide3 {
+  background-size: 800rpx;
+  background-image: url('https://i.loli.net/2020/06/09/voZNE5a8YmcF27j.png');
+}
+
+sup {
   margin: 60% 0 0 20%;
   font-family: PingFangSC-Regular, sans-serif;
   color: white;
   font-size: 20rpx;
 }
 
-.logo{
+.logo {
   margin-top: 38%;
   position: absolute;
   background-color: #9D0A0F;
@@ -30,7 +48,7 @@ sup{
   border: 10rpx solid white;
 }
 
-.img{
+.img {
   left: -8rpx;
   position: absolute;
   width: 138rpx;

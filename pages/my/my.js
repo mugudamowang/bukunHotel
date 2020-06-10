@@ -43,7 +43,7 @@ Page({
       name: 'getMypost',
       data: {
         delete: false,
-        openId: ui.openId
+        openId: this.data.userinfo.openId
       },
 
       success: res => {

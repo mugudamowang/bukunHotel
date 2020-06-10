@@ -74,7 +74,7 @@ Page({
       data: {
         delete: true,
         postId: this.data.postId,
-        openId: ui.openId
+        openId: this.data.userinfo.openId
       },
 
       success: res => {

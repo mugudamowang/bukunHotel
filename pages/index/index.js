@@ -99,7 +99,9 @@ Page({
 
 
     // 滚动条位置
-    topNum:0
+    topNum:0,
+
+    urlfix : '' 
 
   },
 
@@ -115,6 +117,9 @@ Page({
     this.setUserInfor();
     this.getLocalData(); //加载music首页数据
     this.scrolltolower(); //第一次加载先载入10条po文数据
+  },
+  onShow: function(){
+    this.setUserInfor();
   },
   onPullDownRefresh: function () {
     const x = this.data.postlist.length - 1

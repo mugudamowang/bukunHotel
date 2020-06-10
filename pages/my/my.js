@@ -23,16 +23,16 @@ Page({
   onLoad: function () {
     const bgImage = wx.getStorageSync('bgImage')
     const ui = wx.getStorageSync('userInfo')
-    this.setData({
-      userinfo: ui,
-      postId: '',
-      tempFilePaths: this.data.tempFilePaths
-    })
     if (bgImage == '') {
       this.data.tempFilePaths = 'https://i.loli.net/2020/05/29/YWfHehqSRx64iwZ.jpg'
     } else {
       this.data.tempFilePaths = bgImage
     }
+    this.setData({
+      userinfo: ui,
+      postId: '',
+      tempFilePaths: this.data.tempFilePaths
+    })
     
     this.getMypost()
   },
